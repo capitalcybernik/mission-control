@@ -1,0 +1,13 @@
+{
+  "name": "humanizer-skill",
+  "version": "1.0.0",
+  "description": "AI writing humanizer - strips AI patterns from text",
+  "main": "humanizer.js",
+  "scripts": {
+    "test": "node humanizer.test.js",
+    "humanize": "node humanizer.js"
+  },
+  "keywords": ["ai", "humanizer", "writing", "nlp"],
+  "author": "Ares",
+  "license": "MIT"
+}
