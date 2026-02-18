@@ -1,0 +1,28 @@
+{
+  "sent": [
+    {
+      "email": "dgeltrude@geltrude.com",
+      "name": "Dan Geltrude",
+      "company": "Geltrude & Company",
+      "sender": "abigail@ransomwareprotectionforyou.com",
+      "messageId": "<9fbe736d-8a9b-ee2d-51fa-2ac2a6d3dd9c@ransomwareprotectionforyou.com>",
+      "sentAt": "2026-02-18T16:10:51.595Z"
+    },
+    {
+      "email": "lauren.agunzo@gmail.com",
+      "name": "Lauren Agunzo",
+      "company": "Nawrocki Smith, Llp",
+      "sender": "amelia@cyberpentestingforu.com",
+      "messageId": "<263d77b6-3004-39fa-d4a4-cc12882d7e1a@cyberpentestingforu.com>",
+      "sentAt": "2026-02-18T16:12:32.387Z"
+    },
+    {
+      "email": "louisl@hobe.com",
+      "name": "Louis Loparo",
+      "company": "Hobe & Lucas Cpas Inc",
+      "sender": "aria@protectionfromransomwareattacks.com",
+      "messageId": "<a1434d4e-18a4-b103-12ae-903e55bfca49@protectionfromransomwareattacks.com>",
+      "sentAt": "2026-02-18T16:14:09.884Z"
+    }
+  ]
+}
