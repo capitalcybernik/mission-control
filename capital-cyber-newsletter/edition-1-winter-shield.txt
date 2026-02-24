@@ -1,0 +1,84 @@
+CAPITAL CYBER - Security Brief | February 2026
+
+==============================================================================
+THE FBI JUST ISSUED A NATIONAL WARNING. IS YOUR BUSINESS PREPARED?
+==============================================================================
+
+On January 28, 2026, the FBI launched Operation Winter SHIELD, a nationwide 
+campaign targeting the most dangerous cyber threats facing American businesses 
+today.
+
+THE NUMBERS DO NOT LIE
+----------------------
+
+43% of cyberattacks now target small and medium businesses
+
+Q1 2025 just set the record for the highest number of ransomware victims 
+ever reported.
+
+WHAT IS OPERATION WINTER SHIELD?
+--------------------------------
+
+SHIELD = Securing Homeland Infrastructure by Enhancing Layered Defense
+
+The FBI identified the 10 most critical security actions every organization 
+must take. These are not theory. They are derived from real FBI investigations.
+
+THE FBI'S TOP 10 PRIORITIES
+---------------------------
+
+1. Adopt phish resistant authentication (security keys, not SMS)
+2. Implement risk based vulnerability management
+3. Track and retire end of life technology
+4. Manage third party vendor risk
+5. Protect security logs with immutable storage
+6. Maintain offline, tested backups
+7. Inventory and protect internet facing systems
+8. Strengthen email authentication
+9. Reduce administrator privileges
+10. Exercise your incident response plan
+
+HOW CAPITAL CYBER HELPS YOU COMPLY
+----------------------------------
+
+* NIST Gap Assessment - Identify vulnerabilities before attackers do
+* Written Information Security Program (WISP) - Required by FTC Safeguards Rule
+* CMMC Compliance Services - Get government contractors audit ready
+* Managed IT & 24/7 Monitoring - Proactive protection
+* Virtual Chief Security Officer (vCSO) - Strategic leadership
+
+We cracked 20,000+ passwords in 2024. We know how attackers think.
+
+==============================================================================
+SCHEDULE YOUR FBI WINTER SHIELD RISK ASSESSMENT
+==============================================================================
+
+The FBI made their recommendations clear. The question is: how many of the 
+10 critical actions has your business actually implemented?
+
+Our comprehensive Risk Assessment benchmarks your security posture against 
+Operation Winter SHIELD standards and delivers a prioritized roadmap to 
+close the gaps.
+
+CONTACT RICK DASSLER, COO
+-------------------------
+
+Email: rdassler@capital-cyber.com
+Phone: (571) 410-3066
+
+Or click here to schedule: 
+https://capital-cyber.com/contact
+
+==============================================================================
+
+"[JENNA RAHKONEN TESTIMONIAL FROM IRON LIFT TO BE INSERTED HERE]"
+
+— Jenna Rahkonen, Iron Lift LLC
+
+==============================================================================
+
+Capital Cyber
+1019B Edwards Ferry Rd. #1183, Leesburg, VA 20176
+(571) 410-3066 | capital-cyber.com
+
+24 years IT experience | 20,000+ passwords cracked in 2024

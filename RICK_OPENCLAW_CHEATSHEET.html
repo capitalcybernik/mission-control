@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenClaw Quick Start - Rick's Cheat Sheet</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #1a1a1a;
+            background: #fff;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        h1 {
+            font-size: 28pt;
+            color: #1e3a5f;
+            border-bottom: 3px solid #d4af37;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 11pt;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 16pt;
+            color: #1e3a5f;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 8px;
+        }
+        h3 {
+            font-size: 13pt;
+            color: #2d5a8e;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 12px;
+        }
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 10.5pt;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+            font-size: 10pt;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Consolas', monospace;
+            font-size: 10pt;
+            line-height: 1.5;
+            margin: 15px 0;
+        }
+        .good {
+            color: #2e7d32;
+        }
+        .bad {
+            color: #c62828;
+        }
+        .highlight {
+            background: #fff3e0;
+            padding: 15px;
+            border-left: 4px solid #ff9800;
+            margin: 15px 0;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+            font-size: 10pt;
+            color: #666;
+            text-align: center;
+        }
+        strong {
+            color: #1e3a5f;
+        }
+    </style>
+</head>
+<body>
+    <h1>OpenClaw Quick Start: Rick's Cheat Sheet</h1>
+    <p class="subtitle"><strong>For:</strong> Rick D, COO/CMO/CFO, Capital Cyber | <strong>Training Date:</strong> Saturday, Feb 22, 2026</p>
+
+    <h2>What is OpenClaw?</h2>
+    <p>Ares (that's me) runs inside OpenClaw. You chat with me via:</p>
+    <ul>
+        <li><strong>Telegram:</strong> @Ares2040_bot (primary)</li>
+        <li><strong>Anywhere:</strong> I receive messages, respond accordingly</li>
+    </ul>
+    <p>I have tools for:</p>
+    <ul>
+        <li>Content creation (blogs, web pages, emails)</li>
+        <li>Social media (drafts, not auto-posting)</li>
+        <li>Research (SEO, competitors, grants)</li>
+        <li>Task tracking (Dart AI)</li>
+        <li>Coding (if needed)</li>
+    </ul>
+
+    <h2>How to Give Me Work</h2>
+
+    <h3>Good Requests (I can do these)</h3>
+    <table>
+        <tr><th>Task</th><th>Example</th></tr>
+        <tr><td><strong>Write content</strong></td><td>"Draft a blog post on ransomware for dentists"</td></tr>
+        <tr><td><strong>Edit/rewrite</strong></td><td>"Tighten up the text on the Virginia CMMC page. Less fluff."</td></tr>
+        <tr><td><strong>Research</strong></td><td>"What are competitors ranking for 'CMMC Virginia'?"</td></tr>
+        <tr><td><strong>Website changes</strong></td><td>"Add a CTA to the end of the managed IT page"</td></tr>
+        <tr><td><strong>Status check</strong></td><td>"What did you finish yesterday?"</td></tr>
+        <tr><td><strong>Task management</strong></td><td>"Add a task to review the Q1 report"</td></tr>
+    </table>
+
+    <h3>Don't Ask For (I can't/won't)</h3>
+    <ul>
+        <li>"Post this to Facebook" - Draft only, you approve and post</li>
+        <li>"Email Rick" - I can draft, you approve and send</li>
+        <li>"Delete that file" without confirming with Nikhil</li>
+        <li>"Send this to everyone on LinkedIn" - No bulk outbound without approval</li>
+        <li>"What's the root password?" - Never asking, never revealing</li>
+    </ul>
+
+    <h2>Command Reference</h2>
+
+    <h3>Daily Use</h3>
+    <table>
+        <tr><th>Command</th><th>What It Does</th></tr>
+        <tr><td><code>/new</code></td><td>Reset the current chat (fresh start)</td></tr>
+        <tr><td><code>/status</code></td><td>Check my current model and session info</td></tr>
+        <tr><td><code>/reasoning on/off</code></td><td>Toggle detailed thinking (use if you need deep analysis)</td></tr>
+    </table>
+
+    <h3>Messaging Me</h3>
+    <p><strong>Just talk normally.</strong> Examples:</p>
+    <ul>
+        <li>"Hey Ares, draft me 5 Facebook post ideas for this week"</li>
+        <li>"Rework this line: It sounds like AI wrote it"</li>
+        <li>"What competitors rank #1 for 'vCISO Northern Virginia'?"</li>
+    </ul>
+
+    <h2>What Happens When You Send Work</h2>
+
+    <h3>I Log Everything to Dart AI</h3>
+    <p>Every task I complete gets logged so you can review:</p>
+    <ul>
+        <li><strong>Board:</strong> "Master Control/Ares Tasks"</li>
+        <li><strong>Link:</strong> https://app.itsdart.com</li>
+        <li><strong>Access:</strong> Log in with your Dart AI credentials</li>
+    </ul>
+
+    <h3>I Communicate Status</h3>
+    <table>
+        <tr><th>Timeline</th><th>What I'll Tell You</th></tr>
+        <tr><td><strong>Quick wins</strong> (&lt; 10 min)</td><td>I'll just do it and confirm</td></tr>
+        <tr><td><strong>Medium tasks</strong> (10-60 min)</td><td>"Working on it, ETA 30 min"</td></tr>
+        <tr><td><strong>Big projects</strong> (&gt; 1 hr)</td><td>ETA + progress updates</td></tr>
+        <tr><td><strong>Delays</strong></td><td>Immediate notification with new timeline</td></tr>
+    </table>
+
+    <h2>The Request to Result Workflow</h2>
+    <pre>You: "Draft a blog post on CMMC for manufacturers"
+
+Ares: Parses, maybe asks clarifying questions
+      ("What angle: cost savings, common mistakes, or overview?")
+
+You: "Go with common mistakes"
+
+Ares: Creates drafts, sends for review
+      "Here are 3 angles. Pick one or combine."
+
+You: "#2 but tighten the intro"
+
+Ares: Updates, sends final
+
+You: "Looks good, log it."
+
+Ares: Logs task to Dart AI as "Blog post: CMMC mistakes for manufacturers - Done"</pre>
+
+    <h2>Types of Content I Can Produce</h2>
+
+    <h3>Written</h3>
+    <ul>
+        <li>Blog posts (full drafts)</li>
+        <li>Web page copy</li>
+        <li>Social media posts (Facebook, LinkedIn)</li>
+        <li>Email drafts</li>
+        <li>Reports and analysis</li>
+    </ul>
+
+    <h3>Research</h3>
+    <ul>
+        <li>Competitor SEO analysis</li>
+        <li>Keyword gap analysis</li>
+        <li>Grant opportunity research</li>
+        <li>Industry trends</li>
+    </ul>
+
+    <h3>Technical</h3>
+    <ul>
+        <li>WordPress content updates</li>
+        <li>Landing page creation</li>
+        <li>Form embeds and CTAs</li>
+        <li>Internal linking audits</li>
+    </ul>
+
+    <h2>Style &amp; Tone</h2>
+
+    <h3>How I Write (by default)</h3>
+    <ul>
+        <li>Direct. No fluff. No "In today's digital landscape..."</li>
+        <li>Colons, not dashes in headers</li>
+        <li>Confident, professional, slightly sardonic (Ares' voice)</li>
+        <li>Specific numbers when we have them (20,000+ passwords cracked in 2024)</li>
+    </ul>
+
+    <h3>How to Override</h3>
+    <ul>
+        <li>"Tone: Make it warmer"</li>
+        <li>"Tone: More formal"</li>
+        <li>"This sounds like legal/technical. Dumb it down."</li>
+        <li>"Use bullet points, not paragraphs."</li>
+    </ul>
+
+    <h2>Escalation: When to Loop in Nikhil</h2>
+
+    <p><strong>Ask first before I do:</strong></p>
+    <ul>
+        <li>Anything involving actual sends (email, social posts)</li>
+        <li>Deleting content or files</li>
+        <li>Changes to your website's navigation or structure</li>
+        <li>Access to Cynet, credit card info, or financial accounts</li>
+        <li>Creating new accounts anywhere</li>
+    </ul>
+
+    <p><strong>I'll auto-escalate if:</strong></p>
+    <ul>
+        <li>I see something looks like a security risk</li>
+        <li>A task seems to conflict with other work</li>
+        <li>I'm uncertain about scope</li>
+    </ul>
+
+    <h2>Quick Examples</h2>
+
+    <div class="highlight">
+        <p class="good"><strong>Good Request:</strong></p>
+        <p>"Write a Facebook post about the 51 CMMC pages we just published. Punchy, not salesy. End with a question to drive engagement."</p>
+    </div>
+
+    <p class="bad"><strong>Bad Request:</strong> "Fix the website." (Too vague. I'll ask what specifically.)</p>
+
+    <div class="highlight">
+        <p class="good"><strong>Good Request:</strong></p>
+        <p>"Audit our competitors for 'CMMC consultant Virginia Beach'. Report: who's ranking, what they're saying, what keywords they use."</p>
+    </div>
+
+    <p class="bad"><strong>Bad Request:</strong> "Make us rank #1." (SEO doesn't work like that. I can tell you the gaps, not guarantee rankings.)</p>
+
+    <h2>Emergency / Problem Solving</h2>
+
+    <h3>If Something's Wrong</h3>
+    <p><strong>Symptom:</strong> I'm not responding or giving weird answers<br>
+    <strong>Fix:</strong> Type <code>/new</code> to reset the session</p>
+
+    <h3>If I Seem "Stuck"</h3>
+    <p>Sometimes sessions get stale. <code>/new</code> fixes most issues.</p>
+
+    <h3>If You Need Me Right Now</h3>
+    <ul>
+        <li>Telegram is the fastest</li>
+        <li>No need to wait for heartbeats</li>
+        <li>Just message</li>
+    </ul>
+
+    <h2>Key Principles</h2>
+    <ol>
+        <li><strong>I remember.</strong> Check MEMORY.md or ask "What did we decide about X?"</li>
+        <li><strong>I log.</strong> Every task hits Dart AI. Review there.</li>
+        <li><strong>I confirm.</strong> Big or external actions need your go-ahead.</li>
+        <li><strong>I'm direct.</strong> Ask me anything. No corporate speak needed.</li>
+    </ol>
+
+    <h2>Resources</h2>
+    <ul>
+        <li><strong>OpenClaw Docs:</strong> https://docs.openclaw.ai</li>
+        <li><strong>Dart AI Board:</strong> https://app.itsdart.com (Master Control/Ares Tasks)</li>
+        <li><strong>This Cheatsheet:</strong> (keep it handy)</li>
+    </ul>
+
+    <div class="footer">
+        <p><strong>Last updated:</strong> Feb. 22, 2026</p>
+        <p>Your AI strategist: Ares, Master Control</p>
+    </div>
+</body>
+</html>

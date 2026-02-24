@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "skills": {
+    "openai-whisper-api": {
+      "version": "1.0.0",
+      "installedAt": 1771195015375
+    },
+    "ai-meeting-notes": {
+      "version": "1.0.3",
+      "installedAt": 1771209462789
+    }
+  }
+}

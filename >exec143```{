@@ -1,0 +1,39 @@
+cd /root/.openclaw/workspace && cat /tmp/manufacturing-content.html | python3 -c "
+import json,sys,os
+from urllib.request import Request, urlopen
+from urllib.error import HTTPError
+
+content = sys.stdin.read()
+
+# WordPress API credentials and endpoint
+api_url = 'https://cybergrantsalliance.org/wp-json/wp/v2/pages/56350'
+username = 'aresautomation'
+password = 'Qy1T u0Eh gb6D JLjT jqH8 W8hp'
+
+# Prepare the data
+data = json.dumps({
+    'content': content
+}).encode('utf-8')
+
+# Create request
+req = Request(api_url, data=data, method='POST')
+req.add_header('Content-Type', 'application/json')
+req.add_header('Authorization', 'Basic ' + os.environ.get('WP_AUTH', ''))
+
+# Base64 encode credentials
+import base64
+creds = base64.b64encode(f'{username}:{password}'.encode()).decode()
+req.add_header('Authorization', f'Basic {creds}')
+
+try:
+    with urlopen(req, timeout=30) as response:
+        result = json.loads(response.read().decode())
+        print(f'Success! Page updated: {result.get(\"link\")}')
+        print(f'ID: {result.get(\"id\")}')
+        print(f'Status: {result.get(\"status\")}')
+except HTTPError as e:
+    error_body = e.read().decode()
+    print(f'Error {e.code}: {error_body}')
+except Exception as e:
+    print(f'Error: {e}')
+" 2>&1

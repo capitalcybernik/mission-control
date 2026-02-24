@@ -1,0 +1,6 @@
+#!/bin/bash
+# Quick test of Dart AI API
+
+DART_TOKEN="dsa_61c1377b1ea700a37b8fb813fe8ec1284b3a2fcf5eed7a13fa2a28e8f386abfa"
+
+echo '{"jsonrpc":"2.0","method":"tools/list","id":1}' | DART_TOKEN=$DART_TOKEN npx -y dart-mcp-server@latest 2>&1 | head -20

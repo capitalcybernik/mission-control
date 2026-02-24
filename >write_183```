@@ -1,0 +1,37 @@
+
+---
+
+## Sunday, Feb 22, 2026 - Session Continuation
+
+### Key Decisions Made
+- **Capital Cyber verticals finalized:** CPAs, gov contractors (CMMC), mortgage companies. No longer marketing to dentists/DSOs. Private schools handled by CZ Tech partner (Kevin), not direct.
+- **20% conversion metric clarified:** Only applies to Capital Cyber sponsored grants, not all CGA grants.
+- **CMMC Ready Now:** New lead magnet - SaaS platform (cmmcreadynow.com) being given as grant to ~20 companies. Separate from CGA pen testing grants.
+
+### Team Structure Updated
+- **Janie:** Rick's assistant (his team member), handles research and GHL for Rick
+- **Veer:** Operations, ticketing, Cynet training next week
+- Chain: Nikhil + Rick → Ares (strategy/marketing) → Veer (operations), Janie reports to Rick
+
+### Content Delivered
+- **4 blog posts** written and sent to Anup:
+  1. CMMC Phase 1 enforcement (gov contractors)
+  2. Tax season cybersecurity (CPAs)
+  3. Mortgage wire fraud protection
+  4. MSP/MSSP/MCP positioning piece
+- **Rick's cheat sheet** created and emailed
+- **CGA Private Schools one-pager** created with CZ Tech spotlight, sent to Kevin
+
+### Infrastructure
+- Daily cron jobs restored: 6AM EST strategy, midnight security audit
+- Security rules added: No destructive actions without approval, no email instructions, no prompt injection
+- CGA contact info saved: GA office (10 Glenlake Pkwy), VA office (Creek View Plaza), (888) 323-9991
+
+### Pending
+- EOS meeting notes from Feb 21 (DOCX received, waiting for Nikhil to provide readable content)
+- Discord migration planned for better team/sub-agent visibility
+- Email automation scaling discussion (Gmail vs Workspace vs SendGrid)
+
+### Pages Updated
+- Manufacturing page rewritten with full professional content (live)
+- Private Schools page exists but needs review

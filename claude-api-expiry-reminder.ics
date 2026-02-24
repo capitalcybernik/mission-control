@@ -1,0 +1,24 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Capital Cyber//Ares//EN
+BEGIN:VEVENT
+DTSTART:20270217T090000
+DTEND:20270217T093000
+SUMMARY:Claude API Subscription Expires
+DESCRIPTION:Your Anthropic Claude API token (used by OpenClaw/Ares) expires today. Renew at https://console.anthropic.com\n\nToken ending in: ZS5AAA\nAccount email: nikhil@vniks.com\n\nAction needed: Generate a new setup token and update OpenClaw configuration.
+LOCATION:https://console.anthropic.com
+ORGANIZER:mailto:capitalcyberus@gmail.com
+ATTENDEE:mailto:nikhil@capital-cyber.com
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-P30D
+ACTION:DISPLAY
+DESCRIPTION:Claude API expires in 30 days. Plan renewal.
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P7D
+ACTION:DISPLAY
+DESCRIPTION:Claude API expires in 7 days. Renew now.
+END:VALARM
+END:VEVENT
+END:VCALENDAR
