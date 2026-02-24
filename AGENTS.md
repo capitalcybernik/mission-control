@@ -209,6 +209,17 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 - Never create repos under `capitalcybercompliance` (legacy only)
 - Every workspace change gets committed and pushed to `capitalcybernik/mission-control`
 
+## GitHub-First Workflow
+
+**ALL work lives on GitHub.** The local workspace is temporary working copy only.
+
+- **Primary repo:** `capitalcybernik/ares-master-control`
+- **URL:** https://github.com/capitalcybernik/ares-master-control
+- **Rule:** Commit and push after every significant change. Do not rely on local storage.
+- **Workflow:** Work locally → Commit frequently → Push to main → Everything backed up
+
+This ensures continuity, version history, and access from anywhere.
+
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
