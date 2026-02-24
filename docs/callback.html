@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>LinkedIn OAuth Callback</title>
+<style>
+body{font-family:system-ui;max-width:600px;margin:80px auto;padding:20px;background:#fff;color:#1a1a2e}
+.code-box{background:#f0f0f0;padding:20px;border-radius:8px;font-family:monospace;font-size:18px;word-break:break-all;margin:20px 0;border:2px solid #0a66c2}
+h1{color:#0a66c2}
+.status{padding:12px;border-radius:6px;margin:10px 0}
+.success{background:#e8f5e9;color:#2e7d32}
+.error{background:#fce4ec;color:#c62828}
+</style>
+</head>
+<body>
+<h1>⚔️ Ares OAuth Callback</h1>
+<div id="result"></div>
+<script>
+const params = new URLSearchParams(window.location.search);
+const code = params.get('code');
+const error = params.get('error');
+const el = document.getElementById('result');
+if (code) {
+  el.innerHTML = '<div class="status success">✅ Authorization successful!</div>' +
+    '<p><strong>Send this code to Ares in Discord:</strong></p>' +
+    '<div class="code-box">' + code + '</div>' +
+    '<p>This code expires in a few minutes, so paste it quickly.</p>';
+} else if (error) {
+  el.innerHTML = '<div class="status error">❌ Authorization failed: ' + error + '</div>' +
+    '<p>' + (params.get('error_description') || 'Please try again.') + '</p>';
+} else {
+  el.innerHTML = '<div class="status error">No authorization code received.</div>';
+}
+</script>
+</body>
+</html>
