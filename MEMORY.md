@@ -55,6 +55,10 @@
 - Token: `REDACTED`
 - `capitalcybercompliance` is legacy, do not create new repos there
 
+## Operating Rules
+- **NEVER host anything on Ares' server.** All hosting must be external (GitHub Pages, Vercel, Netlify, Cloudflare, etc.)
+- This server is for operations only, not serving websites or apps
+
 ## Setup
 - Timezone: EST (Ashburn, VA)
 - Email/Calendar: Microsoft 365
