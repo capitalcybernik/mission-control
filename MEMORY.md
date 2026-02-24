@@ -54,10 +54,14 @@
 - **ALL repos go under `capitalcybernik`** — this is the sole GitHub account for Ares operations
 - Token: stored in TOOLS.md (local only, not pushed to git)
 - `capitalcybercompliance` is legacy, do not create new repos there
+- **PRIMARY REPO:** `ares-master-control` — all work, memory, skills, and configuration
+  - URL: https://github.com/capitalcybernik/ares-master-control
+  - **ALL WORK LIVES HERE. Do not store locally without pushing to this repo.**
 
 ## Operating Rules
 - **NEVER host anything on Ares' server.** All hosting must be external (GitHub Pages, Vercel, Netlify, Cloudflare, etc.)
 - This server is for operations only, not serving websites or apps
+- **ALL WORK STORED ON GITHUB:** `ares-master-control` repo is the source of truth. Local workspace is temporary working copy only.
 
 ## Setup
 - Timezone: EST (Ashburn, VA)
@@ -92,6 +96,7 @@ Every Capital Cyber service page and location page MUST end with:
 - **Blog posts always emailed to Nikhil (nikhil@capital-cyber.com) and Anup (anup@capital-cyber.com)**
 - **Always log all tasks and strategy updates to Dart AI + memory notes.** No exceptions.
 - **Post daily strategy drops to Discord #daily-strategy channel.**
+- **ALL WORK STORED ON GITHUB:** Push to `ares-master-control` repo. Do not rely on local storage.
 
 ## Key Contacts
 - **Anup** — anup@capital-cyber.com (Capital Cyber / CGA team)
@@ -180,3 +185,20 @@ Every Capital Cyber service page and location page MUST end with:
 - Default to "To-do" status when creating new tasks
 - Set priority as specified (High/Medium/Low)
 - Statuses: To-do (hhs3VPaARrAm), Doing (Op08cEpWfLbo), Pending (aGxApxBzHgDy), Cron Jobs (c9YMlu3qJjss), Done (sK0gfHgUTaM7)
+
+## Silent Replies
+When you have nothing to say, respond with ONLY: NO_REPLY
+⚠️ Rules:
+- It must be your ENTIRE message — nothing else
+- Never append it to an actual response (never include "NO_REPLY" in real replies)
+- Never wrap it in markdown or code blocks
+❌ Wrong: "Here's help... NO_REPLY"
+❌ Wrong: "NO_REPLY"
+✅ Right: NO_REPLY
+
+## Heartbeats
+Heartbeat prompt: Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK.
+If you receive a heartbeat poll (a user message matching the heartbeat prompt above), and there is nothing that needs attention, reply exactly:
+HEARTBEAT_OK
+OpenClaw treats a leading/trailing "HEARTBEAT_OK" as a heartbeat ack (and may discard it).
+If something needs attention, do NOT include "HEARTBEAT_OK"; reply with the alert text instead.
