@@ -301,6 +301,7 @@ const tabs=[
   {id:'revenue',icon:'💰',label:'Revenue'},
   {id:'command',icon:'🏢',label:'Command Center'},
   {id:'meetings',icon:'📞',label:'Meetings'},
+  {id:'social',icon:'📱',label:'Social'},
   {id:'intel',icon:'📡',label:'Intel'},
 ];
 
@@ -321,7 +322,7 @@ function switchTab(id){
 // ===== MAIN RENDER =====
 function renderContent(){
   const el=document.getElementById('mainContent');
-  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,intel:renderIntel};
+  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,social:renderSocial,intel:renderIntel};
   el.innerHTML=`<div class="tab-content active">${(renderers[activeTab]||renderers.dashboard)()}</div>`;
   if(activeTab==='meetings')startCountdowns();
 }
@@ -347,7 +348,8 @@ function renderDashboard(){
       <div class="quick-action" onclick="switchTab('projects')">📋 New Project</div>
       <div class="quick-action" onclick="switchTab('revenue')">💰 Add Client</div>
       <div class="quick-action" onclick="switchTab('meetings')">📞 Schedule Meeting</div>
-      <div class="quick-action" onclick="switchTab('intel')">📡 Intel Feed</div>
+      <div class="quick-action" onclick="switchTab('social')">📱 Social Feed</div>
+      <div class="quick-action" onclick="switchTab('intel')">📡 Intel Briefs</div>
       <div class="quick-action" onclick="switchTab('command')">🏢 Command Center</div>
     </div>`;
 }
@@ -808,6 +810,93 @@ function startCountdowns(){
 // ===== INTEL =====
 let showIntelForm=false,editIntelId=null;
 window._intelCat='All';window._intelImp='All';
+// ===== SOCIAL =====
+let showSocialForm=false,editSocialId=null;
+function renderSocial(){
+  const posts=LS.get('social_posts',[]).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const queue=LS.get('social_queue',[]);
+  const posted=posts.filter(p=>p.status==='posted');
+  const scheduled=posts.filter(p=>p.status==='scheduled');
+
+  let html=`<div class="section-title">📱 Social Media</div>
+    <div class="section-sub">LinkedIn posting automation & content calendar</div>
+    <div class="stats-grid">
+      <div class="card stat-card"><div class="stat-value">${posted.length}</div><div class="stat-label">Posts Published</div></div>
+      <div class="card stat-card"><div class="stat-value">${queue.length}</div><div class="stat-label">In Queue</div></div>
+      <div class="card stat-card"><div class="stat-value">${scheduled.length}</div><div class="stat-label">Scheduled</div></div>
+      <div class="card stat-card"><div class="stat-value">10:00 AM</div><div class="stat-label">Daily Post Time (EST)</div></div>
+    </div>`;
+
+  // Schedule info
+  html+=`<div class="card" style="margin-bottom:1.5rem;border-left:3px solid var(--blue)">
+    <div style="font-weight:700;margin-bottom:0.5rem">📅 Posting Schedule</div>
+    <div style="font-size:0.85rem;color:var(--muted);line-height:1.6">
+      <strong>Frequency:</strong> Monday through Friday, 10:00 AM EST<br>
+      <strong>Platform:</strong> LinkedIn (personal profile, org pages pending)<br>
+      <strong>Guidelines:</strong> Short, easy to read, no jargon, no fear mongering<br>
+      <strong>Content mix:</strong> CMMC info, cybersecurity basics, CGA grants (Wednesdays)
+    </div>
+  </div>`;
+
+  // Add post button
+  html+=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+    <div class="section-title" style="margin:0">📝 Content</div>
+    <button class="btn btn-primary" onclick="showSocialForm=!showSocialForm;editSocialId=null;renderContent()">+ Add Post</button>
+  </div>`;
+
+  if(showSocialForm){
+    const p=editSocialId?posts.find(x=>x.id===editSocialId):null;
+    html+=`<div class="inline-form">
+      <div class="form-group"><label>Post Content</label><textarea class="form-textarea" id="spContent" rows="6" placeholder="Write your LinkedIn post...">${esc(p?.content||'')}</textarea></div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap">
+        <div class="form-group" style="flex:1;min-width:150px"><label>Platform</label><select class="form-select" id="spPlatform">
+          ${['LinkedIn','Facebook','X/Twitter'].map(c=>`<option ${p?.platform===c?'selected':''}>${c}</option>`).join('')}</select></div>
+        <div class="form-group" style="flex:1;min-width:150px"><label>Status</label><select class="form-select" id="spStatus">
+          ${['queued','scheduled','posted','draft'].map(c=>`<option ${p?.status===c?'selected':''}>${c}</option>`).join('')}</select></div>
+      </div>
+      <button class="btn btn-primary" onclick="saveSocialPost()">${p?'Update':'Save'}</button>
+      <button class="btn btn-ghost" onclick="showSocialForm=false;editSocialId=null;renderContent()" style="margin-left:0.5rem">Cancel</button>
+    </div>`;
+  }
+
+  // Post feed
+  const allPosts=[...posts];
+  html+='<div style="margin-top:1rem">'+allPosts.map(p=>{
+    const statusColor=p.status==='posted'?'var(--green)':p.status==='scheduled'?'var(--blue)':p.status==='queued'?'var(--orange)':'var(--gray)';
+    const statusIcon=p.status==='posted'?'✅':p.status==='scheduled'?'📅':p.status==='queued'?'⏳':'📝';
+    return `<div class="card" style="margin-bottom:1rem;border-left:3px solid ${statusColor}">
+      <div style="display:flex;justify-content:space-between;align-items:start;gap:1rem;flex-wrap:wrap">
+        <div style="flex:1;min-width:200px">
+          <div style="white-space:pre-wrap;font-size:0.85rem;line-height:1.6;max-height:120px;overflow:hidden">${esc(p.content)}</div>
+          <div style="margin-top:0.75rem;display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap">
+            <span class="badge" style="background:${statusColor};color:white">${statusIcon} ${p.status}</span>
+            <span class="badge badge-cmmc">${p.platform||'LinkedIn'}</span>
+            <span style="font-size:0.7rem;color:var(--gray)">${fmtDateTime(p.date)}</span>
+          </div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-ghost btn-sm" onclick="editSocialId='${p.id}';showSocialForm=true;renderContent()">Edit</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteSocialPost('${p.id}')">Delete</button>
+      </div>
+    </div>`;
+  }).join('')+'</div>';
+  if(!allPosts.length)html+='<div class="card" style="text-align:center;color:var(--muted);padding:2rem">No posts yet. Add content or wait for the daily cron to post.</div>';
+  return html;
+}
+
+function saveSocialPost(){
+  const posts=LS.get('social_posts',[]);
+  const data={content:gv('spContent'),platform:gv('spPlatform'),status:gv('spStatus')};
+  if(!data.content)return;
+  if(editSocialId){const i=posts.findIndex(x=>x.id===editSocialId);if(i>=0)posts[i]={...posts[i],...data}}
+  else posts.unshift({id:genId(),...data,date:new Date().toISOString()});
+  LS.set('social_posts',posts);showSocialForm=false;editSocialId=null;renderContent();
+}
+function deleteSocialPost(id){if(!confirm('Delete post?'))return;LS.set('social_posts',LS.get('social_posts',[]).filter(p=>p.id!==id));renderContent()}
+
+// ===== INTEL =====
+let showBriefForm=false;
 function renderIntel(){
   const items=LS.get('intel',[]).sort((a,b)=>new Date(b.date)-new Date(a.date));
 
@@ -817,10 +906,47 @@ function renderIntel(){
   let briefItems=[...hot];
   if(briefItems.length<3)briefItems=[...briefItems,...notable.filter(n=>!briefItems.find(b=>b.id===n.id))].slice(0,5);
 
+  // Daily Briefings archive
+  const briefs=LS.get('daily_briefs',[]).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const latestBrief=briefs[0];
+
   let html=`<div class="section-title">📡 Intel</div>
-    <div class="daily-brief">
-      <div style="font-weight:700;font-size:1.1rem;margin-bottom:0.25rem">🎯 Daily Brief</div>
-      <div style="font-size:0.8rem;color:var(--muted);margin-bottom:1rem">Your daily intelligence briefing</div>
+    <div class="section-sub">Daily intelligence briefings & threat landscape</div>`;
+
+  // Latest daily brief
+  html+=`<div class="card" style="margin-bottom:1.5rem;border-left:3px solid var(--blue)">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
+      <div style="font-weight:700;font-size:1.1rem">🎯 Latest Daily Brief</div>
+      <button class="btn btn-ghost btn-sm" onclick="showBriefForm=!showBriefForm;renderContent()">+ Add Brief</button>
+    </div>
+    ${latestBrief?`<div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.75rem">${fmtDateTime(latestBrief.date)}</div>
+    <div style="white-space:pre-wrap;font-size:0.85rem;line-height:1.7">${esc(latestBrief.content)}</div>`
+    :'<div style="color:var(--muted)">No briefings yet. The daily 6 AM EST cron will populate these automatically.</div>'}
+  </div>`;
+
+  if(showBriefForm){
+    html+=`<div class="inline-form">
+      <div class="form-group"><label>Brief Content</label><textarea class="form-textarea" id="briefContent" rows="8" placeholder="Paste daily intel brief..."></textarea></div>
+      <button class="btn btn-primary" onclick="saveBrief()">Save Brief</button>
+      <button class="btn btn-ghost" onclick="showBriefForm=false;renderContent()" style="margin-left:0.5rem">Cancel</button>
+    </div>`;
+  }
+
+  // Brief archive
+  if(briefs.length>1){
+    html+=`<div style="margin-bottom:1.5rem"><details><summary style="cursor:pointer;font-weight:600;font-size:0.9rem;color:var(--muted)">📂 Previous Briefings (${briefs.length-1})</summary>
+    <div style="margin-top:1rem">${briefs.slice(1).map(b=>`<div class="card" style="margin-bottom:0.75rem">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-weight:600;font-size:0.85rem">${fmtDate(b.date)}</span>
+        <button class="btn btn-danger btn-sm" onclick="deleteBrief('${b.id}')">Delete</button>
+      </div>
+      <div style="white-space:pre-wrap;font-size:0.8rem;line-height:1.6;margin-top:0.5rem;max-height:100px;overflow:hidden;color:var(--muted)">${esc(b.content.slice(0,300))}${b.content.length>300?'...':''}</div>
+    </div>`).join('')}</div></details></div>`;
+  }
+
+  // Hot items
+  html+=`<div class="daily-brief" style="margin-top:1rem">
+      <div style="font-weight:700;font-size:1rem;margin-bottom:0.75rem">🔥 Hot Intel</div>
       <div class="card-grid">${briefItems.length?briefItems.map(i=>intelCardSmall(i)).join(''):'<div style="color:var(--muted)">No items yet — add intel below</div>'}</div>
     </div>`;
 
@@ -902,6 +1028,15 @@ function saveIntel(){
   LS.set('intel',items);showIntelForm=false;editIntelId=null;renderContent();
 }
 function deleteIntel(id){if(!confirm('Delete intel item?'))return;LS.set('intel',LS.get('intel',[]).filter(i=>i.id!==id));renderContent()}
+
+function saveBrief(){
+  const briefs=LS.get('daily_briefs',[]);
+  const content=gv('briefContent');
+  if(!content)return;
+  briefs.unshift({id:genId(),content,date:new Date().toISOString()});
+  LS.set('daily_briefs',briefs);showBriefForm=false;renderContent();
+}
+function deleteBrief(id){if(!confirm('Delete briefing?'))return;LS.set('daily_briefs',LS.get('daily_briefs',[]).filter(b=>b.id!==id));renderContent()}
 
 // ===== UTILS =====
 function gv(id){const el=document.getElementById(id);return el?el.value.trim():''}
