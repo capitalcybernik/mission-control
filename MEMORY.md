@@ -96,6 +96,34 @@ Every Capital Cyber service page and location page MUST end with:
 ## Key Contacts
 - **Anup** — anup@capital-cyber.com (Capital Cyber / CGA team)
 
+## Social Media Operation
+
+### Brands & Platforms
+| Brand | LinkedIn | Facebook | X/Twitter |
+|-------|----------|----------|-----------|
+| Capital Cyber | ⏳ Pending | ⏳ Pending | ⏳ Pending |
+| CMMC Ready Now | ⏳ Pending | ⏳ Pending | ⏳ Pending |
+| Cyber Grants Alliance | ⏳ Pending | ⏳ Pending | ⏳ Pending |
+| Casey O Connor (Personal) | ✅ Connected | — | — |
+
+### Posting Schedule (Cron Jobs)
+- **Capital Cyber:** Mon-Fri 10:00 AM EST — CMMC, cybersecurity, small biz
+- **CMMC Ready Now:** Mon/Wed/Fri 11:00 AM EST — CMMC compliance, DoD contractors
+- **Cyber Grants Alliance:** Tue/Thu 12:00 PM EST — Grants, mission, success stories
+- **Casey Personal:** Currently used for Capital Cyber posts until org pages connect
+
+### Content Guidelines (ALL brands)
+- Short, easy to read
+- NO technical jargon
+- NO fear mongering
+- Informative and relevant
+- CGA/grants mention once per week (Wednesdays on Capital Cyber)
+
+### Queue Directories
+- Capital Cyber: `drafts/linkedin-queue/`
+- CMMC Ready Now: `drafts/cmmc-ready-now-queue/`
+- CGA: `drafts/cga-queue/`
+
 ## Open Questions
 - Nikhil's specific certs/specializations?
 - Team size at Capital Cyber?
