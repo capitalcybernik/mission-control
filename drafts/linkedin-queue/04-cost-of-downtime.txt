@@ -1,0 +1,15 @@
+A small business lost 3 days of production last month because of a ransomware attack.
+
+3 days.
+
+No client records. No scheduling system. No email. Nothing.
+
+Their "IT guy" had backups... on the same network that got encrypted.
+
+The cost? About $47,000 in lost revenue. Plus the ransom demand. Plus the recovery. Plus the clients who never came back.
+
+All preventable with basic cybersecurity practices that cost less than one day of downtime.
+
+Your IT should be protecting your business, not just keeping the WiFi on.
+
+#Cybersecurity #SmallBusiness #DataProtection #CapitalCyber
