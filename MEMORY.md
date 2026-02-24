@@ -52,7 +52,7 @@
 
 ## GitHub — Standard
 - **ALL repos go under `capitalcybernik`** — this is the sole GitHub account for Ares operations
-- Token: `REDACTED`
+- Token: stored in TOOLS.md (local only, not pushed to git)
 - `capitalcybercompliance` is legacy, do not create new repos there
 
 ## Operating Rules
