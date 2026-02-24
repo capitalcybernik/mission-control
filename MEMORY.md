@@ -15,7 +15,7 @@
 - **Ownership:** Nikhil Bon & Rick — 50/50 partnership
 - Origin: founded after $500K ransomware attack at former company
 - MRR: $14,434 | 100% client retention | Avg 36-month contracts
-- Verticals: CPAs, gov contractors (CMMC), mortgage companies (no longer marketing to dentists/DSOs; private schools promoted by CZ Tech partner, not direct)
+- Verticals: CPAs, gov contractors (CMMC), mortgage companies, **manufacturing & construction companies** (CMMC focus) (no longer marketing to dentists/DSOs; private schools promoted by CZ Tech partner, not direct)
 - Services: CMMC compliance, managed IT, NIST gap assessment, vCSO, 24/7 SOC, pen testing, IR
 - Positioning: "cybersecurity firm providing IT" (not the other way around)
 - 24 years IT experience; cracked 20,000+ passwords in 2024
@@ -90,6 +90,8 @@ Every Capital Cyber service page and location page MUST end with:
 ## Standing Orders
 - **Always CC Nikhil (nikhil@capital-cyber.com) on ALL outbound emails.** No exceptions.
 - **Blog posts always emailed to Nikhil (nikhil@capital-cyber.com) and Anup (anup@capital-cyber.com)**
+- **Always log all tasks and strategy updates to Dart AI + memory notes.** No exceptions.
+- **Post daily strategy drops to Discord #daily-strategy channel.**
 
 ## Key Contacts
 - **Anup** — anup@capital-cyber.com (Capital Cyber / CGA team)
