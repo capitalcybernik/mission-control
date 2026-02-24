@@ -829,43 +829,61 @@ function renderSocial(){
 
   // Connected accounts
   const accounts=LS.get('social_accounts',[]);
-  if(!accounts.length){LS.set('social_accounts',[
-    {id:'casey-li',name:'Casey O Connor',platform:'LinkedIn',type:'Personal Profile',status:'connected',token_expires:'2026-04-25',avatar:'🧑‍💼'},
-    {id:'cc-page',name:'Capital Cyber',platform:'LinkedIn',type:'Company Page',status:'pending',token_expires:'—',avatar:'🏢'},
-    {id:'cmmc-page',name:'CMMC Ready Now',platform:'LinkedIn',type:'Company Page',status:'pending',token_expires:'—',avatar:'🛡️'}
+  if(!accounts.length||accounts.length<10){LS.set('social_accounts',[
+    {id:'casey-li',name:'Casey O Connor',platform:'LinkedIn',type:'Personal Profile',status:'connected',token_expires:'2026-04-25',avatar:'🧑‍💼',brand:'Personal'},
+    {id:'cc-li',name:'Capital Cyber',platform:'LinkedIn',type:'Company Page',status:'pending',token_expires:'—',avatar:'🏢',brand:'Capital Cyber'},
+    {id:'cc-fb',name:'Capital Cyber',platform:'Facebook',type:'Business Page',status:'pending',token_expires:'—',avatar:'🏢',brand:'Capital Cyber'},
+    {id:'cc-x',name:'Capital Cyber',platform:'X/Twitter',type:'Account',status:'pending',token_expires:'—',avatar:'🏢',brand:'Capital Cyber'},
+    {id:'cmmc-li',name:'CMMC Ready Now',platform:'LinkedIn',type:'Company Page',status:'pending',token_expires:'—',avatar:'🛡️',brand:'CMMC Ready Now'},
+    {id:'cmmc-fb',name:'CMMC Ready Now',platform:'Facebook',type:'Business Page',status:'pending',token_expires:'—',avatar:'🛡️',brand:'CMMC Ready Now'},
+    {id:'cmmc-x',name:'CMMC Ready Now',platform:'X/Twitter',type:'Account',status:'pending',token_expires:'—',avatar:'🛡️',brand:'CMMC Ready Now'},
+    {id:'cga-li',name:'Cyber Grants Alliance',platform:'LinkedIn',type:'Company Page',status:'pending',token_expires:'—',avatar:'🎗️',brand:'Cyber Grants Alliance'},
+    {id:'cga-fb',name:'Cyber Grants Alliance',platform:'Facebook',type:'Business Page',status:'pending',token_expires:'—',avatar:'🎗️',brand:'Cyber Grants Alliance'},
+    {id:'cga-x',name:'Cyber Grants Alliance',platform:'X/Twitter',type:'Account',status:'pending',token_expires:'—',avatar:'🎗️',brand:'Cyber Grants Alliance'}
   ]);}
   const accts=LS.get('social_accounts',[]);
 
+  // Group by brand
+  const brands=[...new Set(accts.map(a=>a.brand))];
+  const platformIcon={LinkedIn:'🔵',Facebook:'📘','X/Twitter':'⚫'};
+  const connectedCount=accts.filter(a=>a.status==='connected').length;
+  const pendingCount=accts.filter(a=>a.status==='pending').length;
+
   html+=`<div style="margin-bottom:1.5rem">
-    <div style="font-weight:700;font-size:1rem;margin-bottom:0.75rem">🔗 Connected Accounts</div>
-    <div class="card-grid">${accts.map(a=>{
-      const sColor=a.status==='connected'?'var(--green)':a.status==='pending'?'var(--orange)':'var(--red)';
-      const sIcon=a.status==='connected'?'✅':a.status==='pending'?'⏳':'❌';
-      return `<div class="card" style="border-left:3px solid ${sColor}">
-        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem">
-          <span style="font-size:1.5rem">${a.avatar}</span>
-          <div>
-            <div style="font-weight:700;font-size:0.95rem">${esc(a.name)}</div>
-            <div style="font-size:0.75rem;color:var(--muted)">${esc(a.platform)} · ${esc(a.type)}</div>
-          </div>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.5rem">
-          <span class="badge" style="background:${sColor};color:white">${sIcon} ${a.status}</span>
-          ${a.token_expires!=='—'?`<span style="font-size:0.7rem;color:var(--gray)">Token expires: ${a.token_expires}</span>`:'<span style="font-size:0.7rem;color:var(--orange)">Needs Community Management API</span>'}
-        </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
+      <div style="font-weight:700;font-size:1rem">🔗 Connected Accounts</div>
+      <div style="font-size:0.8rem;color:var(--muted)">✅ ${connectedCount} connected · ⏳ ${pendingCount} pending</div>
+    </div>
+    ${brands.map(brand=>{
+      const brandAccts=accts.filter(a=>a.brand===brand);
+      const brandAvatar=brandAccts[0]?.avatar||'📱';
+      return `<div class="card" style="margin-bottom:1rem">
+        <div style="font-weight:700;font-size:0.95rem;margin-bottom:0.75rem">${brandAvatar} ${brand}</div>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">${brandAccts.map(a=>{
+          const sColor=a.status==='connected'?'var(--green)':a.status==='pending'?'var(--orange)':'var(--red)';
+          const sIcon=a.status==='connected'?'✅':a.status==='pending'?'⏳':'❌';
+          return `<div style="flex:1;min-width:180px;padding:0.75rem;border:1px solid var(--border);border-radius:8px;border-left:3px solid ${sColor}">
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.35rem">
+              <span>${platformIcon[a.platform]||'📱'}</span>
+              <span style="font-weight:600;font-size:0.85rem">${esc(a.platform)}</span>
+            </div>
+            <div style="font-size:0.7rem;color:var(--muted);margin-bottom:0.35rem">${esc(a.type)}</div>
+            <span class="badge" style="background:${sColor};color:white;font-size:0.65rem">${sIcon} ${a.status}</span>
+            ${a.token_expires!=='—'?`<div style="font-size:0.65rem;color:var(--gray);margin-top:0.25rem">Expires: ${a.token_expires}</div>`:''}
+          </div>`;
+        }).join('')}</div>
       </div>`;
-    }).join('')}</div>
+    }).join('')}
   </div>`;
 
   // Schedule info
   html+=`<div class="card" style="margin-bottom:1.5rem;border-left:3px solid var(--blue)">
     <div style="font-weight:700;margin-bottom:0.5rem">📅 Posting Schedule</div>
-    <div style="font-size:0.85rem;color:var(--muted);line-height:1.6">
-      <strong>Frequency:</strong> Monday through Friday, 10:00 AM EST<br>
-      <strong>Currently posting to:</strong> Casey O Connor (LinkedIn Personal Profile)<br>
-      <strong>Pending:</strong> Capital Cyber Page, CMMC Ready Now Page (need Community Management API)<br>
-      <strong>Guidelines:</strong> Short, easy to read, no jargon, no fear mongering<br>
-      <strong>Content mix:</strong> CMMC info, cybersecurity basics, CGA grants (Wednesdays)
+    <div style="font-size:0.85rem;color:var(--muted);line-height:1.8">
+      <strong>🏢 Capital Cyber</strong> — Mon through Fri, 10:00 AM EST · CMMC, cybersecurity, small biz protection<br>
+      <strong>🛡️ CMMC Ready Now</strong> — Mon/Wed/Fri, 11:00 AM EST · CMMC compliance, DoD contractor tips<br>
+      <strong>🎗️ Cyber Grants Alliance</strong> — Tue/Thu, 12:00 PM EST · Grant announcements, success stories, mission<br>
+      <strong>🧑‍💼 Casey (Personal)</strong> — Currently active · Capital Cyber content until org pages connect
     </div>
   </div>`;
 
