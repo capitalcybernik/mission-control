@@ -50,6 +50,11 @@
 - **Email:** info@cybergrantsalliance.org
 - **Phone:** +1 (888) 323-9991
 
+## GitHub — Standard
+- **ALL repos go under `capitalcybernik`** — this is the sole GitHub account for Ares operations
+- Token: `REDACTED`
+- `capitalcybercompliance` is legacy, do not create new repos there
+
 ## Setup
 - Timezone: EST (Ashburn, VA)
 - Email/Calendar: Microsoft 365

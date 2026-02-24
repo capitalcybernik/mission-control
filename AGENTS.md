@@ -207,6 +207,14 @@ Think of it like a human reviewing their journal and updating their mental model
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 
+## GitHub
+
+**ALL GitHub operations use `capitalcybernik`.** No exceptions.
+- Account: `capitalcybernik`
+- Token: stored in TOOLS.md
+- Never create repos under `capitalcybercompliance` (legacy only)
+- Every workspace change gets committed and pushed to `capitalcybernik/mission-control`
+
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
