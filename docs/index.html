@@ -827,12 +827,43 @@ function renderSocial(){
       <div class="card stat-card"><div class="stat-value">10:00 AM</div><div class="stat-label">Daily Post Time (EST)</div></div>
     </div>`;
 
+  // Connected accounts
+  const accounts=LS.get('social_accounts',[]);
+  if(!accounts.length){LS.set('social_accounts',[
+    {id:'casey-li',name:'Casey O Connor',platform:'LinkedIn',type:'Personal Profile',status:'connected',token_expires:'2026-04-25',avatar:'🧑‍💼'},
+    {id:'cc-page',name:'Capital Cyber',platform:'LinkedIn',type:'Company Page',status:'pending',token_expires:'—',avatar:'🏢'},
+    {id:'cmmc-page',name:'CMMC Ready Now',platform:'LinkedIn',type:'Company Page',status:'pending',token_expires:'—',avatar:'🛡️'}
+  ]);}
+  const accts=LS.get('social_accounts',[]);
+
+  html+=`<div style="margin-bottom:1.5rem">
+    <div style="font-weight:700;font-size:1rem;margin-bottom:0.75rem">🔗 Connected Accounts</div>
+    <div class="card-grid">${accts.map(a=>{
+      const sColor=a.status==='connected'?'var(--green)':a.status==='pending'?'var(--orange)':'var(--red)';
+      const sIcon=a.status==='connected'?'✅':a.status==='pending'?'⏳':'❌';
+      return `<div class="card" style="border-left:3px solid ${sColor}">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem">
+          <span style="font-size:1.5rem">${a.avatar}</span>
+          <div>
+            <div style="font-weight:700;font-size:0.95rem">${esc(a.name)}</div>
+            <div style="font-size:0.75rem;color:var(--muted)">${esc(a.platform)} · ${esc(a.type)}</div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.5rem">
+          <span class="badge" style="background:${sColor};color:white">${sIcon} ${a.status}</span>
+          ${a.token_expires!=='—'?`<span style="font-size:0.7rem;color:var(--gray)">Token expires: ${a.token_expires}</span>`:'<span style="font-size:0.7rem;color:var(--orange)">Needs Community Management API</span>'}
+        </div>
+      </div>`;
+    }).join('')}</div>
+  </div>`;
+
   // Schedule info
   html+=`<div class="card" style="margin-bottom:1.5rem;border-left:3px solid var(--blue)">
     <div style="font-weight:700;margin-bottom:0.5rem">📅 Posting Schedule</div>
     <div style="font-size:0.85rem;color:var(--muted);line-height:1.6">
       <strong>Frequency:</strong> Monday through Friday, 10:00 AM EST<br>
-      <strong>Platform:</strong> LinkedIn (personal profile, org pages pending)<br>
+      <strong>Currently posting to:</strong> Casey O Connor (LinkedIn Personal Profile)<br>
+      <strong>Pending:</strong> Capital Cyber Page, CMMC Ready Now Page (need Community Management API)<br>
       <strong>Guidelines:</strong> Short, easy to read, no jargon, no fear mongering<br>
       <strong>Content mix:</strong> CMMC info, cybersecurity basics, CGA grants (Wednesdays)
     </div>
@@ -849,8 +880,8 @@ function renderSocial(){
     html+=`<div class="inline-form">
       <div class="form-group"><label>Post Content</label><textarea class="form-textarea" id="spContent" rows="6" placeholder="Write your LinkedIn post...">${esc(p?.content||'')}</textarea></div>
       <div style="display:flex;gap:1rem;flex-wrap:wrap">
-        <div class="form-group" style="flex:1;min-width:150px"><label>Platform</label><select class="form-select" id="spPlatform">
-          ${['LinkedIn','Facebook','X/Twitter'].map(c=>`<option ${p?.platform===c?'selected':''}>${c}</option>`).join('')}</select></div>
+        <div class="form-group" style="flex:1;min-width:150px"><label>Account</label><select class="form-select" id="spAccount">
+          ${accts.map(a=>`<option value="${a.id}" ${p?.accountId===a.id?'selected':''}>${a.avatar} ${a.name} (${a.type})</option>`).join('')}</select></div>
         <div class="form-group" style="flex:1;min-width:150px"><label>Status</label><select class="form-select" id="spStatus">
           ${['queued','scheduled','posted','draft'].map(c=>`<option ${p?.status===c?'selected':''}>${c}</option>`).join('')}</select></div>
       </div>
@@ -870,7 +901,7 @@ function renderSocial(){
           <div style="white-space:pre-wrap;font-size:0.85rem;line-height:1.6;max-height:120px;overflow:hidden">${esc(p.content)}</div>
           <div style="margin-top:0.75rem;display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap">
             <span class="badge" style="background:${statusColor};color:white">${statusIcon} ${p.status}</span>
-            <span class="badge badge-cmmc">${p.platform||'LinkedIn'}</span>
+            <span class="badge badge-cmmc">${p.accountName||p.platform||'LinkedIn'}${p.accountType?' · '+p.accountType:''}</span>
             <span style="font-size:0.7rem;color:var(--gray)">${fmtDateTime(p.date)}</span>
           </div>
         </div>
@@ -887,7 +918,10 @@ function renderSocial(){
 
 function saveSocialPost(){
   const posts=LS.get('social_posts',[]);
-  const data={content:gv('spContent'),platform:gv('spPlatform'),status:gv('spStatus')};
+  const accts=LS.get('social_accounts',[]);
+  const acctId=gv('spAccount');
+  const acct=accts.find(a=>a.id===acctId)||accts[0]||{};
+  const data={content:gv('spContent'),accountId:acctId,accountName:acct.name||'',platform:acct.platform||'LinkedIn',accountType:acct.type||'',status:gv('spStatus')};
   if(!data.content)return;
   if(editSocialId){const i=posts.findIndex(x=>x.id===editSocialId);if(i>=0)posts[i]={...posts[i],...data}}
   else posts.unshift({id:genId(),...data,date:new Date().toISOString()});
