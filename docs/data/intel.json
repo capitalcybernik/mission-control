@@ -1,1 +1,92 @@
-[]
+[
+  {
+    "id": "intel-20260225-001",
+    "title": "SMX Achieves CMMC 2.0 Level 2 Certification",
+    "summary": "SMX announced it has achieved CMMC 2.0 Level 2 certification, demonstrating leadership in safeguarding CUI. Shows the market is moving: companies are certifying NOW, not waiting.",
+    "source": "https://www.globenewswire.com/news-release/2026/02/24/3243687/0/en/SMX-Achieves-CMMC-2-0-Level-2-Certification-Reinforcing-Commitment-to-Cybersecurity-and-National-Defense.html",
+    "category": "CMMC News",
+    "importance": "hot",
+    "date": "2026-02-24T12:00:00.000Z"
+  },
+  {
+    "id": "intel-20260225-002",
+    "title": "MathCraft Security (Leesburg, VA) Earns CMMC Level 2",
+    "summary": "Local Leesburg company MathCraft Security Technologies earned CMMC 2.0 Level 2 certification. Direct local competitor activity in Capital Cyber's backyard.",
+    "source": "https://nationaltoday.com/us/va/leesburg-va/news/2026/02/18/mathcraft-security-technologies-earns-cmmc-2-0-level-2-certification/",
+    "category": "Competitor Watch",
+    "importance": "hot",
+    "date": "2026-02-18T12:00:00.000Z"
+  },
+  {
+    "id": "intel-20260225-003",
+    "title": "Reuters: CMMC Rules Creating Barrier for Small DoD Suppliers",
+    "summary": "Reuters reports small defense suppliers are rethinking military work due to high CMMC compliance costs. This is EXACTLY the pain point Capital Cyber and CGA solve. Perfect for marketing content.",
+    "source": "https://www.reuters.com/business/aerospace-defense/new-cybersecurity-rules-us-defense-industry-create-barrier-for-some-small-2026-02-20/",
+    "category": "CMMC News",
+    "importance": "hot",
+    "date": "2026-02-20T12:00:00.000Z"
+  },
+  {
+    "id": "intel-20260225-004",
+    "title": "SBA Roundtable on CMMC Small Business Impacts (March 12)",
+    "summary": "SBA Office of Advocacy hosting virtual roundtable March 12, 1 PM ET on CMMC program impacts to small businesses. Opportunity to attend and/or create content around it.",
+    "source": "https://advocacy.sba.gov/2026/02/24/department-of-war-cybersecurity-maturity-model-certification-cmmc-program-small-business-impacts-roundtable/",
+    "category": "Opportunities",
+    "importance": "hot",
+    "date": "2026-02-24T12:00:00.000Z"
+  },
+  {
+    "id": "intel-20260225-005",
+    "title": "AI-Powered Cyber Threats Targeting Small Businesses: Ransomware, Phishing, Voice Deepfakes",
+    "summary": "New report on AI-powered threats hitting SMBs including ransomware, phishing, and voice deepfakes. Great newsletter/blog topic for Capital Cyber audience.",
+    "source": "https://communityimpact.com/sponsored/sponsored/2026/02/20/the-new-cyber-threats-targeting-businesses-and-tips-to-stop-them-from-experts/",
+    "category": "Industry Trends",
+    "importance": "notable",
+    "date": "2026-02-20T12:00:00.000Z"
+  },
+  {
+    "id": "intel-20260225-006",
+    "title": "Virginia SBDC: Cybersecurity Essentials Webinar for Small Business Owners",
+    "summary": "Virginia SBDC released a webinar on core cybersecurity risks for small businesses in 2026. Potential partnership or cross-promotion angle for CGA.",
+    "source": "https://www.virginiasbdc.org/protecting-your-business-in-2026-cybersecurity-essentials-for-small-business-owners/",
+    "category": "Opportunities",
+    "importance": "notable",
+    "date": "2026-02-24T12:00:00.000Z"
+  },
+  {
+    "id": "intel-20260225-007",
+    "title": "2026 Is a Turning Point for MSP Cybersecurity",
+    "summary": "MSSP Alert: attacks growing in scale and complexity. MSPs must move beyond alert forwarding to integrated, end-to-end response. Validates Capital Cyber's 'security-first' positioning.",
+    "source": "https://www.msspalert.com/perspective/why-2026-is-a-turning-point-for-msp-cybersecurity",
+    "category": "Industry Trends",
+    "importance": "notable",
+    "date": "2026-02-24T12:00:00.000Z"
+  },
+  {
+    "id": "intel-20260225-008",
+    "title": "PreVeil: Growing List of CMMC Contracts & Solicitations in 2026",
+    "summary": "PreVeil tracking active DoD contracts requiring CMMC compliance including Air Force Space Command CSO. Shows expanding demand for CMMC-ready contractors.",
+    "source": "https://www.preveil.com/blog/list-of-cmmc-contracts/",
+    "category": "CMMC News",
+    "importance": "notable",
+    "date": "2026-02-23T12:00:00.000Z"
+  },
+  {
+    "id": "intel-20260225-009",
+    "title": "78% of Enterprises Plan to Increase Cyber Spending in 2026",
+    "summary": "Help Net Security reports 78% of organizations plan to increase cybersecurity budgets in 2026. Market is growing. Use in proposals and sales conversations.",
+    "source": "https://www.helpnetsecurity.com/2026/02/25/cybersecurity-venture-funding-ai-security-expands/",
+    "category": "Industry Trends",
+    "importance": "notable",
+    "date": "2026-02-25T12:00:00.000Z"
+  },
+  {
+    "id": "intel-20260225-010",
+    "title": "Howard Community College (MD) Gets $550K for Cybersecurity Workforce",
+    "summary": "Howard Community College awarded state grants for cybersecurity and innovation. Potential CGA partnership for workforce development and grant awareness.",
+    "source": "https://howardcommunitycollege.substack.com/p/howard-community-college-awarded-dea",
+    "category": "Opportunities",
+    "importance": "reference",
+    "date": "2026-02-20T12:00:00.000Z"
+  }
+]
