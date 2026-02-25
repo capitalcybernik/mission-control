@@ -301,6 +301,7 @@ const tabs=[
   {id:'revenue',icon:'💰',label:'Revenue'},
   {id:'command',icon:'🏢',label:'Command Center'},
   {id:'meetings',icon:'📞',label:'Meetings'},
+  {id:'skills',icon:'🧠',label:'Skills'},
   {id:'social',icon:'📱',label:'Social'},
   {id:'intel',icon:'📡',label:'Intel'},
 ];
@@ -322,7 +323,7 @@ function switchTab(id){
 // ===== MAIN RENDER =====
 function renderContent(){
   const el=document.getElementById('mainContent');
-  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,social:renderSocial,intel:renderIntel};
+  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel};
   el.innerHTML=`<div class="tab-content active">${(renderers[activeTab]||renderers.dashboard)()}</div>`;
   if(activeTab==='meetings')startCountdowns();
 }
@@ -348,6 +349,7 @@ function renderDashboard(){
       <div class="quick-action" onclick="switchTab('projects')">📋 New Project</div>
       <div class="quick-action" onclick="switchTab('revenue')">💰 Add Client</div>
       <div class="quick-action" onclick="switchTab('meetings')">📞 Schedule Meeting</div>
+      <div class="quick-action" onclick="switchTab('skills')">🧠 Skills</div>
       <div class="quick-action" onclick="switchTab('social')">📱 Social Feed</div>
       <div class="quick-action" onclick="switchTab('intel')">📡 Intel Briefs</div>
       <div class="quick-action" onclick="switchTab('command')">🏢 Command Center</div>
@@ -810,6 +812,68 @@ function startCountdowns(){
 // ===== INTEL =====
 let showIntelForm=false,editIntelId=null;
 window._intelCat='All';window._intelImp='All';
+// ===== SKILLS =====
+function renderSkills(){
+  const skills=LS.get('agent_skills',[]);
+  if(!skills.length){LS.set('agent_skills',[
+    {id:'s1',name:'Self-Improving Agent',slug:'self-improving-agent',version:'1.0.11',status:'installed',category:'Core',description:'Enables self-reflection and autonomous improvement of agent behavior and workflows.',learned:true},
+    {id:'s2',name:'Security Auditor',slug:'security-auditor',version:'1.0.0',status:'installed',category:'Security',description:'Security audit toolkit for vulnerability assessment and compliance checking.',learned:true},
+    {id:'s3',name:'Agent Security Monitor',slug:'agent-security-monitor',version:'1.1.0',status:'installed',category:'Security',description:'Monitors agent behavior for security anomalies and potential threats.',learned:true},
+    {id:'s4',name:'Cyber Security Engineer',slug:'cyber-security-engineer',version:'0.1.4',status:'installed',category:'Security',description:'Cybersecurity engineering assistance for assessments and architecture.',learned:true},
+    {id:'s5',name:'Email Marketing',slug:'email-marketing',version:'1.0.0',status:'installed',category:'Marketing',description:'Email campaign creation, optimization, and management.',learned:true},
+    {id:'s6',name:'Email Daily Summary',slug:'email-daily-summary',version:'0.1.0',status:'installed',category:'Productivity',description:'Auto-login and summarize email inbox daily across Gmail, Outlook, etc.',learned:false},
+    {id:'s7',name:'OpenClaw Social Scheduler',slug:'openclaw-social-scheduler',version:'0.1.0',status:'installed',category:'Social',description:'Social media scheduling and automation for multiple platforms.',learned:false},
+    {id:'s8',name:'Marketing Mode',slug:'marketing-mode',version:'1.0.0',status:'installed',category:'Marketing',description:'Marketing content generation with strategy and copy frameworks.',learned:true},
+    {id:'s9',name:'LinkedIn Lead Generation',slug:'linkedin-lead-generation',version:'1.0.0',status:'installed',category:'Social',description:'Generate and manage leads from LinkedIn outreach campaigns.',learned:false},
+    {id:'s10',name:'AI Meeting Notes',slug:'ai-meeting-notes',version:'1.0.3',status:'installed',category:'Productivity',description:'Transcribe and summarize meeting notes with action items.',learned:true},
+    {id:'s11',name:'OpenAI Whisper API',slug:'openai-whisper-api',version:'1.0.0',status:'installed',category:'Productivity',description:'Audio transcription via OpenAI Whisper API.',learned:true},
+    {id:'s12',name:'X Post Automation',slug:'x-post-automation',version:'—',status:'pending',category:'Social',description:'Automated posting to X/Twitter.',learned:false},
+    {id:'s13',name:'LinkedIn API',slug:'linkedin-api',version:'—',status:'pending',category:'Social',description:'LinkedIn API integration for posting and profile management.',learned:false},
+    {id:'s14',name:'GHL Integration',slug:'gohighlevel',version:'1.0.0',status:'installed',category:'CRM',description:'GoHighLevel CRM API — contacts, pipelines, campaigns. 4,878 contacts loaded.',learned:true},
+    {id:'s15',name:'CMMC Knowledge Base',slug:'cmmc',version:'1.0.0',status:'installed',category:'Security',description:'CMMC 2.0 compliance knowledge base for DoD contractor advisory.',learned:true}
+  ]);}
+  const sk=LS.get('agent_skills',[]);
+  const installed=sk.filter(s=>s.status==='installed');
+  const pending=sk.filter(s=>s.status==='pending');
+  const learned=sk.filter(s=>s.learned);
+  const categories=[...new Set(sk.map(s=>s.category))];
+  const catIcons={Core:'⚡',Security:'🔒',Marketing:'📣',Social:'📱',Productivity:'📋',CRM:'💼'};
+
+  let html=`<div class="section-title">🧠 Skills & Capabilities</div>
+    <div class="section-sub">What Ares knows, what's installed, and what's pending</div>
+    <div class="stats-grid">
+      <div class="card stat-card"><div class="stat-value">${installed.length}</div><div class="stat-label">Installed</div></div>
+      <div class="card stat-card"><div class="stat-value">${pending.length}</div><div class="stat-label">Pending Install</div></div>
+      <div class="card stat-card"><div class="stat-value">${learned.length}</div><div class="stat-label">Learned & Active</div></div>
+      <div class="card stat-card"><div class="stat-value">${categories.length}</div><div class="stat-label">Categories</div></div>
+    </div>`;
+
+  // Group by category
+  categories.forEach(cat=>{
+    const catSkills=sk.filter(s=>s.category===cat);
+    html+=`<div style="margin-bottom:1.5rem">
+      <div style="font-weight:700;font-size:1rem;margin-bottom:0.75rem">${catIcons[cat]||'📦'} ${cat}</div>
+      <div class="card-grid">${catSkills.map(s=>{
+        const sColor=s.status==='installed'?(s.learned?'var(--green)':'var(--blue)'):'var(--orange)';
+        const sIcon=s.status==='installed'?(s.learned?'✅':'📥'):'⏳';
+        const sLabel=s.status==='installed'?(s.learned?'Active':'Installed, not yet used'):'Pending install';
+        return `<div class="card" style="border-left:3px solid ${sColor}">
+          <div style="display:flex;justify-content:space-between;align-items:start">
+            <div style="font-weight:700;font-size:0.95rem">${esc(s.name)}</div>
+            <span style="font-size:0.7rem;color:var(--gray)">${s.version}</span>
+          </div>
+          <p style="color:var(--muted);font-size:0.8rem;margin-top:0.35rem;line-height:1.5">${esc(s.description)}</p>
+          <div style="margin-top:0.5rem">
+            <span class="badge" style="background:${sColor};color:white;font-size:0.65rem">${sIcon} ${sLabel}</span>
+          </div>
+        </div>`;
+      }).join('')}</div>
+    </div>`;
+  });
+
+  return html;
+}
+
 // ===== SOCIAL =====
 let showSocialForm=false,editSocialId=null;
 function renderSocial(){

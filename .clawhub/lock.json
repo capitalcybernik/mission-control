@@ -8,6 +8,42 @@
     "ai-meeting-notes": {
       "version": "1.0.3",
       "installedAt": 1771209462789
+    },
+    "self-improving-agent": {
+      "version": "1.0.11",
+      "installedAt": 1771986407338
+    },
+    "security-auditor": {
+      "version": "1.0.0",
+      "installedAt": 1771986437113
+    },
+    "agent-security-monitor": {
+      "version": "1.1.0",
+      "installedAt": 1771986442707
+    },
+    "email-marketing": {
+      "version": "1.0.0",
+      "installedAt": 1771986457228
+    },
+    "email-daily-summary": {
+      "version": "0.1.0",
+      "installedAt": 1771986482167
+    },
+    "cyber-security-engineer": {
+      "version": "0.1.4",
+      "installedAt": 1771986488290
+    },
+    "openclaw-social-scheduler": {
+      "version": "0.1.0",
+      "installedAt": 1771986547283
+    },
+    "marketing-mode": {
+      "version": "1.0.0",
+      "installedAt": 1771986677873
+    },
+    "linkedin-lead-generation": {
+      "version": "1.0.0",
+      "installedAt": 1771986688697
     }
   }
 }
