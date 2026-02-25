@@ -49,4 +49,28 @@
 
 ---
 
+## 📧 Newsletter Tracker (CRM Outbound)
+
+All newsletters drafted, reviewed, and sent through the CRM. Files stored in `drafts/` and `capital-cyber-newsletter/`.
+
+| # | Subject | Date Drafted | Status | Version | File |
+|---|---------|-------------|--------|---------|------|
+| 1 | Winter Shield: 5 Things to Lock Down Before Year End | Feb 2026 | ✅ Sent | Final | `capital-cyber-newsletter/edition-1-winter-shield.html` |
+| 2 | Is Windows Taking Screenshots of Everything You Do? (AI Recall) | Feb 25, 2026 | ✅ Approved | v3 (humanized) | `drafts/newsletter-windows-recall-feb2026-v3-human.html` |
+
+### Newsletter Guidelines
+- **Design:** Clean, minimal. No gradients, no colored boxes, no emoji headers. Looks like a real email from a person.
+- **Tone:** Conversational. Written as Nikhil, not "The Capital Cyber Team."
+- **Font:** Serif (Georgia). Simple text link CTAs, no big buttons.
+- **CTA:** Link to book with Rick (capital-cyber.com/rick)
+- **Sign off:** Nikhil Bon, Capital Cyber, (571) 410-3066
+- **Template reference:** v3 humanized style is the standard going forward.
+
+### Upcoming Newsletter Ideas
+- CISA workforce collapse: what it means for small business (article drafted, blog ready)
+- Tax season cybersecurity checklist for CPAs
+- CMMC Phase 1 enforcement deadline reminder
+
+---
+
 _This dashboard updates daily. Tell me what you want added/changed._

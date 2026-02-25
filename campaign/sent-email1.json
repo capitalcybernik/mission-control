@@ -23,6 +23,446 @@
       "sender": "aria@protectionfromransomwareattacks.com",
       "messageId": "<a1434d4e-18a4-b103-12ae-903e55bfca49@protectionfromransomwareattacks.com>",
       "sentAt": "2026-02-18T16:14:09.884Z"
+    },
+    {
+      "email": "laura.ueki@gmail.com",
+      "name": "Laura Ueki",
+      "company": "Actuaries Unlimited, Inc.",
+      "sender": "abigail@ransomwareprotectionforyou.com",
+      "messageId": "<ad2b729d-9d6f-8bc7-cc73-b3ca67dc1b84@ransomwareprotectionforyou.com>",
+      "sentAt": "2026-02-25T14:00:08.943Z"
+    },
+    {
+      "email": "laurie8505@netscape.net",
+      "name": "Lauren Hoover",
+      "company": "Hoover Pumping Systems",
+      "sender": "amelia@cyberpentestingforu.com",
+      "messageId": "<513c63ae-5806-b246-54e5-6a52fb3134e0@cyberpentestingforu.com>",
+      "sentAt": "2026-02-25T14:01:49.159Z"
+    },
+    {
+      "email": "lmendence@jaystargroup.com",
+      "name": "Lauren Mendence",
+      "company": "Jaystar Group",
+      "sender": "aria@protectionfromransomwareattacks.com",
+      "messageId": "<093f261b-5009-5dc9-9451-67e13b6c4383@protectionfromransomwareattacks.com>",
+      "sentAt": "2026-02-25T14:03:26.503Z"
+    },
+    {
+      "email": "lwenneman@gabridgeco.com",
+      "name": "Lauren Wenneman",
+      "company": "Gabridge & Co",
+      "sender": "aubrey@cyber-risk-assessments.com",
+      "messageId": "<db85e990-8df7-b046-588e-f3498cc22d38@cyber-risk-assessments.com>",
+      "sentAt": "2026-02-25T14:05:05.417Z"
+    },
+    {
+      "email": "dconnor@sansiveri.com",
+      "name": "Daniel Connor",
+      "company": "Paolino Properties",
+      "sender": "aurora@security-risk-assessments.com",
+      "messageId": "<3f6530ce-e237-d5b0-162a-5e045ac72288@security-risk-assessments.com>",
+      "sentAt": "2026-02-25T14:06:43.611Z"
+    },
+    {
+      "email": "blknytro@gmail.com",
+      "name": "Daniel Katz",
+      "company": "Inpensa",
+      "sender": "abigail@ransomwareprotectionforyou.com",
+      "messageId": "<49eea656-ae23-c26b-cb3c-ab52849ac6da@ransomwareprotectionforyou.com>",
+      "sentAt": "2026-02-25T14:08:18.546Z"
+    },
+    {
+      "email": "lcessna@wjohnsonassociates.com",
+      "name": "Leah Cessna",
+      "company": "Willis Johnson & Associates",
+      "sender": "amelia@cyberpentestingforu.com",
+      "messageId": "<8406d81c-8eec-50e9-5eb7-f86ff3886126@cyberpentestingforu.com>",
+      "sentAt": "2026-02-25T14:09:52.897Z"
+    },
+    {
+      "email": "daniela@lindseyadelman.com",
+      "name": "Daniela Shuli",
+      "company": "Lindsey Adelman Studio",
+      "sender": "aria@protectionfromransomwareattacks.com",
+      "messageId": "<e44111ea-a2f1-8834-8f1a-1b6e311e774e@protectionfromransomwareattacks.com>",
+      "sentAt": "2026-02-25T14:11:28.474Z"
+    },
+    {
+      "email": "jgonzalez@flywheel.com",
+      "name": "Jose Gonzalez",
+      "company": "Flywheel Software",
+      "sender": "aubrey@cyber-risk-assessments.com",
+      "messageId": "<8273485f-5dde-14ec-0ff7-1ef7cfa71236@cyber-risk-assessments.com>",
+      "sentAt": "2026-02-25T14:13:04.789Z"
+    },
+    {
+      "email": "helya_sm99@yahoo.com",
+      "name": "Leili Alavi",
+      "company": "Mba Center",
+      "sender": "aurora@security-risk-assessments.com",
+      "messageId": "<3c873b56-fc79-522f-a79a-4164da6e3603@security-risk-assessments.com>",
+      "sentAt": "2026-02-25T14:14:40.429Z"
+    },
+    {
+      "email": "josephine@temptu.com",
+      "name": "Josephine Edwin-Hallpike",
+      "company": "Temptu",
+      "sender": "abigail@ransomwareprotectionforyou.com",
+      "messageId": "<4b0c0624-1a3f-eb7a-89e7-2f2bedb10c92@ransomwareprotectionforyou.com>",
+      "sentAt": "2026-02-25T14:16:15.542Z"
+    },
+    {
+      "email": "darciestreckfuss@gmail.com",
+      "name": "Darcie Streckfuss",
+      "company": "Lipschultz, Levin & Gray",
+      "sender": "amelia@cyberpentestingforu.com",
+      "messageId": "<68db5e4b-b10a-46a4-ca68-5ad46ac7a5c6@cyberpentestingforu.com>",
+      "sentAt": "2026-02-25T14:17:50.685Z"
+    },
+    {
+      "email": "dhawn@iacopi.com",
+      "name": "Darcy Hawn",
+      "company": "Iacopi, Lenz & Company",
+      "sender": "aria@protectionfromransomwareattacks.com",
+      "messageId": "<2c6b5198-25bc-b5de-b49e-ddeda727affd@protectionfromransomwareattacks.com>",
+      "sentAt": "2026-02-25T14:19:26.834Z"
+    },
+    {
+      "email": "ariannab@emergencygroupsoffice.com",
+      "name": "Arianna Bobrosky",
+      "company": "Emergency Groups Office",
+      "sender": "aubrey@cyber-risk-assessments.com",
+      "messageId": "<5886d982-6016-d8f1-bc30-0351ea6c195c@cyber-risk-assessments.com>",
+      "sentAt": "2026-02-25T14:21:02.341Z"
+    },
+    {
+      "email": "jashman@expattaxprofessionals.com",
+      "name": "Joshua Ashman",
+      "company": "Expat Tax Professionals",
+      "sender": "aurora@security-risk-assessments.com",
+      "messageId": "<68e3500c-239c-4c3b-90d8-cf635c0871df@security-risk-assessments.com>",
+      "sentAt": "2026-02-25T14:22:37.516Z"
+    },
+    {
+      "email": "campbells_3@yahoo.com",
+      "name": "Joshua Campbell",
+      "company": "Stadler & Co, Inc",
+      "sender": "abigail@ransomwareprotectionforyou.com",
+      "messageId": "<a1be2bcd-08ff-d28c-af44-ab4355839423@ransomwareprotectionforyou.com>",
+      "sentAt": "2026-02-25T14:24:12.206Z"
+    },
+    {
+      "email": "llmthomas@hotmail.com",
+      "name": "Leondra Thomas",
+      "company": "Odoc",
+      "sender": "amelia@cyberpentestingforu.com",
+      "messageId": "<6371ea69-a18f-2168-c962-593643d811d0@cyberpentestingforu.com>",
+      "sentAt": "2026-02-25T14:25:47.650Z"
+    },
+    {
+      "email": "leonoroda@yahoo.com",
+      "name": "Leonor Oda",
+      "company": "Digitech Systems",
+      "sender": "aria@protectionfromransomwareattacks.com",
+      "messageId": "<da851ca3-5cd4-5e29-059e-a7001e91ab2a@protectionfromransomwareattacks.com>",
+      "sentAt": "2026-02-25T14:27:23.586Z"
+    },
+    {
+      "email": "adaliethp@accubuild.com",
+      "name": "Adalieth Perez",
+      "company": "Accubuild Construction Software",
+      "sender": "aubrey@cyber-risk-assessments.com",
+      "messageId": "<ffd7f709-4c96-db8f-6279-bcf10bd4f49e@cyber-risk-assessments.com>",
+      "sentAt": "2026-02-25T14:28:59.395Z"
+    },
+    {
+      "email": "dquinn@neobits.com",
+      "name": "Darrin Quinn",
+      "company": "Neobits",
+      "sender": "aurora@security-risk-assessments.com",
+      "messageId": "<27b844f5-e718-7624-94bc-fa088ed312cf@security-risk-assessments.com>",
+      "sentAt": "2026-02-25T14:30:35.598Z"
+    },
+    {
+      "email": "lgordon@gordonandassociates.biz",
+      "name": "Laura Gordon",
+      "company": "Gordon & Associates, An Accountancy Corporation",
+      "sender": "abigail@ransomwareprotectionforyou.com",
+      "messageId": "<ecdaae38-b2b6-1c52-a97b-81a42e978c53@ransomwareprotectionforyou.com>",
+      "sentAt": "2026-02-25T14:32:10.620Z"
+    },
+    {
+      "email": "dbittner@beanstalkcfo.com",
+      "name": "Dave Bittner",
+      "company": "Beanstalk Cfo Group",
+      "sender": "amelia@cyberpentestingforu.com",
+      "messageId": "<f45e2a93-6ade-4029-1bee-581a9b2c8604@cyberpentestingforu.com>",
+      "sentAt": "2026-02-25T14:33:46.490Z"
+    },
+    {
+      "email": "ctb45@yahoo.com",
+      "name": "Joy Braden",
+      "company": "Madison Avenue Incorporated",
+      "sender": "aria@protectionfromransomwareattacks.com",
+      "messageId": "<f697387c-0549-1116-577f-190adaf06b12@protectionfromransomwareattacks.com>",
+      "sentAt": "2026-02-25T14:35:22.723Z"
+    },
+    {
+      "email": "joy.guthrie@gmail.com",
+      "name": "Joy Guthrie",
+      "company": "International Bath And Tile",
+      "sender": "aubrey@cyber-risk-assessments.com",
+      "messageId": "<9c7346ef-a3c5-b3c7-1c57-cc784e7081dc@cyber-risk-assessments.com>",
+      "sentAt": "2026-02-25T14:37:06.736Z"
+    },
+    {
+      "email": "lvera@thayeroneal.com",
+      "name": "Liany Vera",
+      "company": "Thayeroneal",
+      "sender": "aurora@security-risk-assessments.com",
+      "messageId": "<27069d1f-324e-f71b-6b4e-2916ffbf3a33@security-risk-assessments.com>",
+      "sentAt": "2026-02-25T14:38:43.195Z"
+    },
+    {
+      "email": "sirguise@gmail.com",
+      "name": "David Dery",
+      "company": "Interdyn Artis",
+      "sender": "abigail@ransomwareprotectionforyou.com",
+      "messageId": "<aff8d855-c9df-3a89-a76a-9d23a194f81b@ransomwareprotectionforyou.com>",
+      "sentAt": "2026-02-25T14:40:18.856Z"
+    },
+    {
+      "email": "hopeashley@cs.com",
+      "name": "David Hesse",
+      "company": "Tichenor & Associates",
+      "sender": "amelia@cyberpentestingforu.com",
+      "messageId": "<607f3256-0ed9-5934-e88c-d3c88bdf97fd@cyberpentestingforu.com>",
+      "sentAt": "2026-02-25T14:41:54.099Z"
+    },
+    {
+      "email": "davidh83@yahoo.com",
+      "name": "David Humphreys",
+      "company": "Five Star Development",
+      "sender": "aria@protectionfromransomwareattacks.com",
+      "messageId": "<f8787328-4b8c-e2ef-9c94-cb6354dab2c3@protectionfromransomwareattacks.com>",
+      "sentAt": "2026-02-25T14:43:30.367Z"
+    },
+    {
+      "email": "davidjohnsonii@gmail.com",
+      "name": "David Johnson",
+      "company": "Paynorthwest",
+      "sender": "aubrey@cyber-risk-assessments.com",
+      "messageId": "<d62ba4c6-68c3-1db6-6196-1904a2421333@cyber-risk-assessments.com>",
+      "sentAt": "2026-02-25T14:45:05.326Z"
+    },
+    {
+      "email": "lili.tarachand@ltdglobal.com",
+      "name": "Lili Tarachand",
+      "company": "Ltd Global, Llc",
+      "sender": "aurora@security-risk-assessments.com",
+      "messageId": "<aa6cdfc8-aa1d-74cb-e1b0-4fa50d796d1d@security-risk-assessments.com>",
+      "sentAt": "2026-02-25T14:46:41.846Z"
+    },
+    {
+      "email": "miclob@msn.com",
+      "name": "Linda Delorey",
+      "company": "Fabricmate Systems",
+      "sender": "abigail@ransomwareprotectionforyou.com",
+      "messageId": "<f481b4ed-1d8b-1055-c999-a13492080f78@ransomwareprotectionforyou.com>",
+      "sentAt": "2026-02-25T14:48:17.211Z"
+    },
+    {
+      "email": "linda@mibar.net",
+      "name": "Linda Hefty",
+      "company": "Mibar.net",
+      "sender": "amelia@cyberpentestingforu.com",
+      "messageId": "<5816c12f-7e42-75a6-ebf9-83d00c356e8a@cyberpentestingforu.com>",
+      "sentAt": "2026-02-25T14:49:52.280Z"
+    },
+    {
+      "email": "ljordan@ivytech.edu",
+      "name": "Linda Jordan",
+      "company": "Carson Design Associates",
+      "sender": "aria@protectionfromransomwareattacks.com",
+      "messageId": "<10a8a004-ce9a-e55d-ed9c-2f5c5a0be370@protectionfromransomwareattacks.com>",
+      "sentAt": "2026-02-25T14:51:27.729Z"
+    },
+    {
+      "email": "linda@lawnsofdallas.com",
+      "name": "Linda Pitts",
+      "company": "Lawns Of Dallas",
+      "sender": "aubrey@cyber-risk-assessments.com",
+      "messageId": "<886bce05-356b-d940-cfaa-b468967d85f2@cyber-risk-assessments.com>",
+      "sentAt": "2026-02-25T14:53:03.312Z"
+    },
+    {
+      "email": "deanna.crowe@live.com",
+      "name": "Deanna Crowe",
+      "company": "Rocky Mountain Mineral Law Foundation",
+      "sender": "aurora@security-risk-assessments.com",
+      "messageId": "<c16bc531-53b7-4239-7e81-10b645229230@security-risk-assessments.com>",
+      "sentAt": "2026-02-25T14:54:40.242Z"
+    },
+    {
+      "email": "lisa_erbes@hotmail.com",
+      "name": "Lisa Erbes",
+      "company": "Marrs, Sevier & Company Llc",
+      "sender": "abigail@ransomwareprotectionforyou.com",
+      "messageId": "<c79692ae-08be-77d0-ca93-1f162eeaf3e6@ransomwareprotectionforyou.com>",
+      "sentAt": "2026-02-25T14:56:15.112Z"
+    },
+    {
+      "email": "lisafaller@yahoo.com",
+      "name": "Lisa Faller",
+      "company": "Compensation Systems, Inc.",
+      "sender": "amelia@cyberpentestingforu.com",
+      "messageId": "<7d9f9252-c71c-9b91-2434-2e56e32d2db1@cyberpentestingforu.com>",
+      "sentAt": "2026-02-25T14:57:50.943Z"
+    },
+    {
+      "email": "lisaj@retirementplanners.com",
+      "name": "Lisa Johnson",
+      "company": "Retirement Planners & Administrators, Inc.",
+      "sender": "aria@protectionfromransomwareattacks.com",
+      "messageId": "<04e94e5e-13cf-dbe2-7556-6cc1844ed742@protectionfromransomwareattacks.com>",
+      "sentAt": "2026-02-25T14:59:25.932Z"
+    },
+    {
+      "email": "dallaschica1@hotmail.com",
+      "name": "Lisa Mcmillian",
+      "company": "Mcmillian & Associates, Inc.",
+      "sender": "aubrey@cyber-risk-assessments.com",
+      "messageId": "<f9bed78b-19de-26bb-ea14-e06cbd33b454@cyber-risk-assessments.com>",
+      "sentAt": "2026-02-25T15:01:02.024Z"
+    },
+    {
+      "email": "lrwilcox@gmail.com",
+      "name": "Lisa Wilcox",
+      "company": "Brimmer, Burek & Keelan Llp",
+      "sender": "aurora@security-risk-assessments.com",
+      "messageId": "<c7253868-20d7-1496-81e4-a60f1dd9e828@security-risk-assessments.com>",
+      "sentAt": "2026-02-25T15:02:38.502Z"
+    },
+    {
+      "email": "lisakandalaft@yahoo.com",
+      "name": "Lisa Kandalaft",
+      "company": "Denali Financial Consulting, Llc",
+      "sender": "abigail@ransomwareprotectionforyou.com",
+      "messageId": "<ac62e2e0-d513-30a1-517b-69b84b0b57f7@ransomwareprotectionforyou.com>",
+      "sentAt": "2026-02-25T15:04:13.727Z"
+    },
+    {
+      "email": "jlangley1963@yahoo.com",
+      "name": "Julie Langley",
+      "company": "Watermark Solutions",
+      "sender": "amelia@cyberpentestingforu.com",
+      "messageId": "<83419fa9-fcae-fb28-b72a-8d9144a0e48e@cyberpentestingforu.com>",
+      "sentAt": "2026-02-25T15:05:48.517Z"
+    },
+    {
+      "email": "aileen@gotaxteam.com",
+      "name": "Aileen Guillen",
+      "company": "The Tax Team",
+      "sender": "aria@protectionfromransomwareattacks.com",
+      "messageId": "<a8bf1a52-adf0-6a31-52e0-99b2b8a37cf4@protectionfromransomwareattacks.com>",
+      "sentAt": "2026-02-25T15:07:23.979Z"
+    },
+    {
+      "email": "aimee@equationtech.us",
+      "name": "Aimee Schultz",
+      "company": "Equation Technologies, Inc.",
+      "sender": "aubrey@cyber-risk-assessments.com",
+      "messageId": "<31d34b53-4d29-c65a-e556-9b96163347ac@cyber-risk-assessments.com>",
+      "sentAt": "2026-02-25T15:08:59.655Z"
+    },
+    {
+      "email": "loganhanson@gmail.com",
+      "name": "Logan Hanson",
+      "company": "Boast Capital",
+      "sender": "aurora@security-risk-assessments.com",
+      "messageId": "<cefb593b-8537-32b3-5ada-41b675df14e0@security-risk-assessments.com>",
+      "sentAt": "2026-02-25T15:10:36.129Z"
+    },
+    {
+      "email": "dsmith@palomarmodular.com",
+      "name": "Dehn Smith",
+      "company": "Palomar Modular Buildings",
+      "sender": "abigail@ransomwareprotectionforyou.com",
+      "messageId": "<9eedb418-f7e2-2540-e5cf-dd96aadc7f2e@ransomwareprotectionforyou.com>",
+      "sentAt": "2026-02-25T15:12:11.601Z"
+    },
+    {
+      "email": "jstewart@ersgroup.com",
+      "name": "Justin Stewart",
+      "company": "Ers Group",
+      "sender": "amelia@cyberpentestingforu.com",
+      "messageId": "<ddf3aee6-de18-f76e-1ffe-6dc6eb78331a@cyberpentestingforu.com>",
+      "sentAt": "2026-02-25T15:13:46.770Z"
+    },
+    {
+      "email": "pelusita527@hotmail.com",
+      "name": "Lucia Egas",
+      "company": "Brock Enterprises, Llc",
+      "sender": "aria@protectionfromransomwareattacks.com",
+      "messageId": "<909bd4d5-7cb2-0a67-b907-46ce47f709a9@protectionfromransomwareattacks.com>",
+      "sentAt": "2026-02-25T15:15:22.017Z"
+    },
+    {
+      "email": "pockets59925@yahoo.com",
+      "name": "Diana Lamb",
+      "company": "Results Advertising",
+      "sender": "aubrey@cyber-risk-assessments.com",
+      "messageId": "<d96c02e7-3e15-9e49-1c3f-9d28cbac047c@cyber-risk-assessments.com>",
+      "sentAt": "2026-02-25T15:16:58.517Z"
+    },
+    {
+      "email": "kjhinch@gmail.com",
+      "name": "Karen Hinch",
+      "company": "Ewaydirect",
+      "sender": "aurora@security-risk-assessments.com",
+      "messageId": "<6683049a-5a2b-653c-07be-cc5f5ed8326b@security-risk-assessments.com>",
+      "sentAt": "2026-02-25T15:18:33.778Z"
+    },
+    {
+      "email": "lucy@pisgahlegal.org",
+      "name": "Lucy Keil",
+      "company": "Pisgah Legal Services",
+      "sender": "abigail@ransomwareprotectionforyou.com",
+      "messageId": "<8ad947ac-794d-da36-5921-03cae433f235@ransomwareprotectionforyou.com>",
+      "sentAt": "2026-02-25T15:20:08.447Z"
+    },
+    {
+      "email": "dhays@wipfli.com",
+      "name": "Diane Hays",
+      "company": "Alta Vista Technology",
+      "sender": "amelia@cyberpentestingforu.com",
+      "messageId": "<368b53af-5d8a-7176-0a8f-66e16bd54a70@cyberpentestingforu.com>",
+      "sentAt": "2026-02-25T15:21:43.712Z"
+    },
+    {
+      "email": "akane@mcdaniel.edu",
+      "name": "Alexander Kane",
+      "company": "Red Curve Solutions",
+      "sender": "aria@protectionfromransomwareattacks.com",
+      "messageId": "<51bfb854-e00e-5eee-0090-4af450d1e824@protectionfromransomwareattacks.com>",
+      "sentAt": "2026-02-25T15:23:19.264Z"
+    },
+    {
+      "email": "aoperry@smu.edu",
+      "name": "Alexander Perry",
+      "company": "Vitucci & Associates",
+      "sender": "aubrey@cyber-risk-assessments.com",
+      "messageId": "<90037db8-3cb3-7f56-26d6-a3490a0406f5@cyber-risk-assessments.com>",
+      "sentAt": "2026-02-25T15:24:54.720Z"
+    },
+    {
+      "email": "kate.borges@gmail.com",
+      "name": "Kate Borges",
+      "company": "Real Intent",
+      "sender": "aurora@security-risk-assessments.com",
+      "messageId": "<8a6f6e09-0cac-0547-816d-2162eb1aad98@security-risk-assessments.com>",
+      "sentAt": "2026-02-25T15:26:30.339Z"
     }
   ]
 }
