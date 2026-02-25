@@ -261,6 +261,21 @@ function initData(){
   if(!LS.get('decisions'))LS.set('decisions',[]);
   if(!LS.get('intel'))LS.set('intel',defaultIntel());
   if(!LS.get('agents'))LS.set('agents',defaultAgents());
+  loadRemoteIntel();
+}
+
+async function loadRemoteIntel(){
+  try{
+    const r=await fetch('data/intel.json?t='+Date.now());
+    if(!r.ok)return;
+    const remote=await r.json();
+    if(!Array.isArray(remote)||!remote.length)return;
+    const local=LS.get('intel',[]);
+    const ids=new Set(local.map(i=>i.id));
+    let added=0;
+    remote.forEach(item=>{if(!ids.has(item.id)){local.push(item);added++;}});
+    if(added){LS.set('intel',local);renderContent();}
+  }catch(e){}
 }
 
 function defaultAgents(){
