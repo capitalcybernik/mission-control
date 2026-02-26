@@ -330,6 +330,7 @@ const tabs=[
   {id:'social',icon:'📱',label:'Social'},
   {id:'intel',icon:'📡',label:'Intel'},
   {id:'marketing',icon:'📧',label:'Marketing'},
+  {id:'cmmc',icon:'🎯',label:'CMMC Tracker'},
 ];
 
 let activeTab='dashboard';
@@ -349,7 +350,7 @@ function switchTab(id){
 // ===== MAIN RENDER =====
 function renderContent(){
   const el=document.getElementById('mainContent');
-  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel,marketing:renderMarketing};
+  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel,marketing:renderMarketing,cmmc:renderCMMCTracker};
   el.innerHTML=`<div class="tab-content active">${(renderers[activeTab]||renderers.dashboard)()}</div>`;
   if(activeTab==='meetings')startCountdowns();
 }
@@ -1281,6 +1282,93 @@ function updateMktStatus(id,status){
   const emails=LS.get('marketingEmails',[]);
   const idx=emails.findIndex(e=>e.id===id);
   if(idx>=0){emails[idx].status=status;LS.set('marketingEmails',emails);renderContent();}
+}
+
+// ===== CMMC CONTRACT TRACKER =====
+function renderCMMCTracker(){
+  const construction=[
+    {date:'2/23/2026',title:'USACE NWD Design Build MATOC',agency:'Army Corps of Engineers',level:'Level 2 (C3PAO)',url:'https://sam.gov/workspace/contract/opp/815f4d0a3e23460a9d38b7f198e5953e/view'},
+    {date:'2/20/2026',title:'Fuels South Atlantic Division',agency:'Army Corps of Engineers',level:'Level 2 (Self)',url:'https://sam.gov/workspace/contract/opp/7d066742032f4a8796cb98dc17d2d1a5/view'},
+    {date:'2/19/2026',title:'Lake City Army Ammo Plant Microgrid',agency:'Army Corps of Engineers',level:'Level 2 (Self)',url:'https://sam.gov/workspace/contract/opp/9fcc6a3d59e64b41860cf047c2b0612e/view'},
+    {date:'2/17/2026',title:'Special Tactics Complex, OR Air National Guard',agency:'Army Corps of Engineers',level:'Level 2 (C3PAO)',url:'https://sam.gov/workspace/contract/opp/3d0092a9b3c7493cbec422edbd52c45d/view'},
+    {date:'2/13/2026',title:'USACE NWD Design Build MATOC (amendment)',agency:'Army Corps of Engineers',level:'Level 2',url:'https://sam.gov/workspace/contract/opp/4d24851e7a354f69ba727e6088be0a33/view'},
+    {date:'2/12/2026',title:'ERCIP Ansbach Storck Barracks Microgrid',agency:'Army Corps of Engineers',level:'Level 2 (Self)',url:'https://sam.gov/workspace/contract/opp/aa80a8e6d52b4ddf8f73f8252d940682/view'},
+    {date:'2/11/2026',title:'John Day Unit 8 Asbestos Abatement',agency:'Army Corps of Engineers',level:'Level 2 (Self)',url:'https://sam.gov/workspace/contract/opp/c0273c9b1783448b90cfda6be7db3061/view'},
+    {date:'2/11/2026',title:'Prototype Integration Facility (PIF) 2027',agency:'Army AMC',level:'Level 2',url:'https://sam.gov/workspace/contract/opp/a7e170b6611b47c38b635bf679836536/view'},
+    {date:'2/5/2026',title:'Replace Transformer Stations, DFSP Hachinohe',agency:'NAVFAC',level:'Level 2 (Self)',url:'https://sam.gov/workspace/contract/opp/77a2bcc330e4484abb199d0bfa737e72/view'},
+    {date:'2/4/2026',title:'Replace Site Lighting at 5 Launch Facilities',agency:'Air Force Global Strike',level:'Level 2',url:'https://sam.gov/workspace/contract/opp/216639c12bb34951abe8a411c3ea34e6/view'},
+    {date:'2/3/2026',title:'White City OR Rehab Center Seismic Upgrades',agency:'Army Corps of Engineers',level:'Level 2 (Self)',url:'https://sam.gov/workspace/contract/opp/1dc9d81e6c844dcfb9922d97b1d268ff/view'},
+    {date:'1/22/2026',title:'SOF Tactical Equipment Maintenance Facility',agency:'Army Corps of Engineers',level:'L1 → L2 Oct 2026 → L3 Oct 2027',url:'https://sam.gov/workspace/contract/opp/e7d4cd8405e24732a9ba9a6acd9cb688/view'},
+    {date:'12/10/2025',title:'Enlisted Personnel Housing, Ft. Wainwright',agency:'Army Corps of Engineers',level:'Level 1 (Self)',url:'https://sam.gov/workspace/contract/opp/881004421e6a41f086faf76400515124/view'},
+    {date:'12/4/2025',title:'PKA Relocatable Facility',agency:'Air Force Global Strike',level:'Level 2',url:'https://sam.gov/workspace/contract/opp/bb1b9746745544b9acdafcfe84415dbf/view'},
+    {date:'11/17/2025',title:'Ft. Buchanan Microgrid',agency:'Army Corps of Engineers',level:'Level 2',url:'https://sam.gov/workspace/contract/opp/9b89b3c228144ae89580dfc6b827af46/view'},
+  ];
+  const manufacturing=[
+    {date:'2/18/2026',title:'Cylindrical Antenna Phase B System',agency:'Navy NAVAIR',level:'Level 2 (Self)',url:'https://sam.gov/workspace/contract/opp/811a6488e2df45418ade69342bc5dd83/view'},
+    {date:'2/10/2026',title:'IDIQ MAC Submarine CNO Availabilities',agency:'Navy NAVSEA',level:'Level 2 (C3PAO)',url:'https://sam.gov/workspace/contract/opp/0bcfad12abe3427599dd33f4d5c442da/view'},
+    {date:'2/3/2026',title:'Ship Self Defense System (SSDS) Legacy',agency:'Navy NAVSEA',level:'Level 2',url:'https://sam.gov/workspace/contract/opp/2c5cdcf0e22f4dfab85f278e71e21b97/view'},
+    {date:'2/2/2026',title:'Inert Warhead for Reduced Range Practice Rocket',agency:'Army',level:'Level 2',url:'https://sam.gov/workspace/contract/opp/2fa9055f3a61470f98347aed1250b8da/view'},
+    {date:'1/30/2026',title:'Custom Tilter',agency:'Navy NAVSEA',level:'Level 2 (Self)',url:'https://sam.gov/workspace/contract/opp/503945f43eb6410e92c7e042bb9d4c9a/view'},
+    {date:'1/9/2026',title:'31-Multiple (DLA Aviation parts)',agency:'DLA Aviation',level:'Level 2 (Self)',url:'https://sam.gov/workspace/contract/opp/769556c1730842d095e705f3f90acaf3/view'},
+    {date:'1/7/2026',title:'Azimuth Gearbox Assembly',agency:'Air Force Materiel Command',level:'Level 2',url:'https://sam.gov/workspace/contract/opp/9ed8ff4ff9e7448ab7cac9740a77ed95/view'},
+    {date:'1/6/2026',title:'Coil Forms',agency:'Navy NAVSEA',level:'Level 2 (Self)',url:'https://sam.gov/workspace/contract/opp/04aaa773261f4aed893d1acc7cd70567/view'},
+    {date:'1/5/2026',title:'Mobility Prototyping',agency:'Navy NAVSEA Warfare Center',level:'Level 2 (Self)',url:'https://sam.gov/workspace/contract/opp/d6530e11fc71411baad486461823f45a/view'},
+    {date:'1/5/2026',title:'Telesco Drawbar NRP',agency:'DLA Troop Support',level:'Level 2 (Self)',url:'https://sam.gov/workspace/contract/opp/e83ff8072d584a2daf359f7dd82ea153/view'},
+    {date:'1/5/2026',title:'Commercial Solutions: Space Domain Awareness',agency:'Air Force Space Command',level:'Level 2',url:'https://sam.gov/workspace/contract/opp/92fbd126bddb4295a3a0625197db3272/view'},
+    {date:'12/29/2025',title:'MK70 Booster Ballast Kits',agency:'Navy NAVSEA',level:'Level 2 (Self)',url:'https://sam.gov/workspace/contract/opp/375761b1e8c04caf806c401ef0cf7c55/view'},
+    {date:'12/3/2025',title:'Module Assembly, Jet',agency:'DLA Maritime Columbus',level:'Level 2 (Self)',url:'https://sam.gov/workspace/contract/opp/8c72a34e0a634ae08d8be87803d3d02b/view'},
+    {date:'12/2/2025',title:'MK22 Motor Tubes',agency:'Navy NAVSEA',level:'Level 1',url:'https://sam.gov/workspace/contract/opp/ccc7fc76da6f4be790a23ab05d6a7905/view'},
+  ];
+
+  function renderTable(items){
+    return `<div class="table-wrap"><table>
+      <tr><th>Date</th><th>Solicitation</th><th>Agency</th><th>CMMC Level</th><th>Link</th></tr>
+      ${items.map(i=>`<tr>
+        <td style="white-space:nowrap">${esc(i.date)}</td>
+        <td>${esc(i.title)}</td>
+        <td style="font-size:0.8rem;color:var(--muted)">${esc(i.agency)}</td>
+        <td><span class="badge ${i.level.includes('C3PAO')?'badge-hot':i.level.includes('Self')?'badge-active':'badge-notable'}">${esc(i.level)}</span></td>
+        <td><a href="${i.url}" target="_blank" style="font-size:0.8rem">SAM.gov →</a></td>
+      </tr>`).join('')}
+    </table></div>`;
+  }
+
+  return `
+    <div class="section-title">🎯 CMMC Contract & Solicitation Tracker</div>
+    <div class="section-sub">Active DoD solicitations requiring CMMC certification. Updated Feb 26, 2026. Source: SAM.gov via PreVeil + direct search.</div>
+
+    <div class="stats-grid">
+      <div class="card stat-card"><div class="stat-value">120+</div><div class="stat-label">Active CMMC Solicitations</div></div>
+      <div class="card stat-card"><div class="stat-value" style="color:var(--green)">${construction.length}</div><div class="stat-label">Construction/Infrastructure</div></div>
+      <div class="card stat-card"><div class="stat-value" style="color:var(--blue)">${manufacturing.length}</div><div class="stat-label">Manufacturing/Defense</div></div>
+      <div class="card stat-card"><div class="stat-value" style="color:var(--yellow)">Weekly</div><div class="stat-label">New Solicitations Appearing</div></div>
+    </div>
+
+    <div class="daily-brief" style="margin-bottom:2rem">
+      <h3 style="margin-bottom:0.5rem">💡 Sales Angle for Rick</h3>
+      <p style="color:var(--muted);font-size:0.9rem;line-height:1.7">Every prime contract below has subcontractors. Every sub needs CMMC. The ripple effect means thousands of manufacturing and construction companies need to get compliant now. One solicitation explicitly says Level 1 now, Level 2 by Oct 2026, Level 3 by Oct 2027. The bar is only going up. This is Capital Cyber's market.</p>
+    </div>
+
+    <div style="margin-bottom:2rem">
+      <div class="section-title" style="font-size:1.1rem">🏗️ Construction & Infrastructure (${construction.length} solicitations)</div>
+      ${renderTable(construction)}
+    </div>
+
+    <div style="margin-bottom:2rem">
+      <div class="section-title" style="font-size:1.1rem">🏭 Manufacturing & Defense Industrial Base (${manufacturing.length} solicitations)</div>
+      ${renderTable(manufacturing)}
+    </div>
+
+    <div class="card" style="margin-top:2rem">
+      <h3 style="margin-bottom:0.75rem">📋 To-Do</h3>
+      <div style="font-size:0.9rem;color:var(--muted);line-height:1.8">
+        <div>⬜ Get SAM.gov API key for automated daily updates</div>
+        <div>⬜ Set up daily cron to pull new CMMC solicitations</div>
+        <div>⬜ Build presentation-ready version for Rick's sales meetings</div>
+        <div>⬜ Filter by NAICS codes for construction (236xxx) and manufacturing (332xxx-336xxx)</div>
+      </div>
+    </div>
+  `;
 }
 
 initData();renderTabs();renderContent();
