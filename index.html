@@ -272,6 +272,7 @@ function initData(){
   if(!LS.get('agents'))LS.set('agents',defaultAgents());
   if(!LS.get('marketingEmails'))LS.set('marketingEmails',defaultMarketingEmails());
   loadRemoteIntel();
+  loadRemoteTasks();
 }
 
 async function loadRemoteIntel(){
@@ -285,6 +286,20 @@ async function loadRemoteIntel(){
     let added=0;
     remote.forEach(item=>{if(!ids.has(item.id)){local.push(item);added++;}});
     if(added){LS.set('intel',local);renderContent();}
+  }catch(e){}
+}
+
+async function loadRemoteTasks(){
+  try{
+    const r=await fetch('data/tasks.json?t='+Date.now());
+    if(!r.ok)return;
+    const remote=await r.json();
+    if(!Array.isArray(remote)||!remote.length)return;
+    const local=LS.get('cronTasks',[]);
+    const ids=new Set(local.map(i=>i.id));
+    let added=0;
+    remote.forEach(item=>{if(!ids.has(item.id)){local.push(item);added++;}});
+    if(added){LS.set('cronTasks',local);renderContent();}
   }catch(e){}
 }
 
@@ -379,7 +394,49 @@ function renderDashboard(){
       <div class="quick-action" onclick="switchTab('social')">📱 Social Feed</div>
       <div class="quick-action" onclick="switchTab('intel')">📡 Intel Briefs</div>
       <div class="quick-action" onclick="switchTab('command')">🏢 Command Center</div>
-    </div>`;
+    </div>
+    ${renderCronTasks()}`;
+}
+
+// ===== CRON TASKS (Athena Daily Tasks) =====
+function renderCronTasks(){
+  const tasks=LS.get('cronTasks',[]);
+  if(!tasks.length)return '';
+  const statusIcon={'pending':'⏳','approved':'✅','in-progress':'🔄','completed':'✔️','rejected':'❌'};
+  const statusBadge={'pending':'paused','approved':'active','in-progress':'busy','completed':'completed','rejected':'churned'};
+  // Group by date
+  const byDate={};
+  tasks.forEach(t=>{const d=fmtDate(t.date);if(!byDate[d])byDate[d]=[];byDate[d].push(t);});
+  let html='<div class="section-title" style="margin-top:2rem">🦉 Athena Daily Tasks</div><div class="section-sub">Tasks generated from daily intel briefings. Approve or reject to direct Athena.</div>';
+  Object.keys(byDate).sort((a,b)=>new Date(b)-new Date(a)).forEach(date=>{
+    html+=`<div style="font-weight:600;margin:1rem 0 0.5rem;color:var(--muted);font-size:0.85rem">📅 ${date}</div>`;
+    html+='<div class="card-grid">'+byDate[date].map(t=>`
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:start">
+          <div style="font-weight:700;font-size:0.95rem">${statusIcon[t.status]||'⏳'} ${esc(t.title)}</div>
+          <span class="badge badge-${t.priority}">${t.priority}</span>
+        </div>
+        <p style="color:var(--muted);font-size:0.85rem;margin-top:0.5rem">${esc(t.description||'')}</p>
+        <div style="display:flex;gap:0.75rem;margin-top:0.5rem;font-size:0.7rem;color:var(--gray)">
+          <span>⏱ ${esc(t.effort||'')}</span>
+          <span class="badge badge-${statusBadge[t.status]||'paused'}">${t.status}</span>
+        </div>
+        <div style="font-size:0.7rem;color:var(--gray);margin-top:0.25rem">Source: ${esc(t.source||'')}</div>
+        ${t.status==='pending'?`<div class="btn-row">
+          <button class="btn btn-primary btn-sm" onclick="updateCronTask('${t.id}','approved')">✅ Approve</button>
+          <button class="btn btn-danger btn-sm" onclick="updateCronTask('${t.id}','rejected')">❌ Reject</button>
+        </div>`:''}
+        ${t.status==='approved'?`<div class="btn-row">
+          <button class="btn btn-ghost btn-sm" onclick="updateCronTask('${t.id}','completed')">✔️ Mark Done</button>
+        </div>`:''}
+      </div>`).join('')+'</div>';
+  });
+  return html;
+}
+function updateCronTask(id,status){
+  const tasks=LS.get('cronTasks',[]);
+  const i=tasks.findIndex(t=>t.id===id);
+  if(i>=0){tasks[i].status=status;LS.set('cronTasks',tasks);renderContent();}
 }
 
 // ===== PROJECTS =====

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "task-20260226-001",
+    "title": "Draft Cisco CVE-2026-20127 Client Advisory",
+    "description": "Write a branded advisory email for Capital Cyber clients about the CVSS 10.0 zero day actively exploited since 2023. Any client running Cisco SD-WAN needs to know.",
+    "priority": "high",
+    "status": "pending",
+    "effort": "30 min",
+    "source": "Daily Intel — Feb 26, 2026",
+    "date": "2026-02-26T06:00:00.000Z"
+  },
+  {
+    "id": "task-20260226-002",
+    "title": "Build CMMC Contract Tracker",
+    "description": "Scrape PreVeil's running list of DoD solicitations requiring CMMC. Create a daily-updated tracking doc for client opportunities.",
+    "priority": "high",
+    "status": "pending",
+    "effort": "1 hour",
+    "source": "Daily Intel — Feb 26, 2026",
+    "date": "2026-02-26T06:00:00.000Z"
+  },
+  {
+    "id": "task-20260226-003",
+    "title": "Create SLCGP Grant Opportunity Monitor",
+    "description": "Set up automated daily scanning cron job for new SLCGP and cyber grant postings across Grants.gov and state portals.",
+    "priority": "high",
+    "status": "pending",
+    "effort": "30 min",
+    "source": "Daily Intel — Feb 26, 2026",
+    "date": "2026-02-26T06:00:00.000Z"
+  },
+  {
+    "id": "task-20260226-004",
+    "title": "Build Prospect Outreach List from Threat Intel",
+    "description": "Match today's threat intel to client verticals (healthcare, defense, Cisco shops) for targeted outreach. Needs CRM access.",
+    "priority": "medium",
+    "status": "pending",
+    "effort": "1 hour",
+    "source": "Daily Intel — Feb 26, 2026",
+    "date": "2026-02-26T06:00:00.000Z"
+  },
+  {
+    "id": "task-20260226-005",
+    "title": "Auto-Update Dashboard Intel Feed",
+    "description": "Wire the daily cron to push updated data/intel.json and data/tasks.json to GitHub so the dashboard stays current automatically.",
+    "priority": "medium",
+    "status": "pending",
+    "effort": "45 min",
+    "source": "Daily Intel — Feb 26, 2026",
+    "date": "2026-02-26T06:00:00.000Z"
+  },
+  {
+    "id": "task-20260226-006",
+    "title": "Draft CMMC Readiness Pitch for Small DIB Suppliers",
+    "description": "One-pager pitch doc targeting small defense contractors struggling with compliance (Reuters angle). For outreach campaigns.",
+    "priority": "medium",
+    "status": "pending",
+    "effort": "1 hour",
+    "source": "Daily Intel — Feb 26, 2026",
+    "date": "2026-02-26T06:00:00.000Z"
+  }
+]

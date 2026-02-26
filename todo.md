@@ -21,3 +21,7 @@
 - [x] Set up daily 6AM EST intel briefing cron job
 - [x] Configure Brave Search API
 - [x] Build Mission Control workspace
+- [x] Deploy Mission Control dashboard (http://217.216.92.70:8080)
+- [x] Push to GitHub (capitalcybernik/mission-control)
+- [x] Set up approval workflow (tasks need Rick/Nikhil approval)
+- [x] Update daily cron to propose tasks alongside intel
