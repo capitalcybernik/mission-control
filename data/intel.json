@@ -1,0 +1,74 @@
+[
+  {
+    "id": "intel-20260226-001",
+    "title": "Cisco SD-WAN Zero Day — CVE-2026-20127 (CVSS 10.0)",
+    "summary": "Critical authentication bypass in Cisco Catalyst SD-WAN Controller allows unauthenticated remote admin takeover. Actively exploited by UAT-8616 since 2023. Canadian Cyber Centre issued alert. Any client running Cisco SD-WAN needs emergency patching.",
+    "source": "https://thehackernews.com/2026/02/cisco-sd-wan-zero-day-cve-2026-20127.html",
+    "category": "Cybersecurity",
+    "importance": "hot",
+    "date": "2026-02-26T06:00:00.000Z"
+  },
+  {
+    "id": "intel-20260226-002",
+    "title": "UFP Technologies Ransomware — Medical Device Supply Chain",
+    "summary": "Medical device manufacturer hit with ransomware on Feb 14, data exfiltrated, filed with SEC. Healthcare supply chain continues to be a top target. Third-party risk management is a core CMMC requirement.",
+    "source": "https://www.securityweek.com/medical-device-maker-ufp-technologies-hit-by-cyberattack/",
+    "category": "Cybersecurity",
+    "importance": "hot",
+    "date": "2026-02-26T06:00:00.000Z"
+  },
+  {
+    "id": "intel-20260226-003",
+    "title": "Reuters: CMMC Creating Barriers for Small DIB Suppliers",
+    "summary": "New CMMC self-assessment requirements (Level 1) straining small defense contractors. Level 2 audits expected by November 2026. Companies need to contact C3PAOs by Q2. Core opportunity for Capital Cyber and Cyber Grants Alliance.",
+    "source": "https://www.reuters.com/business/aerospace-defense/new-cybersecurity-rules-us-defense-industry-create-barrier-for-some-small-2026-02-20/",
+    "category": "CMMC News",
+    "importance": "hot",
+    "date": "2026-02-26T06:00:00.000Z"
+  },
+  {
+    "id": "intel-20260226-004",
+    "title": "Active CMMC Contract Tracker — Growing Adoption",
+    "summary": "Naval Sea Logistics Center and other agencies actively requiring CMMC compliance in new solicitations. PreVeil tracking live contracts. Monitor this list for client opportunities.",
+    "source": "https://www.preveil.com/blog/list-of-cmmc-contracts/",
+    "category": "CMMC News",
+    "importance": "notable",
+    "date": "2026-02-26T06:00:00.000Z"
+  },
+  {
+    "id": "intel-20260226-005",
+    "title": "MSSP Industry Shifting to Outcome-Led Services",
+    "summary": "MSSPs moving from tool stacking to scalable, outcome-driven delivery. 2026 MSSP Blueprint recommends autonomous, proactive security models at machine speed. Validates Capital Cyber direction.",
+    "source": "https://www.msspalert.com/news/mssp-market-news-mssp-platforms-focus-on-running-better-not-adding-more",
+    "category": "Industry Trends",
+    "importance": "notable",
+    "date": "2026-02-26T06:00:00.000Z"
+  },
+  {
+    "id": "intel-20260226-006",
+    "title": "SLCGP Extended + PILLAR Act — Federal Cyber Grant Funding",
+    "summary": "Congress extended State and Local Cybersecurity Grant Program. Texas FY2026 SLCGP assessment projects already posted. Other states expected to follow. Key pipeline for Cyber Grants Alliance.",
+    "source": "https://www.route-fifty.com/cybersecurity/2026/02/shifting-cybersecurity-mandate-states/411596/",
+    "category": "Opportunities",
+    "importance": "hot",
+    "date": "2026-02-26T06:00:00.000Z"
+  },
+  {
+    "id": "intel-20260226-007",
+    "title": "CYBERSPAN: AI-Driven Agentless Detection for MSSPs",
+    "summary": "IntelliGenesis launched CYBERSPAN, agentless network detection designed for MSSP environments. Worth evaluating — agentless means easier deployment for smaller clients.",
+    "source": "https://www.helpnetsecurity.com/2026/02/18/intelligenesis-cyberspan/",
+    "category": "Industry Trends",
+    "importance": "reference",
+    "date": "2026-02-26T06:00:00.000Z"
+  },
+  {
+    "id": "intel-20260226-008",
+    "title": "StateTech: What States Should Fund With 2026 Cyber Grants",
+    "summary": "Priority areas for 2026 grants: AI-driven cybersecurity transformation, autonomous defense, governance, workforce readiness. Use these priorities to frame grant applications.",
+    "source": "https://statetechmagazine.com/article/2026/01/tech-trends-what-states-should-fund-2026-cybersecurity-grants",
+    "category": "Opportunities",
+    "importance": "notable",
+    "date": "2026-02-26T06:00:00.000Z"
+  }
+]
