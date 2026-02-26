@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backup Tracker | Capital Cyber</title>
+<style>
+  :root { --bg: #0f1117; --card: #1a1d27; --border: #2a2d3a; --green: #22c55e; --red: #ef4444; --yellow: #eab308; --text: #e2e8f0; --muted: #94a3b8; --accent: #3b82f6; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 24px; }
+  h1 { font-size: 1.5rem; margin-bottom: 8px; }
+  .subtitle { color: var(--muted); margin-bottom: 24px; font-size: 0.875rem; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .stat-card .label { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .stat-card .value { font-size: 2rem; font-weight: 700; margin-top: 4px; }
+  .stat-card .value.success { color: var(--green); }
+  .stat-card .value.fail { color: var(--red); }
+  .stat-card .value.warn { color: var(--yellow); }
+  .filters { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+  .filters select, .filters input { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 8px; font-size: 0.875rem; }
+  table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+  th { background: #141620; text-align: left; padding: 12px 16px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+  td { padding: 12px 16px; border-top: 1px solid var(--border); font-size: 0.875rem; }
+  tr:hover td { background: rgba(59,130,246,0.05); }
+  .badge { padding: 4px 10px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; display: inline-block; }
+  .badge.success { background: rgba(34,197,94,0.15); color: var(--green); }
+  .badge.failure { background: rgba(239,68,68,0.15); color: var(--red); }
+  .badge.warning { background: rgba(234,179,8,0.15); color: var(--yellow); }
+  .empty { text-align: center; padding: 48px; color: var(--muted); }
+  .client-section { margin-bottom: 32px; }
+  .client-header { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .streak { font-size: 0.75rem; color: var(--muted); }
+  .streak.good { color: var(--green); }
+  .streak.bad { color: var(--red); }
+  @media (max-width: 640px) { body { padding: 12px; } .stats { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+<h1>⚔️ Backup Command Center</h1>
+<p class="subtitle">MSP360 Backup Tracking | Capital Cyber</p>
+
+<div class="stats">
+  <div class="stat-card"><div class="label">Total Events</div><div class="value" id="totalEvents">0</div></div>
+  <div class="stat-card"><div class="label">Success</div><div class="value success" id="totalSuccess">0</div></div>
+  <div class="stat-card"><div class="label">Warnings</div><div class="value warn" id="totalWarnings">0</div></div>
+  <div class="stat-card"><div class="label">Failures</div><div class="value fail" id="totalFailures">0</div></div>
+  <div class="stat-card"><div class="label">Success Rate</div><div class="value" id="successRate">—</div></div>
+  <div class="stat-card"><div class="label">Clients Tracked</div><div class="value" id="totalClients">0</div></div>
+</div>
+
+<div class="filters">
+  <select id="filterClient"><option value="">All Clients</option></select>
+  <select id="filterResult"><option value="">All Results</option><option value="SUCCESS">Success</option><option value="WARNING">Warning</option><option value="FAILURE">Failure</option></select>
+  <input type="date" id="filterFrom" placeholder="From">
+  <input type="date" id="filterTo" placeholder="To">
+</div>
+
+<div id="tableContainer">
+  <table>
+    <thead><tr><th>Date/Time</th><th>Client</th><th>Computer</th><th>Plan</th><th>Result</th><th>Size</th><th>Duration</th></tr></thead>
+    <tbody id="eventsBody"><tr><td colspan="7" class="empty">No backup events yet. Forward your first MSP360 email to get started.</td></tr></tbody>
+  </table>
+</div>
+
+<script>
+let DATA = { events: [], clients: {} };
+
+async function loadData() {
+  try {
+    const resp = await fetch('backups.json?' + Date.now());
+    DATA = await resp.json();
+  } catch(e) { console.log('No data yet'); }
+  render();
+}
+
+function render() {
+  const events = DATA.events || [];
+  const clientFilter = document.getElementById('filterClient').value;
+  const resultFilter = document.getElementById('filterResult').value;
+  const fromFilter = document.getElementById('filterFrom').value;
+  const toFilter = document.getElementById('filterTo').value;
+
+  let filtered = events;
+  if (clientFilter) filtered = filtered.filter(e => e.client === clientFilter);
+  if (resultFilter) filtered = filtered.filter(e => e.result === resultFilter);
+  if (fromFilter) filtered = filtered.filter(e => e.date >= fromFilter);
+  if (toFilter) filtered = filtered.filter(e => e.date <= toFilter);
+
+  // Stats
+  const success = events.filter(e => e.result === 'SUCCESS').length;
+  const warnings = events.filter(e => e.result === 'WARNING').length;
+  const failures = events.filter(e => e.result === 'FAILURE').length;
+  document.getElementById('totalEvents').textContent = events.length;
+  document.getElementById('totalSuccess').textContent = success;
+  document.getElementById('totalWarnings').textContent = warnings;
+  document.getElementById('totalFailures').textContent = failures;
+  document.getElementById('successRate').textContent = events.length ? Math.round(success/events.length*100) + '%' : '—';
+  document.getElementById('successRate').style.color = events.length ? (success/events.length >= 0.95 ? 'var(--green)' : success/events.length >= 0.8 ? 'var(--yellow)' : 'var(--red)') : 'var(--text)';
+
+  const clients = [...new Set(events.map(e => e.client))];
+  document.getElementById('totalClients').textContent = clients.length;
+  const sel = document.getElementById('filterClient');
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">All Clients</option>' + clients.map(c => `<option value="${c}" ${c===cur?'selected':''}>${c}</option>`).join('');
+
+  // Table
+  const tbody = document.getElementById('eventsBody');
+  if (!filtered.length) {
+    tbody.innerHTML = '<tr><td colspan="7" class="empty">No matching events.</td></tr>';
+    return;
+  }
+  filtered.sort((a,b) => new Date(b.datetime) - new Date(a.datetime));
+  tbody.innerHTML = filtered.map(e => `<tr>
+    <td>${e.datetime || e.date}</td>
+    <td>${e.client || '—'}</td>
+    <td>${e.computer || '—'}</td>
+    <td>${e.plan || '—'}</td>
+    <td><span class="badge ${e.result.toLowerCase()}">${e.result}</span></td>
+    <td>${e.size || '—'}</td>
+    <td>${e.duration || '—'}</td>
+  </tr>`).join('');
+}
+
+document.querySelectorAll('.filters select, .filters input').forEach(el => el.addEventListener('change', render));
+loadData();
+</script>
+</body>
+</html>
