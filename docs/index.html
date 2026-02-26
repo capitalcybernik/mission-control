@@ -251,8 +251,17 @@ const LS={
   set(k,v){localStorage.setItem('mc_'+k,JSON.stringify(v))},
 };
 
+function defaultProjects(){return [
+  {id:'proj-crm',name:'Personal CRM Intelligence',description:'Auto-track contacts from email + calendar. Score relationships, surface "haven\'t spoken in 30 days" alerts. Integrates with GHL (4,878 contacts). Needs: Gmail API access, calendar connection, scoring logic.\n\nSetup discussion:\n• Connect to M365 email + calendar (or Gmail)\n• Define contact scoring rules together\n• Set filtering thresholds (skip newsletters, bots, cold outreach)\n• Decide integration points with GHL\n• Build daily cron for ingestion',status:'active',priority:'high',startDate:'2026-02-26'},
+  {id:'proj-briefing',name:'Nightly Business Briefing (AI Council)',description:'Upgrade Daily Intel Brief to pull actual business signals from GHL, LinkedIn, email. Multi-persona AI review (strategist, risk analyst, growth advisor) produces prioritized recommendations.\n\nSetup discussion:\n• Define which data sources to pull (GHL pipeline, LinkedIn engagement, email activity)\n• Choose AI council personas and their focus areas\n• Set briefing schedule (nightly? end of business?)\n• Determine output format and delivery channel',status:'active',priority:'high',startDate:'2026-02-26'},
+  {id:'proj-kb',name:'Knowledge Base / RAG System',description:'Save any URL, PDF, article. Recall with natural language: "What did that CMMC article say about subcontractors?" Builds institutional brain for Capital Cyber.\n\nSetup discussion:\n• Choose embedding provider (Gemini free tier vs OpenAI)\n• Set up SQLite storage with chunking\n• Define content sources to auto-ingest\n• Build retrieval + chat interface',status:'active',priority:'medium',startDate:'2026-03-01'},
+  {id:'proj-content',name:'Content Idea Pipeline',description:'Auto-research topics, deduplicate against past posts, create tasks. Feeds directly into LinkedIn posting system. Prevents repeating content.\n\nSetup discussion:\n• Connect to existing LinkedIn post queue\n• Define similarity threshold for deduplication\n• Choose project management integration (Dart AI?)\n• Set up research sources (X/Twitter, web, KB)',status:'active',priority:'medium',startDate:'2026-03-01'},
+  {id:'proj-social-research',name:'Social Media Research System',description:'Answer "What are people saying about [topic]?" using X/Twitter with cost-optimized API tiers. Good for CMMC sentiment, competitor monitoring.\n\nSetup discussion:\n• Choose API tier (FxTwitter free vs paid provider)\n• Define default topics to monitor\n• Set caching and cost controls\n• Build briefing output format',status:'paused',priority:'low',startDate:'2026-03-08'},
+  {id:'proj-youtube',name:'YouTube Analytics + Competitor Tracking',description:'Daily channel metrics + competitor monitoring. Only relevant if Capital Cyber starts a YouTube channel (CMMC education content could be huge).\n\nSetup discussion:\n• Decision: Start YouTube channel?\n• If yes: Set up YouTube Data API\n• Define competitor channels to track\n• Build daily metrics dashboard',status:'paused',priority:'low',startDate:'2026-03-08'}
+];}
+
 function initData(){
-  if(!LS.get('projects'))LS.set('projects',[]);
+  if(!LS.get('projects')||!LS.get('projects').length)LS.set('projects',defaultProjects());
   if(!LS.get('timeline'))LS.set('timeline',[]);
   if(!LS.get('notes'))LS.set('notes',[]);
   if(!LS.get('clients'))LS.set('clients',[]);
