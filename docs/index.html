@@ -270,6 +270,7 @@ function initData(){
   if(!LS.get('decisions'))LS.set('decisions',[]);
   if(!LS.get('intel'))LS.set('intel',defaultIntel());
   if(!LS.get('agents'))LS.set('agents',defaultAgents());
+  if(!LS.get('marketingEmails'))LS.set('marketingEmails',defaultMarketingEmails());
   loadRemoteIntel();
 }
 
@@ -328,6 +329,7 @@ const tabs=[
   {id:'skills',icon:'🧠',label:'Skills'},
   {id:'social',icon:'📱',label:'Social'},
   {id:'intel',icon:'📡',label:'Intel'},
+  {id:'marketing',icon:'📧',label:'Marketing'},
 ];
 
 let activeTab='dashboard';
@@ -347,7 +349,7 @@ function switchTab(id){
 // ===== MAIN RENDER =====
 function renderContent(){
   const el=document.getElementById('mainContent');
-  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel};
+  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel,marketing:renderMarketing};
   el.innerHTML=`<div class="tab-content active">${(renderers[activeTab]||renderers.dashboard)()}</div>`;
   if(activeTab==='meetings')startCountdowns();
 }
@@ -1183,6 +1185,104 @@ function gv(id){const el=document.getElementById(id);return el?el.value.trim():'
 function esc(s){if(!s)return'';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
 
 // ===== INIT =====
+// ===== MARKETING EMAILS =====
+function defaultMarketingEmails(){return [
+  {id:1,subject:'Is Windows Taking Screenshots of Everything You Do?',topic:'Windows AI Recall',status:'approved',week:'Week 1 Tue',file:'01-windows-ai-recall.html',notes:'v3 humanized, approved'},
+  {id:2,subject:'Does Your IT Get an Alert When Someone Scans Your Network?',topic:'Network Detection & Response',status:'review',week:'Week 1 Thu',file:'02-network-detection-response.html',notes:'Compliance angle: CMMC requirement'},
+  {id:3,subject:'Would Your Insurance Actually Pay Out After a Ransomware Attack?',topic:'Ransomware Protection',status:'review',week:'Week 2 Tue',file:'03-ransomware-protection.html',notes:'$500K ransomware story included'},
+  {id:4,subject:'You Can Actually Afford 24/7 Security Monitoring Now',topic:'24/7 SOC',status:'review',week:'Week 2 Thu',file:'04-247-soc.html',notes:'Bust the "too expensive" myth'},
+  {id:5,subject:'Do You Know What Mark from Accounting Installed on His Computer?',topic:'Application Whitelisting',status:'review',week:'Week 3 Tue',file:'05-application-whitelisting.html',notes:'Insurance + CMMC requires it'},
+  {id:6,subject:'If Your Team Uses the Internet at Work, You Need This',topic:'Web Filtering',status:'review',week:'Week 3 Thu',file:'06-web-filtering.html',notes:'Baseline control'},
+  {id:7,subject:'When Was the Last Time Someone Looked at Your Firewall?',topic:'Firewall Protection',status:'review',week:'Week 4 Tue',file:'07-firewall-protection.html',notes:'Set and forget problem'},
+  {id:8,subject:'One Phishing Email Away from a Breach',topic:'MFA Everywhere',status:'review',week:'Week 4 Thu',file:'08-mfa-everywhere.html',notes:'#1 control insurers require'},
+  {id:9,subject:'The Best Firewall in the World Can\'t Stop This',topic:'Security Awareness Training',status:'review',week:'Week 5 Tue',file:'09-security-awareness-training.html',notes:'Phishing sim results angle'},
+  {id:10,subject:'Email Is Still the #1 Way Attackers Get In',topic:'Email Security',status:'review',week:'Week 5 Thu',file:'10-email-security.html',notes:'BEC, spoofing, DMARC'},
+  {id:11,subject:'If Your Office Burned Down Tomorrow, How Fast Could You Recover?',topic:'Backup & Disaster Recovery',status:'review',week:'Week 6 Tue',file:'11-backup-disaster-recovery.html',notes:'Immutable backups focus'},
+  {id:12,subject:'Those Update Notifications You Keep Ignoring? Attackers Love That',topic:'Patch Management',status:'review',week:'Week 6 Thu',file:'12-patch-management.html',notes:'Common gap in assessments'},
+  {id:13,subject:'The Biggest Blind Spot in Your Cybersecurity',topic:'Mobile Device Protection',status:'review',week:'Week 7 Tue',file:'13-mobile-device-protection.html',notes:'Phone blind spot'},
+  {id:14,subject:'Your Credentials Might Already Be for Sale',topic:'Dark Web Monitoring',status:'review',week:'Week 7 Thu',file:'14-dark-web-monitoring.html',notes:'Free scan offer as CTA'},
+  {id:15,subject:'Would Your Cyber Insurance Actually Pay Out?',topic:'Insurance Readiness',status:'review',week:'Week 8 Tue',file:'15-cyber-insurance-readiness.html',notes:'Carrier audit trends'},
+  {id:16,subject:'Traditional Antivirus Isn\'t Enough Anymore',topic:'EDR',status:'review',week:'Week 8 Thu',file:'16-endpoint-detection-response.html',notes:'Antivirus vs EDR education'},
+  {id:17,subject:'CMMC Is Here. Are You Ready?',topic:'CMMC Compliance',status:'review',week:'Week 9 Tue',file:'17-cmmc-compliance.html',notes:'Manufacturing + construction focus'},
+  {id:18,subject:'We Cracked 20,000 Passwords Last Year',topic:'Pen Testing',status:'review',week:'Week 9 Thu',file:'18-password-cracking.html',notes:'Signature Capital Cyber stat'},
+  {id:19,subject:'Does Your Team Know What to Do If You Get Hacked?',topic:'Incident Response',status:'review',week:'Week 10 Tue',file:'19-incident-response-plan.html',notes:'Tabletop exercise offer'},
+  {id:20,subject:'The Government Can\'t Be Your Cybersecurity Plan Anymore',topic:'CISA Collapse',status:'review',week:'Week 10 Thu',file:'20-cisa-fallen-apart.html',notes:'Timely news angle'},
+];}
+
+function renderMarketing(){
+  const emails=LS.get('marketingEmails',[]);
+  const statusColors={review:'var(--yellow)',approved:'var(--green)',sent:'var(--blue)',revision:'var(--red)'};
+  const statusLabels={review:'🔍 Review',approved:'✅ Approved',sent:'📨 Sent',revision:'🔄 Revision'};
+  const statusOpts=['review','approved','sent','revision'];
+  const counts={review:0,approved:0,sent:0,revision:0};
+  emails.forEach(e=>{if(counts[e.status]!==undefined)counts[e.status]++;});
+
+  return `
+    <div class="section-title">📧 Marketing Email Series</div>
+    <div class="section-sub">Twice weekly to clients + prospects via GHL. Humanized v3 style, signed as Nikhil. CGA sponsor P.S. on every email.</div>
+
+    <div class="stats-grid">
+      <div class="card stat-card"><div class="stat-value">${emails.length}</div><div class="stat-label">Total Emails</div></div>
+      <div class="card stat-card"><div class="stat-value" style="color:var(--green)">${counts.approved}</div><div class="stat-label">Approved</div></div>
+      <div class="card stat-card"><div class="stat-value" style="color:var(--blue)">${counts.sent}</div><div class="stat-label">Sent</div></div>
+      <div class="card stat-card"><div class="stat-value" style="color:var(--yellow)">${counts.review}</div><div class="stat-label">Needs Review</div></div>
+    </div>
+
+    <div class="filter-bar">
+      <select class="form-select" id="mktFilter" onchange="renderContent()">
+        <option value="">All Statuses</option>
+        ${statusOpts.map(s=>`<option value="${s}">${statusLabels[s]}</option>`).join('')}
+      </select>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:0.75rem">
+      ${emails.filter(e=>{const f=document.getElementById('mktFilter');return !f||!f.value||e.status===f.value;}).map((e,i)=>`
+        <div class="card" style="border-left:4px solid ${statusColors[e.status]||'var(--border)'}">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+            <div style="flex:1;min-width:250px">
+              <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.35rem">
+                <span class="badge badge-${e.status==='approved'?'active':e.status==='sent'?'completed':e.status==='revision'?'churned':'pending'}">#${e.id}</span>
+                <span style="font-size:0.75rem;color:var(--muted)">${esc(e.week)}</span>
+              </div>
+              <div style="font-weight:600;margin-bottom:0.25rem">${esc(e.subject)}</div>
+              <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">${esc(e.topic)}</div>
+              <div style="font-size:0.8rem;color:var(--gray);font-style:italic">${esc(e.notes||'')}</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;min-width:150px">
+              <select class="form-select" style="width:auto;min-width:140px;font-size:0.8rem" onchange="updateMktStatus(${e.id},this.value)">
+                ${statusOpts.map(s=>`<option value="${s}"${e.status===s?' selected':''}>${statusLabels[s]}</option>`).join('')}
+              </select>
+              <a href="https://github.com/capitalcybernik/ares-master-control/blob/main/marketing-emails/${encodeURIComponent(e.file)}" target="_blank" style="font-size:0.75rem;color:var(--blue)">View HTML →</a>
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+
+    <div style="margin-top:2rem">
+      <div class="section-title" style="font-size:1rem">📅 10-Week Send Schedule</div>
+      <div class="table-wrap"><table>
+        <tr><th>Week</th><th>Tuesday</th><th>Thursday</th></tr>
+        ${[1,2,3,4,5,6,7,8,9,10].map(w=>{
+          const tue=emails.find(e=>e.week==='Week '+w+' Tue');
+          const thu=emails.find(e=>e.week==='Week '+w+' Thu');
+          return `<tr>
+            <td style="font-weight:600">Week ${w}</td>
+            <td>${tue?`<span class="badge badge-${tue.status==='sent'?'completed':tue.status==='approved'?'active':'pending'}">${statusLabels[tue.status]}</span> ${esc(tue.topic)}`:''}</td>
+            <td>${thu?`<span class="badge badge-${thu.status==='sent'?'completed':thu.status==='approved'?'active':'pending'}">${statusLabels[thu.status]}</span> ${esc(thu.topic)}`:''}</td>
+          </tr>`;
+        }).join('')}
+      </table></div>
+    </div>
+  `;
+}
+
+function updateMktStatus(id,status){
+  const emails=LS.get('marketingEmails',[]);
+  const idx=emails.findIndex(e=>e.id===id);
+  if(idx>=0){emails[idx].status=status;LS.set('marketingEmails',emails);renderContent();}
+}
+
 initData();renderTabs();renderContent();
 </script>
 </body>
