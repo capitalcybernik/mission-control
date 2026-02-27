@@ -4,7 +4,7 @@
 - **What to call them:** Nikhil
 - **Pronouns:**
 - **Timezone:** EST (US Eastern) — Ashburn, VA
-- **Notes:** Business owner, cybersecurity engineer, board member of a non-profit.
+- **Notes:** CTO of Capital Cyber, cybersecurity engineer, board member of a non-profit.
 - **Email/Calendar:** Microsoft 365
 
 ## Roles
