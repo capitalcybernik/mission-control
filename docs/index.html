@@ -331,6 +331,7 @@ const tabs=[
   {id:'intel',icon:'📡',label:'Intel'},
   {id:'marketing',icon:'📧',label:'Marketing'},
   {id:'cmmc',icon:'🎯',label:'CMMC Tracker'},
+  {id:'pages',icon:'🔗',label:'Pages & Links'},
 ];
 
 let activeTab='dashboard';
@@ -347,10 +348,34 @@ function switchTab(id){
   renderContent();
 }
 
+// ===== PAGES & LINKS =====
+function renderPages(){
+  const baseUrl='https://capitalcybernik.github.io/mission-control';
+  const pages=[
+    {title:'CMMC Contract Tracker',desc:'Live tracker of 30+ active CMMC related government solicitations from SAM.gov',url:baseUrl+'/cmmc-contract-tracker.html',status:'Ready',cat:'CMMC'},
+    {title:'CMMC Contracts Are Here (Blog Post)',desc:'Q1 2026 analysis of CMMC contract landscape, $2.1B+ in active opportunities',url:baseUrl+'/blog-cmmc-contracts-2026.html',status:'Ready',cat:'Blog'},
+    {title:'CMMC for Construction Companies',desc:'Industry specific landing page targeting construction and heavy civil contractors',url:baseUrl+'/cmmc-for-construction.html',status:'Ready',cat:'Industry Page'},
+    {title:'CMMC for Manufacturers',desc:'Industry specific landing page targeting manufacturing companies in the DIB',url:baseUrl+'/cmmc-for-manufacturers.html',status:'Ready',cat:'Industry Page'},
+    {title:'Fast Track to Insurability',desc:'Landing page for the Insurability as a Service product offering',url:baseUrl+'/insurability-landing-page.html',status:'Ready',cat:'Product'},
+  ];
+  const catColors={CMMC:'var(--blue)',Blog:'var(--purple)','Industry Page':'var(--green)',Product:'var(--orange)'};
+  return `<h2 style="margin-bottom:0.5rem">🔗 Pages & Links</h2>
+  <p style="color:var(--muted);margin-bottom:1.5rem">Draft pages hosted on GitHub Pages. Ready for review before deploying to WordPress.</p>
+  <div class="card-grid">${pages.map(p=>`<div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
+      <span style="font-size:0.7rem;font-weight:600;padding:0.2rem 0.6rem;border-radius:999px;background:${catColors[p.cat]||'var(--gray)'};color:#fff">${p.cat}</span>
+      <span style="font-size:0.7rem;color:var(--green);font-weight:600">● ${p.status}</span>
+    </div>
+    <h3 style="font-size:1rem;margin-bottom:0.5rem">${p.title}</h3>
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem">${p.desc}</p>
+    <a href="${p.url}" target="_blank" style="font-size:0.85rem;font-weight:600">View Page →</a>
+  </div>`).join('')}</div>`;
+}
+
 // ===== MAIN RENDER =====
 function renderContent(){
   const el=document.getElementById('mainContent');
-  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel,marketing:renderMarketing,cmmc:renderCMMCTracker};
+  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel,marketing:renderMarketing,cmmc:renderCMMCTracker,pages:renderPages};
   el.innerHTML=`<div class="tab-content active">${(renderers[activeTab]||renderers.dashboard)()}</div>`;
   if(activeTab==='meetings')startCountdowns();
 }
