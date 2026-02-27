@@ -4,6 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>⚔️ Mission Control — Capital Cyber</title>
+<script>
+(function(){
+  var h='b98caf526a3a11ddaf67d4ae1ee4f1034e15f76670ef0948266e5498209c6fb8';
+  if(sessionStorage.getItem('mc_auth')===h)return;
+  async function sha256(m){var e=new TextEncoder().encode(m);var b=await crypto.subtle.digest('SHA-256',e);return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0')}).join('')}
+  document.addEventListener('DOMContentLoaded',function(){
+    var app=document.getElementById('app');if(app)app.style.display='none';
+    var overlay=document.createElement('div');
+    overlay.id='auth-gate';
+    overlay.innerHTML='<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#fff;font-family:Inter,sans-serif"><div style="text-align:center;max-width:360px;padding:2rem"><div style="font-size:2rem;margin-bottom:0.5rem">⚔️</div><h2 style="font-size:1.25rem;margin-bottom:0.25rem;color:#1e293b">Mission Control</h2><p style="color:#64748b;font-size:0.85rem;margin-bottom:1.5rem">Enter access code to continue</p><input id="mc-pw" type="password" placeholder="Access code" style="width:100%;padding:0.75rem 1rem;border:1px solid #e5e7eb;border-radius:12px;font-size:0.9rem;font-family:inherit;outline:none;margin-bottom:0.75rem" autofocus><button id="mc-btn" style="width:100%;padding:0.75rem;background:#3b82f6;color:#fff;border:none;border-radius:12px;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit">Enter</button><p id="mc-err" style="color:#ef4444;font-size:0.8rem;margin-top:0.5rem;display:none">Incorrect access code</p></div></div>';
+    document.body.prepend(overlay);
+    var inp=document.getElementById('mc-pw'),btn=document.getElementById('mc-btn'),err=document.getElementById('mc-err');
+    async function tryAuth(){
+      var v=inp.value;if(!v)return;
+      var d=await sha256(v);
+      if(d===h){sessionStorage.setItem('mc_auth',h);overlay.remove();if(app)app.style.display='';}
+      else{err.style.display='block';inp.value='';inp.focus();}
+    }
+    btn.addEventListener('click',tryAuth);
+    inp.addEventListener('keydown',function(e){if(e.key==='Enter')tryAuth()});
+  });
+})();
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -215,7 +238,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 </style>
 </head>
 <body>
-
+<div id="app">
 <header class="header">
   <div class="header-brand">⚔️ Mission Control</div>
   <nav class="header-tabs" id="tabNav"></nav>
@@ -302,9 +325,9 @@ function defaultIntel(){
   const d=new Date();
   return [
     {id:genId(),title:'CMMC 2.0 Final Rule Updates',summary:'The DoD has released updated guidance on CMMC 2.0 Level 2 assessment requirements. Key changes include streamlined evidence collection and new reciprocity agreements with FedRAMP.',source:'https://www.defense.gov/cmmc',category:'CMMC News',importance:'hot',date:new Date(d-86400000).toISOString()},
-    {id:genId(),title:'Ransomware Attacks Up 40% in Q1 2026',summary:'A new report from CrowdStrike shows ransomware incidents increased 40% year-over-year, with SMBs being the primary target. Average ransom demands continue to climb.',source:'https://www.crowdstrike.com/reports',category:'Industry Trends',importance:'hot',date:new Date(d-172800000).toISOString()},
-    {id:genId(),title:'CompetitorX Launches MSP Division',summary:'CompetitorX announced a new Managed Security Provider division targeting DoD contractors in the DMV area. They are pricing aggressively for basic CMMC compliance packages.',source:'https://competitorx.com/news',category:'Competitor Watch',importance:'notable',date:new Date(d-259200000).toISOString()},
-    {id:genId(),title:'VA State Cybersecurity Grant Program Opening',summary:'Virginia is opening applications for its cybersecurity small business grant program for compliance and security improvements.',source:'https://www.virginia.gov/grants',category:'Opportunities',importance:'notable',date:new Date(d-345600000).toISOString()},
+    {id:genId(),title:'Ransomware Attacks Up 40% in Q1 2026',summary:'A new report from CrowdStrike shows ransomware incidents increased 40% year-over-year, with SMBs being the primary target. Average ransom demand now exceeds $1.2M.',source:'https://www.crowdstrike.com/reports',category:'Industry Trends',importance:'hot',date:new Date(d-172800000).toISOString()},
+    {id:genId(),title:'CompetitorX Launches MSP Division',summary:'CompetitorX announced a new Managed Security Provider division targeting DoD contractors in the DMV area. They are pricing aggressively at $2K/mo for basic CMMC compliance packages.',source:'https://competitorx.com/news',category:'Competitor Watch',importance:'notable',date:new Date(d-259200000).toISOString()},
+    {id:genId(),title:'VA State Cybersecurity Grant Program Opening',summary:'Virginia is opening applications for its $5M cybersecurity small business grant program. Eligible businesses can receive up to $50K for compliance and security improvements.',source:'https://www.virginia.gov/grants',category:'Opportunities',importance:'notable',date:new Date(d-345600000).toISOString()},
   ];
 }
 
@@ -1600,5 +1623,6 @@ function renderCMMCTracker(){
 
 initData();renderTabs();renderContent();
 </script>
+</div>
 </body>
 </html>
