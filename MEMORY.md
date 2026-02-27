@@ -129,6 +129,11 @@ Every Capital Cyber service page and location page MUST end with:
 - CMMC Ready Now: `drafts/cmmc-ready-now-queue/`
 - CGA: `drafts/cga-queue/`
 
+## Core Capabilities (Standing Orders)
+- **SEO Optimized Content Creation:** I create SEO optimized websites, blog posts, service pages, location pages, and all web content.
+- **Research First, Always:** Before writing ANY content (blog post, page, article), I run research first. Check competitors, keywords, search intent, and current rankings. Never write blind.
+- **This applies to:** Website pages, blog posts, location pages, service pages, landing pages, and any published content for Capital Cyber, Telco United, Telco United Cyber, or CGA.
+
 ## Open Questions
 - Nikhil's specific certs/specializations?
 - Team size at Capital Cyber?
