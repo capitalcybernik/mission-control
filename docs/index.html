@@ -350,26 +350,42 @@ function switchTab(id){
 
 // ===== PAGES & LINKS =====
 function renderPages(){
-  const baseUrl='https://capitalcybernik.github.io/mission-control';
-  const pages=[
-    {title:'CMMC Contract Tracker',desc:'Live tracker of 30+ active CMMC related government solicitations from SAM.gov',url:baseUrl+'/cmmc-contract-tracker.html',status:'Ready',cat:'CMMC'},
-    {title:'CMMC Contracts Are Here (Blog Post)',desc:'Q1 2026 analysis of CMMC contract landscape, $2.1B+ in active opportunities',url:baseUrl+'/blog-cmmc-contracts-2026.html',status:'Ready',cat:'Blog'},
-    {title:'CMMC for Construction Companies',desc:'Industry specific landing page targeting construction and heavy civil contractors',url:baseUrl+'/cmmc-for-construction.html',status:'Ready',cat:'Industry Page'},
-    {title:'CMMC for Manufacturers',desc:'Industry specific landing page targeting manufacturing companies in the DIB',url:baseUrl+'/cmmc-for-manufacturers.html',status:'Ready',cat:'Industry Page'},
-    {title:'Fast Track to Insurability',desc:'Landing page for the Insurability as a Service product offering',url:baseUrl+'/insurability-landing-page.html',status:'Ready',cat:'Product'},
-  ];
-  const catColors={CMMC:'var(--blue)',Blog:'var(--purple)','Industry Page':'var(--green)',Product:'var(--orange)'};
-  return `<h2 style="margin-bottom:0.5rem">🔗 Pages & Links</h2>
-  <p style="color:var(--muted);margin-bottom:1.5rem">Draft pages hosted on GitHub Pages. Ready for review before deploying to WordPress.</p>
-  <div class="card-grid">${pages.map(p=>`<div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
-      <span style="font-size:0.7rem;font-weight:600;padding:0.2rem 0.6rem;border-radius:999px;background:${catColors[p.cat]||'var(--gray)'};color:#fff">${p.cat}</span>
-      <span style="font-size:0.7rem;color:var(--green);font-weight:600">● ${p.status}</span>
-    </div>
-    <h3 style="font-size:1rem;margin-bottom:0.5rem">${p.title}</h3>
-    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem">${p.desc}</p>
-    <a href="${p.url}" target="_blank" style="font-size:0.85rem;font-weight:600">View Page →</a>
-  </div>`).join('')}</div>`;
+  const pages=LS.get('ares_pages',[
+    {title:'CMMC Contract Tracker',desc:'Live tracker of 30+ active CMMC related government solicitations from SAM.gov',url:'https://capitalcybernik.github.io/mission-control/cmmc-contract-tracker.html',status:'Draft',cat:'CMMC',date:'2026-02-26'},
+    {title:'CMMC Contracts Are Here',desc:'Q1 2026 analysis of the CMMC contract landscape. $2.1B+ in active opportunities across 120+ solicitations.',url:'https://capitalcybernik.github.io/mission-control/blog-cmmc-contracts-2026.html',status:'Draft',cat:'Blog',date:'2026-02-26'},
+    {title:'CMMC for Construction Companies',desc:'Industry landing page targeting construction and heavy civil contractors pursuing DoD work.',url:'https://capitalcybernik.github.io/mission-control/cmmc-for-construction.html',status:'Draft',cat:'Industry Page',date:'2026-02-26'},
+    {title:'CMMC for Manufacturers',desc:'Industry landing page targeting manufacturing companies in the defense industrial base.',url:'https://capitalcybernik.github.io/mission-control/cmmc-for-manufacturers.html',status:'Draft',cat:'Industry Page',date:'2026-02-26'},
+    {title:'Fast Track to Insurability',desc:'Landing page for the Insurability as a Service product. Big 5 controls, risk reduction, premium savings.',url:'https://capitalcybernik.github.io/mission-control/insurability-landing-page.html',status:'Draft',cat:'Product',date:'2026-02-25'},
+  ]);
+  if(!LS.get('ares_pages'))LS.set('ares_pages',pages);
+  const catColors={CMMC:'var(--blue)',Blog:'var(--purple)','Industry Page':'var(--green)',Product:'var(--orange)',Service:'var(--yellow)'};
+  const statusColors={Draft:'var(--orange)',Live:'var(--green)',Review:'var(--yellow)',Archived:'var(--gray)'};
+  const sorted=[...pages].sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const grouped={};sorted.forEach(p=>{const d=p.date||'Unknown';if(!grouped[d])grouped[d]=[];grouped[d].push(p)});
+  const dates=Object.keys(grouped).sort((a,b)=>new Date(b)-new Date(a));
+  return `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+    <div><h2 style="margin-bottom:0.25rem">🔗 Pages & Links</h2>
+    <p style="color:var(--muted)">All pages built by Ares, organized by date. Click to review.</p></div>
+    <div style="font-size:0.85rem;color:var(--muted)">${pages.length} pages total</div>
+  </div>
+  <div class="stats-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:2rem">
+    <div class="card stat-card"><div class="stat-value">${pages.length}</div><div class="stat-label">Total Pages</div></div>
+    <div class="card stat-card"><div class="stat-value">${pages.filter(p=>p.status==='Live').length}</div><div class="stat-label">Live</div></div>
+    <div class="card stat-card"><div class="stat-value">${pages.filter(p=>p.status==='Draft').length}</div><div class="stat-label">Drafts</div></div>
+    <div class="card stat-card"><div class="stat-value">${new Set(pages.map(p=>p.cat)).size}</div><div class="stat-label">Categories</div></div>
+  </div>
+  ${dates.map(d=>`<div style="margin-bottom:2rem">
+    <div style="font-size:0.85rem;font-weight:600;color:var(--muted);margin-bottom:0.75rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border)">📅 ${new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}</div>
+    <div class="card-grid">${grouped[d].map(p=>`<div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
+        <span style="font-size:0.7rem;font-weight:600;padding:0.2rem 0.6rem;border-radius:999px;background:${catColors[p.cat]||'var(--gray)'};color:#fff">${p.cat}</span>
+        <span style="font-size:0.7rem;color:${statusColors[p.status]||'var(--gray)'};font-weight:600">● ${p.status}</span>
+      </div>
+      <h3 style="font-size:1rem;margin-bottom:0.5rem">${p.title}</h3>
+      <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem">${p.desc}</p>
+      <a href="${p.url}" target="_blank" style="font-size:0.85rem;font-weight:600">View Page →</a>
+    </div>`).join('')}</div>
+  </div>`).join('')}`;
 }
 
 // ===== MAIN RENDER =====
