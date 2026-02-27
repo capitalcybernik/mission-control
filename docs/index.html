@@ -332,6 +332,7 @@ const tabs=[
   {id:'marketing',icon:'📧',label:'Marketing'},
   {id:'cmmc',icon:'🎯',label:'CMMC Tracker'},
   {id:'pages',icon:'🔗',label:'Pages & Links'},
+  {id:'roles',icon:'👥',label:'Roles'},
 ];
 
 let activeTab='dashboard';
@@ -388,10 +389,128 @@ function renderPages(){
   </div>`).join('')}`;
 }
 
+// ===== ROLES =====
+function renderRoles(){
+  const roles=[
+    {
+      name:'Ares',title:'Master Control AI',type:'AI Agent',status:'Active',since:'Feb 14, 2026',emoji:'⚔️',
+      reports:'Nikhil Bon (CEO)',
+      summary:'Digital strategist and operator. Handles marketing execution, content creation, website management, sales enablement, CRM operations, competitive intelligence, and operational dashboards. Acts as Nikhil\'s right hand for anything that can be automated, researched, or built.',
+      responsibilities:[
+        'Website management: WordPress page creation, updates, SEO optimization on capital-cyber.com',
+        'Content production: blog posts, landing pages, industry pages, email campaigns',
+        'Marketing email series: 20+ humanized emails for GHL drip campaigns (Tue/Thu cadence)',
+        'Social media: draft and schedule posts for Capital Cyber, CMMC Ready Now, and CGA across LinkedIn, Facebook, and X',
+        'CMMC contract tracking: monitor SAM.gov for new solicitations, maintain live tracker',
+        'CRM operations: GHL contact management, pipeline support, draft outbound emails',
+        'Competitive intelligence: market research, partnership identification, vertical analysis',
+        'Sales enablement: lead research, meeting prep, proposal support, talking points for Rick',
+        'Mission Control dashboard: build and maintain the ops dashboard at capitalcybernik.github.io/mission-control',
+        'Memory and continuity: maintain institutional knowledge across sessions, track decisions and context',
+        'Email management: draft and route emails (always CC nikhil@capital-cyber.com)',
+        'Task management: log all work to Dart AI for visibility and tracking',
+      ],
+      skills:['WordPress REST API','GoHighLevel CRM','GitHub Pages','HTML/CSS/JS','Email copywriting','SEO content','Market research','SAM.gov intelligence','Data analysis','Dashboard development','Social media strategy','CMMC/NIST compliance knowledge'],
+      tools:['WordPress API','GHL API','GitHub','Gmail SMTP','Brave Search','SAM.gov','Dart AI','Upload Post API','ElevenLabs TTS','OpenClaw platform'],
+      kpis:['Pages published per week','Email open/click rates (once live)','CMMC tracker accuracy','Content turnaround time','Lead research quality','Dashboard uptime']
+    },
+    {
+      name:'Nikhil Bon',title:'CEO / Cybersecurity Engineer',type:'Human',status:'Active',since:'Founder',emoji:'👑',
+      reports:'N/A (Owner)',
+      summary:'Founder and technical leader. 24 years IT experience, cybersecurity engineer, non-profit board member. Sets strategy, closes deals, handles technical assessments and client relationships.',
+      responsibilities:[
+        'Company strategy and direction',
+        'Technical cybersecurity assessments and pen testing',
+        'Client relationship management',
+        'CMMC compliance advisory',
+        'Final approval on all external communications',
+        'Non-profit board (Cyber Grants Alliance)',
+      ],
+      skills:['Cybersecurity engineering','Penetration testing','CMMC/NIST compliance','Network security','Client advisory','Business strategy'],
+      tools:['Action1 RMM','Microsoft 365','Various security tools'],
+      kpis:[]
+    },
+    {
+      name:'Rick D',title:'COO / CMO / CFO',type:'Human',status:'Active',since:'Co-founder',emoji:'📊',
+      reports:'Nikhil Bon',
+      summary:'Operations, marketing, and finance lead. Meticulous and detail-oriented. Handles sales calls, client onboarding, financial operations, and marketing oversight. Also serves as Executive Director of Cyber Grants Alliance.',
+      responsibilities:[
+        'Sales calls and client acquisition (target: 40 opportunities via Will Fortune)',
+        'Client onboarding and contract management',
+        'Financial operations and reporting',
+        'Marketing strategy oversight',
+        'CGA Executive Director duties',
+        'Broker partnership development',
+      ],
+      skills:['Sales','Operations management','Financial planning','Client relations','Marketing strategy','Non-profit management'],
+      tools:['GoHighLevel CRM','Microsoft 365','Dart AI'],
+      kpis:['New clients closed','MRR growth','Client retention (currently 100%)']
+    },
+    {
+      name:'Anup',title:'Content & Technical Support',type:'Human',status:'Active',since:'2026',emoji:'✍️',
+      reports:'Nikhil Bon',
+      summary:'Handles content review, blog publishing, and technical support tasks. Key contact for content pipeline.',
+      responsibilities:[
+        'Blog post review and publishing',
+        'Content quality assurance',
+        'Technical documentation support',
+      ],
+      skills:['Content review','Technical writing','WordPress'],
+      tools:['WordPress','Email'],
+      kpis:[]
+    }
+  ];
+  const typeColors={Human:'var(--blue)','AI Agent':'var(--purple)'};
+  return `<div style="margin-bottom:1.5rem">
+    <h2 style="margin-bottom:0.25rem">👥 Capital Cyber — Roles</h2>
+    <p style="color:var(--muted)">Team structure, responsibilities, and capabilities.</p>
+  </div>
+  <div class="stats-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:2rem">
+    <div class="card stat-card"><div class="stat-value">${roles.length}</div><div class="stat-label">Team Members</div></div>
+    <div class="card stat-card"><div class="stat-value">${roles.filter(r=>r.type==='Human').length}</div><div class="stat-label">Humans</div></div>
+    <div class="card stat-card"><div class="stat-value">${roles.filter(r=>r.type==='AI Agent').length}</div><div class="stat-label">AI Agents</div></div>
+    <div class="card stat-card"><div class="stat-value">$14,434</div><div class="stat-label">Current MRR</div></div>
+  </div>
+  ${roles.map(r=>`<div class="card" style="margin-bottom:1.5rem">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+      <div>
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem">
+          <span style="font-size:1.5rem">${r.emoji}</span>
+          <h3 style="font-size:1.15rem;margin:0">${r.name}</h3>
+          <span style="font-size:0.7rem;font-weight:600;padding:0.15rem 0.5rem;border-radius:999px;background:${typeColors[r.type]||'var(--gray)'};color:#fff">${r.type}</span>
+        </div>
+        <div style="font-size:0.85rem;color:var(--muted)">${r.title} · Reports to: ${r.reports} · Since: ${r.since}</div>
+      </div>
+      <span style="font-size:0.75rem;color:var(--green);font-weight:600">● ${r.status}</span>
+    </div>
+    <p style="font-size:0.9rem;color:var(--text);margin-bottom:1rem;line-height:1.6">${r.summary}</p>
+    <div style="margin-bottom:1rem">
+      <div style="font-size:0.8rem;font-weight:600;color:var(--muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em">Responsibilities</div>
+      <ul style="list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0.35rem">
+        ${r.responsibilities.map(resp=>`<li style="font-size:0.85rem;color:var(--text);padding:0.25rem 0">• ${resp}</li>`).join('')}
+      </ul>
+    </div>
+    <div style="display:flex;gap:2rem;flex-wrap:wrap">
+      <div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em">Skills</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.35rem">${r.skills.map(s=>`<span style="font-size:0.75rem;padding:0.2rem 0.5rem;border-radius:999px;background:rgba(0,0,0,0.05);color:var(--text)">${s}</span>`).join('')}</div>
+      </div>
+      <div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em">Tools</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.35rem">${r.tools.map(t=>`<span style="font-size:0.75rem;padding:0.2rem 0.5rem;border-radius:999px;background:rgba(59,130,246,0.1);color:var(--blue)">${t}</span>`).join('')}</div>
+      </div>
+    </div>
+    ${r.kpis.length?`<div style="margin-top:1rem">
+      <div style="font-size:0.8rem;font-weight:600;color:var(--muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em">KPIs</div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.35rem">${r.kpis.map(k=>`<span style="font-size:0.75rem;padding:0.2rem 0.5rem;border-radius:999px;background:rgba(16,185,129,0.1);color:var(--green)">${k}</span>`).join('')}</div>
+    </div>`:''}
+  </div>`).join('')}`;
+}
+
 // ===== MAIN RENDER =====
 function renderContent(){
   const el=document.getElementById('mainContent');
-  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel,marketing:renderMarketing,cmmc:renderCMMCTracker,pages:renderPages};
+  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel,marketing:renderMarketing,cmmc:renderCMMCTracker,pages:renderPages,roles:renderRoles};
   el.innerHTML=`<div class="tab-content active">${(renderers[activeTab]||renderers.dashboard)()}</div>`;
   if(activeTab==='meetings')startCountdowns();
 }
