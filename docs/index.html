@@ -302,9 +302,9 @@ function defaultIntel(){
   const d=new Date();
   return [
     {id:genId(),title:'CMMC 2.0 Final Rule Updates',summary:'The DoD has released updated guidance on CMMC 2.0 Level 2 assessment requirements. Key changes include streamlined evidence collection and new reciprocity agreements with FedRAMP.',source:'https://www.defense.gov/cmmc',category:'CMMC News',importance:'hot',date:new Date(d-86400000).toISOString()},
-    {id:genId(),title:'Ransomware Attacks Up 40% in Q1 2026',summary:'A new report from CrowdStrike shows ransomware incidents increased 40% year-over-year, with SMBs being the primary target. Average ransom demand now exceeds $1.2M.',source:'https://www.crowdstrike.com/reports',category:'Industry Trends',importance:'hot',date:new Date(d-172800000).toISOString()},
-    {id:genId(),title:'CompetitorX Launches MSP Division',summary:'CompetitorX announced a new Managed Security Provider division targeting DoD contractors in the DMV area. They are pricing aggressively at $2K/mo for basic CMMC compliance packages.',source:'https://competitorx.com/news',category:'Competitor Watch',importance:'notable',date:new Date(d-259200000).toISOString()},
-    {id:genId(),title:'VA State Cybersecurity Grant Program Opening',summary:'Virginia is opening applications for its $5M cybersecurity small business grant program. Eligible businesses can receive up to $50K for compliance and security improvements.',source:'https://www.virginia.gov/grants',category:'Opportunities',importance:'notable',date:new Date(d-345600000).toISOString()},
+    {id:genId(),title:'Ransomware Attacks Up 40% in Q1 2026',summary:'A new report from CrowdStrike shows ransomware incidents increased 40% year-over-year, with SMBs being the primary target. Average ransom demands continue to climb.',source:'https://www.crowdstrike.com/reports',category:'Industry Trends',importance:'hot',date:new Date(d-172800000).toISOString()},
+    {id:genId(),title:'CompetitorX Launches MSP Division',summary:'CompetitorX announced a new Managed Security Provider division targeting DoD contractors in the DMV area. They are pricing aggressively for basic CMMC compliance packages.',source:'https://competitorx.com/news',category:'Competitor Watch',importance:'notable',date:new Date(d-259200000).toISOString()},
+    {id:genId(),title:'VA State Cybersecurity Grant Program Opening',summary:'Virginia is opening applications for its cybersecurity small business grant program for compliance and security improvements.',source:'https://www.virginia.gov/grants',category:'Opportunities',importance:'notable',date:new Date(d-345600000).toISOString()},
   ];
 }
 
@@ -312,7 +312,7 @@ const AGENT_LOGOS={'Ares':'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAB
 function genId(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
 function fmtDate(d){return new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
 function fmtDateTime(d){return new Date(d).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}
-function fmtMoney(n){return '$'+Number(n).toLocaleString('en-US')}
+
 function getGreeting(){const h=new Date().getHours();return h<12?'morning':h<17?'afternoon':'evening'}
 function isToday(d){const t=new Date(),dd=new Date(d);return t.toDateString()===dd.toDateString()}
 function isPast(d){return new Date(d)<new Date()&&!isToday(d)}
@@ -323,7 +323,7 @@ const tabs=[
   {id:'projects',icon:'📋',label:'Projects'},
   {id:'timeline',icon:'🎯',label:'Timeline'},
   {id:'notes',icon:'📝',label:'Notes'},
-  {id:'revenue',icon:'💰',label:'Revenue'},
+  
   {id:'command',icon:'🏢',label:'Command Center'},
   {id:'meetings',icon:'📞',label:'Meetings'},
   {id:'skills',icon:'🧠',label:'Skills'},
@@ -353,7 +353,7 @@ function switchTab(id){
 function renderPages(){
   const pages=LS.get('ares_pages',[
     {title:'CMMC Contract Tracker',desc:'Live tracker of 30+ active CMMC related government solicitations from SAM.gov',url:'https://capital-cyber.com/cmmc-contract-tracker/',status:'Live',cat:'CMMC',date:'2026-02-26'},
-    {title:'CMMC Contracts Are Here',desc:'Q1 2026 analysis of the CMMC contract landscape. $2.1B+ in active opportunities across 120+ solicitations.',url:'https://capital-cyber.com/cmmc-contracts-2026/',status:'Live',cat:'Blog',date:'2026-02-26'},
+    {title:'CMMC Contracts Are Here',desc:'Q1 2026 analysis of the CMMC contract landscape. over 120 active solicitations requiring CMMC certification.',url:'https://capital-cyber.com/cmmc-contracts-2026/',status:'Live',cat:'Blog',date:'2026-02-26'},
     {title:'CMMC for Construction Companies',desc:'Industry landing page targeting construction and heavy civil contractors pursuing DoD work.',url:'https://capital-cyber.com/cmmc-for-construction/',status:'Live',cat:'Industry Page',date:'2026-02-26'},
     {title:'CMMC for Manufacturers',desc:'Industry landing page targeting manufacturing companies in the defense industrial base.',url:'https://capital-cyber.com/cmmc-for-manufacturers/',status:'Live',cat:'Industry Page',date:'2026-02-26'},
     {title:'Fast Track to Insurability',desc:'Landing page for the Insurability as a Service product. Big 5 controls, risk reduction, premium savings.',url:'https://capital-cyber.com/fast-track-to-insurability/',status:'Live',cat:'Product',date:'2026-02-25'},
@@ -506,7 +506,7 @@ function renderRoles(){
       ],
       skills:['Sales','Operations management','Financial planning','Client relations','Marketing strategy','Non-profit management'],
       tools:['GoHighLevel CRM','Microsoft 365','Dart AI'],
-      kpis:['New clients closed','MRR growth','Client retention (currently 100%)']
+      kpis:['New clients closed','Client retention (currently 100%)']
     },
     {
       name:'Anup',title:'Content & Technical Support',type:'Human',status:'Active',since:'2026',emoji:'✍️',
@@ -531,7 +531,7 @@ function renderRoles(){
     <div class="card stat-card"><div class="stat-value">${roles.length}</div><div class="stat-label">Team Members</div></div>
     <div class="card stat-card"><div class="stat-value">${roles.filter(r=>r.type==='Human').length}</div><div class="stat-label">Humans</div></div>
     <div class="card stat-card"><div class="stat-value">${roles.filter(r=>r.type==='AI Agent').length}</div><div class="stat-label">AI Agents</div></div>
-    <div class="card stat-card"><div class="stat-value">$14,434</div><div class="stat-label">Current MRR</div></div>
+    
   </div>
   ${roles.map(r=>`<div class="card" style="margin-bottom:1.5rem">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
@@ -577,7 +577,7 @@ function renderRoles(){
 // ===== MAIN RENDER =====
 function renderContent(){
   const el=document.getElementById('mainContent');
-  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel,marketing:renderMarketing,cmmc:renderCMMCTracker,pages:renderPages,roles:renderRoles};
+  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel,marketing:renderMarketing,cmmc:renderCMMCTracker,pages:renderPages,roles:renderRoles};
   el.innerHTML=`<div class="tab-content active">${(renderers[activeTab]||renderers.dashboard)()}</div>`;
   if(activeTab==='meetings')startCountdowns();
 }
@@ -593,7 +593,7 @@ function renderDashboard(){
     <div class="welcome">Good ${getGreeting()}, Commander</div>
     <div class="welcome-sub">Capital Cyber Mission Control — All systems operational</div>
     <div class="stats-grid">
-      <div class="card stat-card"><div class="stat-value">${fmtMoney(mrr)}</div><div class="stat-label">Current MRR</div></div>
+      
       <div class="card stat-card"><div class="stat-value">${projects.length}</div><div class="stat-label">Active Projects</div></div>
       <div class="card stat-card"><div class="stat-value">${tasksDue}</div><div class="stat-label">Tasks Due</div></div>
       <div class="card stat-card"><div class="stat-value">${notes.length}</div><div class="stat-label">Notes</div></div>
@@ -601,7 +601,7 @@ function renderDashboard(){
     <div class="section-title">⚡ Quick Actions</div>
     <div class="quick-actions">
       <div class="quick-action" onclick="switchTab('projects')">📋 New Project</div>
-      <div class="quick-action" onclick="switchTab('revenue')">💰 Add Client</div>
+      
       <div class="quick-action" onclick="switchTab('meetings')">📞 Schedule Meeting</div>
       <div class="quick-action" onclick="switchTab('skills')">🧠 Skills</div>
       <div class="quick-action" onclick="switchTab('social')">📱 Social Feed</div>
@@ -1417,7 +1417,7 @@ function esc(s){if(!s)return'';const d=document.createElement('div');d.textConte
 function defaultMarketingEmails(){return [
   {id:1,subject:'Is Windows Taking Screenshots of Everything You Do?',topic:'Windows AI Recall',status:'approved',week:'Week 1 Tue',file:'01-windows-ai-recall.html',notes:'v3 humanized, approved'},
   {id:2,subject:'Does Your IT Get an Alert When Someone Scans Your Network?',topic:'Network Detection & Response',status:'review',week:'Week 1 Thu',file:'02-network-detection-response.html',notes:'Compliance angle: CMMC requirement'},
-  {id:3,subject:'Would Your Insurance Actually Pay Out After a Ransomware Attack?',topic:'Ransomware Protection',status:'review',week:'Week 2 Tue',file:'03-ransomware-protection.html',notes:'$500K ransomware story included'},
+  {id:3,subject:'Would Your Insurance Actually Pay Out After a Ransomware Attack?',topic:'Ransomware Protection',status:'review',week:'Week 2 Tue',file:'03-ransomware-protection.html',notes:'Ransomware story included'},
   {id:4,subject:'You Can Actually Afford 24/7 Security Monitoring Now',topic:'24/7 SOC',status:'review',week:'Week 2 Thu',file:'04-247-soc.html',notes:'Bust the "too expensive" myth'},
   {id:5,subject:'Do You Know What Mark from Accounting Installed on His Computer?',topic:'Application Whitelisting',status:'review',week:'Week 3 Tue',file:'05-application-whitelisting.html',notes:'Insurance + CMMC requires it'},
   {id:6,subject:'If Your Team Uses the Internet at Work, You Need This',topic:'Web Filtering',status:'review',week:'Week 3 Thu',file:'06-web-filtering.html',notes:'Baseline control'},
