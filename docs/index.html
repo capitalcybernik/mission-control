@@ -393,26 +393,88 @@ function renderPages(){
 function renderRoles(){
   const roles=[
     {
-      name:'Ares',title:'Master Control AI',type:'AI Agent',status:'Active',since:'Feb 14, 2026',emoji:'⚔️',
-      reports:'Nikhil Bon (CEO)',
-      summary:'Digital strategist and operator. Handles marketing execution, content creation, website management, sales enablement, CRM operations, competitive intelligence, and operational dashboards. Acts as Nikhil\'s right hand for anything that can be automated, researched, or built.',
-      responsibilities:[
-        'Website management: WordPress page creation, updates, SEO optimization on capital-cyber.com',
-        'Content production: blog posts, landing pages, industry pages, email campaigns',
-        'Marketing email series: 20+ humanized emails for GHL drip campaigns (Tue/Thu cadence)',
-        'Social media: draft and schedule posts for Capital Cyber, CMMC Ready Now, and CGA across LinkedIn, Facebook, and X',
-        'CMMC contract tracking: monitor SAM.gov for new solicitations, maintain live tracker',
-        'CRM operations: GHL contact management, pipeline support, draft outbound emails',
-        'Competitive intelligence: market research, partnership identification, vertical analysis',
-        'Sales enablement: lead research, meeting prep, proposal support, talking points for Rick',
-        'Mission Control dashboard: build and maintain the ops dashboard at capitalcybernik.github.io/mission-control',
-        'Memory and continuity: maintain institutional knowledge across sessions, track decisions and context',
-        'Email management: draft and route emails (always CC nikhil@capital-cyber.com)',
-        'Task management: log all work to Dart AI for visibility and tracking',
+      name:'Ares',title:'Master Control — AI Strategist & Operator',type:'AI Agent',status:'Active',since:'Feb 14, 2026',emoji:'⚔️',
+      reports:'Nikhil Bon (CTO)',
+      summary:'Capital Cyber\'s digital general. Ares owns the execution layer: if it can be built, automated, tracked, or researched, it goes through Ares. Operates 24/7 with full memory continuity across sessions. Sole authority: Nikhil.',
+      sections:[
+        {heading:'Website & Digital Infrastructure',items:[
+          'Full WordPress management via REST API — page creation, content updates, SEO optimization, slug management on capital-cyber.com',
+          'Built and maintains 50+ state CMMC compliance pages, 4 industry landing pages, and the CMMC Contract Tracker',
+          'GitHub Pages deployment for staging and Mission Control dashboard',
+          'Cross site coordination: capital-cyber.com, cmmcreadynow.com, cybergrantsalliance.org',
+        ]},
+        {heading:'Content & Marketing Execution',items:[
+          'Blog posts, industry pages, case studies, and landing pages — written in humanized v3 style (no AI template giveaways)',
+          '20+ email campaign series for GHL drip sequences (Tue/Thu cadence), all client and prospect facing',
+          'Social media content: draft and schedule across 3 brands (Capital Cyber, CMMC Ready Now, CGA) on LinkedIn, Facebook, and X',
+          'Newsletter production: research, write, design, send — signed as Nikhil Bon, Georgia serif, clean text format',
+        ]},
+        {heading:'Sales Intelligence & Enablement',items:[
+          'CMMC contract tracking: monitor 120+ active DoD solicitations on SAM.gov, maintain live tracker with weekly updates',
+          'Inbound lead analysis: research prospects, assess fit, draft personalized outreach emails',
+          'Meeting prep: build briefing docs, talking points, and competitive positioning for Rick\'s sales calls',
+          'Target identification: manufacturing, construction, and gov contractor verticals in the CMMC pipeline',
+          'Partnership research: identify MEP organizations, incubators, and channel partners nationwide',
+        ]},
+        {heading:'CRM & Pipeline Operations',items:[
+          'GoHighLevel management: 4,800+ contacts, pipeline support, email draft workflows',
+          'Lead routing and follow up cadence recommendations',
+          'Contact enrichment and segmentation by vertical',
+          'Draft all outbound emails (Ares does not send from GHL — drafts only, human sends)',
+        ]},
+        {heading:'Compliance & Regulatory Intelligence',items:[
+          'CMMC 2.0 Final Rule tracking and regulatory updates',
+          'NIST 800-171 / DFARS clause monitoring',
+          'Competitive landscape analysis: pricing, positioning, new entrants in the CMMC compliance space',
+          'Federal procurement trend analysis across construction, manufacturing, and defense verticals',
+        ]},
+        {heading:'Operations & Institutional Memory',items:[
+          'Mission Control dashboard: design, build, and maintain the central ops hub with 14+ tabs',
+          'Task management: log all work to Dart AI for Rick and Nikhil visibility',
+          'Institutional memory: maintain decisions, context, contacts, and strategy across every session',
+          'Daily strategy drops to Discord #daily-strategy channel',
+          'Email management: draft and route all emails, always CC nikhil@capital-cyber.com',
+          'EOS support: Rock tracking, L10 meeting prep, scorecard data',
+        ]},
       ],
-      skills:['WordPress REST API','GoHighLevel CRM','GitHub Pages','HTML/CSS/JS','Email copywriting','SEO content','Market research','SAM.gov intelligence','Data analysis','Dashboard development','Social media strategy','CMMC/NIST compliance knowledge'],
-      tools:['WordPress API','GHL API','GitHub','Gmail SMTP','Brave Search','SAM.gov','Dart AI','Upload Post API','ElevenLabs TTS','OpenClaw platform'],
-      kpis:['Pages published per week','Email open/click rates (once live)','CMMC tracker accuracy','Content turnaround time','Lead research quality','Dashboard uptime']
+      skills:['WordPress REST API','GoHighLevel CRM','GitHub Pages','Full stack web (HTML/CSS/JS)','Humanized email copywriting','SEO content strategy','Federal procurement research (SAM.gov)','CMMC 2.0 / NIST 800-171 framework knowledge','Competitive intelligence','Data analysis & visualization','Dashboard engineering','Social media strategy','Call transcript analysis','Executive briefing production','24/7 availability'],
+      tools:['WordPress API','GHL API (4,800+ contacts)','GitHub','Gmail SMTP','Brave Search','SAM.gov','Dart AI','Upload Post API','ElevenLabs TTS','Action1 RMM API','OpenClaw platform'],
+      kpis:['Pages published to capital-cyber.com per week','Marketing email series completion (20/20 built)','CMMC tracker: solicitations tracked vs. total active','Content turnaround: request to published','Lead research depth and accuracy','Mission Control dashboard uptime and feature velocity','Zero missed CC on outbound emails']
+    },
+    {
+      name:'Athena',title:'AI Operations & Intelligence Lead',type:'AI Agent',status:'Active',since:'Feb 2026',emoji:'🦉',
+      reports:'Nikhil Bon (CTO) & Rick D (CEO)',
+      summary:'AI operations and intelligence agent focused on sales intelligence, compliance research, and cross brand content coordination. Works alongside Ares on Capital Cyber operations.',
+      sections:[
+        {heading:'Sales Intelligence',items:[
+          'CMMC contract tracking via SAM.gov',
+          'Inbound lead analysis: call transcripts, prospect research, fit assessment',
+          'Target identification in manufacturing and construction verticals',
+        ]},
+        {heading:'Content & Marketing',items:[
+          'Blog posts, service pages, case studies',
+          'SEO strategy for capital-cyber.com and cybergrantsalliance.org',
+        ]},
+        {heading:'Compliance Research',items:[
+          'CMMC 2.0 regulatory tracking',
+          'NIST/DFARS updates',
+          'Prospect compliance gap identification',
+        ]},
+        {heading:'CRM & Pipeline',items:[
+          'Lead briefings and next step recommendations',
+          'Follow up cadence management',
+          'EOS L10 meeting prep',
+        ]},
+        {heading:'Internal Ops',items:[
+          'Mission Control maintenance',
+          'Daily intel briefings',
+          'Email campaigns',
+          'Cross brand coordination',
+        ]},
+      ],
+      skills:['Federal procurement research','CMMC framework knowledge','Call transcript analysis','SEO content strategy','Executive briefing production','24/7 availability'],
+      tools:['SAM.gov','WordPress','Mission Control'],
+      kpis:[]
     },
     {
       name:'Nikhil Bon',title:'CTO / Cybersecurity Engineer',type:'Human',status:'Active',since:'Founder',emoji:'👑',
@@ -431,8 +493,8 @@ function renderRoles(){
       kpis:[]
     },
     {
-      name:'Rick D',title:'COO / CMO / CFO',type:'Human',status:'Active',since:'Co-founder',emoji:'📊',
-      reports:'Nikhil Bon',
+      name:'Rick D',title:'CEO / COO / CMO / CFO',type:'Human',status:'Active',since:'Co-founder',emoji:'📊',
+      reports:'N/A (Co-owner)',
       summary:'Operations, marketing, and finance lead. Meticulous and detail-oriented. Handles sales calls, client onboarding, financial operations, and marketing oversight. Also serves as Executive Director of Cyber Grants Alliance.',
       responsibilities:[
         'Sales calls and client acquisition (target: 40 opportunities via Will Fortune)',
@@ -484,12 +546,17 @@ function renderRoles(){
       <span style="font-size:0.75rem;color:var(--green);font-weight:600">● ${r.status}</span>
     </div>
     <p style="font-size:0.9rem;color:var(--text);margin-bottom:1rem;line-height:1.6">${r.summary}</p>
-    <div style="margin-bottom:1rem">
+    ${r.sections?r.sections.map(s=>`<div style="margin-bottom:1rem">
+      <div style="font-size:0.8rem;font-weight:600;color:var(--blue);margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.05em">${s.heading}</div>
+      <ul style="list-style:none;padding:0;margin:0">
+        ${s.items.map(i=>`<li style="font-size:0.85rem;color:var(--text);padding:0.2rem 0;padding-left:1rem;text-indent:-0.75rem">→ ${i}</li>`).join('')}
+      </ul>
+    </div>`).join(''): r.responsibilities?`<div style="margin-bottom:1rem">
       <div style="font-size:0.8rem;font-weight:600;color:var(--muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em">Responsibilities</div>
       <ul style="list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0.35rem">
         ${r.responsibilities.map(resp=>`<li style="font-size:0.85rem;color:var(--text);padding:0.25rem 0">• ${resp}</li>`).join('')}
       </ul>
-    </div>
+    </div>`:''}
     <div style="display:flex;gap:2rem;flex-wrap:wrap">
       <div>
         <div style="font-size:0.8rem;font-weight:600;color:var(--muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em">Skills</div>
