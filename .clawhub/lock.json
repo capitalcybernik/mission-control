@@ -48,6 +48,54 @@
     "ghl-crm-pro": {
       "version": "1.0.0",
       "installedAt": 1772080207213
+    },
+    "github": {
+      "version": "1.0.0",
+      "installedAt": 1772223002116
+    },
+    "conventional-commits": {
+      "version": "1.0.1",
+      "installedAt": 1772223014603
+    },
+    "skill-vetting": {
+      "version": "1.1.0",
+      "installedAt": 1772223029033
+    },
+    "negotiation": {
+      "version": "1.0.0",
+      "installedAt": 1772223079871
+    },
+    "anthropic-frontend-design": {
+      "version": "1.1.0",
+      "installedAt": 1772223126149
+    },
+    "cellcog": {
+      "version": "1.0.21",
+      "installedAt": 1772223140223
+    },
+    "trend-watcher": {
+      "version": "1.0.1",
+      "installedAt": 1772223169390
+    },
+    "computer-use": {
+      "version": "1.2.1",
+      "installedAt": 1772223182044
+    },
+    "video-agent": {
+      "version": "2.8.0",
+      "installedAt": 1772223220008
+    },
+    "business-model-canvas": {
+      "version": "0.1.0",
+      "installedAt": 1772223261830
+    },
+    "speedtest": {
+      "version": "1.0.1",
+      "installedAt": 1772223276725
+    },
+    "docker-essentials": {
+      "version": "1.0.0",
+      "installedAt": 1772223285193
     }
   }
 }
