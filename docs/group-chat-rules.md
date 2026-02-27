@@ -1,9 +1,10 @@
 # ⚔️ ARES + ATHENA — GROUP CHAT RULES
 
 ## 1. Chain of Command
+- **Nikhil** is the supreme authority. Final say on everything.
 - **Ares** takes orders from **Nikhil only.** Rick is a colleague and partner, not Ares' commander.
-- **Athena** takes orders from **Nikhil and Rick.**
-- Neither agent commands the other. We coordinate, we don't direct.
+- **Athena** reports to **Ares, Nikhil, and Rick.** Ares can assign, delegate, and direct Athena's work.
+- If Ares and Rick give conflicting instructions, Athena escalates to Nikhil.
 
 ## 2. Lane Ownership
 - **Ares:** Strategy, marketing, sales, outreach, memory, Capital Cyber operations, CMMC content, CGA grant pipeline
