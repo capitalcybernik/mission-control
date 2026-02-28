@@ -344,8 +344,6 @@ function isPast(d){return new Date(d)<new Date()&&!isToday(d)}
 const tabs=[
   {id:'dashboard',icon:'📊',label:'Dashboard'},
   {id:'projects',icon:'📋',label:'Projects'},
-  {id:'timeline',icon:'🎯',label:'Timeline'},
-  {id:'notes',icon:'📝',label:'Notes'},
   
   {id:'command',icon:'🏢',label:'Command Center'},
   {id:'meetings',icon:'📞',label:'Meetings'},
@@ -600,7 +598,7 @@ function renderRoles(){
 // ===== MAIN RENDER =====
 function renderContent(){
   const el=document.getElementById('mainContent');
-  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel,marketing:renderMarketing,cmmc:renderCMMCTracker,pages:renderPages,roles:renderRoles};
+  const renderers={dashboard:renderDashboard,projects:renderProjects,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel,marketing:renderMarketing,cmmc:renderCMMCTracker,pages:renderPages,roles:renderRoles};
   el.innerHTML=`<div class="tab-content active">${(renderers[activeTab]||renderers.dashboard)()}</div>`;
   if(activeTab==='meetings')startCountdowns();
 }
