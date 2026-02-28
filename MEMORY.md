@@ -134,6 +134,9 @@ Every Capital Cyber service page and location page MUST end with:
 - **Research First, Always:** Before writing ANY content (blog post, page, article), I run research first. Check competitors, keywords, search intent, and current rankings. Never write blind.
 - **This applies to:** Website pages, blog posts, location pages, service pages, landing pages, and any published content for Capital Cyber, Telco United, Telco United Cyber, or CGA.
 
+## Design Preferences
+- **Nikhil prefers white/light themes** for websites and landing pages. Default to light backgrounds going forward.
+
 ## Open Questions
 - Nikhil's specific certs/specializations?
 - Team size at Capital Cyber?
