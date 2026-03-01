@@ -50,4 +50,5 @@ export const assessmentQuestions: AssessmentQuestion[] = [
 
   // Audit and Accountability
   { id: '3.3.1', controlFamily: 'AU', controlId: '3.3.1', question: 'Create and retain audit logs.', description: 'Create, protect, and retain audit records per policy.', responseType: 'maturity' },
-  { id: '3.3.2', controlFamily: 'AU', controlId: '3.3.2', question:
+  { id: '3.3.2', controlFamily: 'AU', controlId: '3.3.2', question: 'Ensure actions can be traced to individual users.', description: 'Provide accountability through unique user identification.', responseType: 'maturity' },
+]

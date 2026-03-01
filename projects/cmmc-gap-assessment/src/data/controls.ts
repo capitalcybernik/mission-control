@@ -143,4 +143,19 @@ export const l2AdditionalControls = [
     'Are roles separated in system design?',
     'Are shared resources controlled?',
     'Is network communication by exception?',
-    'Is split tunneling prohibited?
+    'Is split tunneling prohibited?',
+    'Are cryptographic mechanisms used to protect CUI?',
+    'Are collaborative devices controlled?',
+    'Is mobile code controlled?',
+    'Is VoIP protected?',
+    'Are session authenticity protections in place?',
+    'Is CUI at rest protected?',
+    'Are network device management connections secured?',
+    'Are DNS filtering or protection mechanisms in place?',
+  ]},
+  { family: 'SI', questions: [
+    'Are security alerts and advisories monitored?',
+    'Is malicious code detected and eradicated?',
+    'Are system security alerts generated?',
+  ]},
+];
