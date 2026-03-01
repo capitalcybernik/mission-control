@@ -17,11 +17,13 @@ export interface CompanyInfo {
 export interface ControlResponse {
   controlId: string;
   status: ImplementationStatus;
+  notes?: string;
 }
 
 export interface AssessmentData {
   companyInfo: CompanyInfo;
   responses: Record<string, ImplementationStatus>;
+  notes: Record<string, string>;
   completedAt?: string;
 }
 
@@ -52,12 +54,15 @@ export interface GapItem {
   family: string;
   description: string;
   status: ImplementationStatus;
+  notes?: string;
 }
 
 export interface Submission {
   id: string;
   companyInfo: CompanyInfo;
+  grantCode?: string;
   responses: Record<string, ImplementationStatus>;
+  notes: Record<string, string>;
   result: AssessmentResult;
   submittedAt: string;
 }
@@ -83,5 +88,6 @@ export interface Control {
   id: string;
   family: string;
   name: string;
+  plainDescription: string;
   isL1: boolean;
 }

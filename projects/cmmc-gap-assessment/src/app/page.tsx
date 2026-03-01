@@ -8,20 +8,28 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 py-20 md:py-32">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Get Your Free CMMC Gap Assessment
+              Start Your CMMC Gap Assessment
             </h1>
             <p className="text-xl md:text-2xl mb-4 text-blue-200">
               Know where you stand in 10 minutes
             </p>
-            <p className="text-lg text-blue-100 mb-10 max-w-2xl mx-auto">
+            <p className="text-lg text-blue-100 mb-6 max-w-2xl mx-auto">
               CMMC Ready Now helps DoD contractors understand their cybersecurity maturity 
               and compliance status against NIST 800-171 requirements.
+            </p>
+            <p className="text-md text-blue-200 mb-10 max-w-xl mx-auto">
+              If you have a grant code from Cyber Grants Alliance, please have it handy.
+              If you don&apos;t have a code, visit{' '}
+              <a href="https://cybergrantsalliance.org" target="_blank" rel="noopener noreferrer" className="text-white underline font-semibold hover:text-blue-100">
+                cybergrantsalliance.org
+              </a>{' '}
+              to apply for the grant.
             </p>
             <Link
               href="/assessment"
               className="inline-block bg-white text-blue-900 font-bold py-4 px-10 rounded-lg text-lg hover:bg-blue-50 transition"
             >
-              Start Free Assessment
+              Start Assessment
             </Link>
           </div>
         </div>
@@ -113,14 +121,21 @@ export default function Home() {
       <div className="py-20 bg-blue-900 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to understand your CMMC status?</h2>
-          <p className="text-xl mb-10 text-blue-200">
-            Join hundreds of contractors who have used our free assessment to start their compliance journey.
+          <p className="text-xl mb-6 text-blue-200">
+            Take the assessment and find out exactly where your organization stands.
+          </p>
+          <p className="text-md text-blue-300 mb-10">
+            You will need a grant code from{' '}
+            <a href="https://cybergrantsalliance.org" target="_blank" rel="noopener noreferrer" className="text-white underline hover:text-blue-100">
+              Cyber Grants Alliance
+            </a>{' '}
+            to get started.
           </p>
           <Link
             href="/assessment"
             className="inline-block bg-white text-blue-900 font-bold py-4 px-10 rounded-lg text-lg hover:bg-blue-50 transition"
           >
-            Start Free Assessment
+            Start Assessment
           </Link>
         </div>
       </div>

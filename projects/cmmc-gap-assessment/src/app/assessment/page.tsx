@@ -23,11 +23,15 @@ const STORAGE_KEY = 'cmmc-assessment-data';
 
 export default function AssessmentPage() {
   const router = useRouter();
-  const [step, setStep] = useState(0); // 0 = company info, 1+ = control families
+  const [step, setStep] = useState(0); // 0 = grant code, 1 = company info, 2+ = control families
   const [companyInfo, setCompanyInfo] = useState<CompanyInfo>({
     name: '', contact: '', email: '', phone: '', level: 'L1',
   });
+  const [grantCode, setGrantCode] = useState('');
+  const [grantCodeError, setGrantCodeError] = useState('');
+  const [grantCodeValidating, setGrantCodeValidating] = useState(false);
   const [responses, setResponses] = useState<Record<string, ImplementationStatus>>({});
+  const [notes, setNotes] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
 
   // Load from localStorage
@@ -37,7 +41,9 @@ export default function AssessmentPage() {
       try {
         const data = JSON.parse(saved);
         if (data.companyInfo) setCompanyInfo(data.companyInfo);
+        if (data.grantCode) setGrantCode(data.grantCode);
         if (data.responses) setResponses(data.responses);
+        if (data.notes) setNotes(data.notes);
         if (data.step !== undefined) setStep(data.step);
       } catch { /* ignore */ }
     }
@@ -45,8 +51,8 @@ export default function AssessmentPage() {
 
   // Save to localStorage
   const save = useCallback(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ companyInfo, responses, step }));
-  }, [companyInfo, responses, step]);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ companyInfo, grantCode, responses, notes, step }));
+  }, [companyInfo, grantCode, responses, notes, step]);
 
   useEffect(() => { save(); }, [save]);
 
@@ -56,7 +62,7 @@ export default function AssessmentPage() {
     const order = controlFamilies.map(f => f.code);
     return order.indexOf(a) - order.indexOf(b);
   });
-  const totalSteps = familyCodes.length + 1; // +1 for company info
+  const totalSteps = familyCodes.length + 2; // +1 company info, +1 grant code
 
   const progress = Math.round((step / totalSteps) * 100);
 
@@ -64,11 +70,43 @@ export default function AssessmentPage() {
     setResponses(prev => ({ ...prev, [controlId]: status }));
   };
 
+  const handleNotes = (controlId: string, value: string) => {
+    setNotes(prev => ({ ...prev, [controlId]: value }));
+  };
+
   const canProceedFromCompanyInfo = () => {
     return companyInfo.name && companyInfo.contact && companyInfo.email && companyInfo.phone;
   };
 
-  const currentFamilyCode = step > 0 ? familyCodes[step - 1] : null;
+  const validateGrantCode = async () => {
+    if (!grantCode.trim()) {
+      setGrantCodeError('Please enter your grant code.');
+      return;
+    }
+    setGrantCodeValidating(true);
+    setGrantCodeError('');
+    try {
+      const res = await fetch('/api/validate-grant-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: grantCode.trim() }),
+      });
+      const data = await res.json();
+      if (data.valid) {
+        setStep(1);
+      } else {
+        setGrantCodeError('This grant code is not recognized. Please contact Cyber Grants Alliance to verify your code.');
+      }
+    } catch {
+      setGrantCodeError('Unable to validate your code. Please try again.');
+    } finally {
+      setGrantCodeValidating(false);
+    }
+  };
+
+  // Offset for control families: step 2 = familyCodes[0], step 3 = familyCodes[1], etc.
+  const familyIndex = step - 2;
+  const currentFamilyCode = step >= 2 ? familyCodes[familyIndex] : null;
   const currentControls = currentFamilyCode ? grouped[currentFamilyCode] : [];
 
   const allCurrentAnswered = currentControls.every(c => responses[c.id]);
@@ -79,10 +117,10 @@ export default function AssessmentPage() {
       const res = await fetch('/api/submit-assessment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ companyInfo, responses }),
+        body: JSON.stringify({ companyInfo, grantCode: grantCode.trim(), responses, notes }),
       });
       if (res.ok) {
-        localStorage.setItem('cmmc-assessment-result', JSON.stringify({ companyInfo, responses, completedAt: new Date().toISOString() }));
+        localStorage.setItem('cmmc-assessment-result', JSON.stringify({ companyInfo, grantCode: grantCode.trim(), responses, notes, completedAt: new Date().toISOString() }));
         localStorage.removeItem(STORAGE_KEY);
         router.push('/results');
       } else {
@@ -122,8 +160,50 @@ export default function AssessmentPage() {
       </div>
 
       <div className="max-w-4xl mx-auto px-6 py-8">
-        {/* Step 0: Company Info */}
+        {/* Step 0: Grant Code Verification */}
         {step === 0 && (
+          <div>
+            <h2 className="text-2xl font-bold text-[#1e3a5f] mb-2">Grant Code Verification</h2>
+            <p className="text-gray-600 mb-6">
+              Please enter the grant code provided to you by Cyber Grants Alliance to begin your assessment.
+              If you don&apos;t have a code, visit{' '}
+              <a href="https://cybergrantsalliance.org" target="_blank" rel="noopener noreferrer" className="text-[#1e3a5f] underline font-semibold hover:text-blue-700">
+                cybergrantsalliance.org
+              </a>{' '}
+              to apply for the grant.
+            </p>
+            <div className="max-w-lg">
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1">Enter your Grant Code *</label>
+                <input
+                  type="text"
+                  value={grantCode}
+                  onChange={e => { setGrantCode(e.target.value); setGrantCodeError(''); }}
+                  onKeyDown={e => e.key === 'Enter' && validateGrantCode()}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent text-gray-900 text-lg tracking-wider uppercase"
+                  placeholder="e.g. CMMC2026"
+                />
+              </div>
+              {grantCodeError && (
+                <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                  <p className="text-red-700 text-sm">{grantCodeError}</p>
+                </div>
+              )}
+              <div className="mt-6">
+                <button
+                  onClick={validateGrantCode}
+                  disabled={grantCodeValidating || !grantCode.trim()}
+                  className="bg-[#1e3a5f] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#2a4f7f] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  {grantCodeValidating ? 'Validating...' : 'Continue →'}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Step 1: Company Info */}
+        {step === 1 && (
           <div>
             <h2 className="text-2xl font-bold text-[#1e3a5f] mb-6">Company Information</h2>
             <div className="space-y-4 max-w-lg">
@@ -189,9 +269,15 @@ export default function AssessmentPage() {
                 </div>
               </div>
             </div>
-            <div className="mt-8">
+            <div className="mt-8 flex gap-4">
               <button
-                onClick={() => setStep(1)}
+                onClick={() => setStep(0)}
+                className="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors"
+              >
+                ← Back
+              </button>
+              <button
+                onClick={() => setStep(2)}
                 disabled={!canProceedFromCompanyInfo()}
                 className="bg-[#1e3a5f] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#2a4f7f] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
@@ -202,7 +288,7 @@ export default function AssessmentPage() {
         )}
 
         {/* Control Family Steps */}
-        {step > 0 && step <= familyCodes.length && currentFamilyCode && (
+        {step >= 2 && familyIndex < familyCodes.length && currentFamilyCode && (
           <div>
             <h2 className="text-2xl font-bold text-[#1e3a5f] mb-2">
               {getFamilyName(currentFamilyCode)} ({currentFamilyCode})
@@ -219,7 +305,8 @@ export default function AssessmentPage() {
                     {control.isL1 && (
                       <span className="ml-2 text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">L1</span>
                     )}
-                    <p className="text-gray-800 mt-1 font-medium">{control.name}</p>
+                    <p className="text-gray-900 mt-2 text-base font-semibold">{control.plainDescription}</p>
+                    <p className="text-gray-400 mt-1 text-xs italic">{control.name}</p>
                   </div>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                     {STATUS_OPTIONS.map(status => (
@@ -236,6 +323,16 @@ export default function AssessmentPage() {
                       </button>
                     ))}
                   </div>
+                  <div className="mt-3">
+                    <label className="block text-xs text-gray-500 mb-1">Notes (optional)</label>
+                    <textarea
+                      value={notes[control.id] || ''}
+                      onChange={e => handleNotes(control.id, e.target.value)}
+                      placeholder="Add any notes about this control..."
+                      rows={2}
+                      className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-700 focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent resize-none"
+                    />
+                  </div>
                 </div>
               ))}
             </div>
@@ -247,7 +344,7 @@ export default function AssessmentPage() {
               >
                 ← Back
               </button>
-              {step < familyCodes.length ? (
+              {familyIndex < familyCodes.length - 1 ? (
                 <button
                   onClick={() => setStep(s => s + 1)}
                   className="bg-[#1e3a5f] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#2a4f7f] transition-colors"

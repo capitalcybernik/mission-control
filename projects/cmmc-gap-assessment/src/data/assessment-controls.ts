@@ -1,9 +1,6 @@
 import { Control } from '@/types';
 import { controlFamilies, l1Controls, l2AdditionalControls } from './controls';
 
-// Build a unified list of all controls for the assessment
-// L1 controls come from l1Controls, L2 additional controls from l2AdditionalControls
-
 export const allControls: Control[] = [];
 
 // Add L1 controls
@@ -12,19 +9,20 @@ for (const c of l1Controls) {
     id: c.id,
     family: c.family,
     name: c.name,
+    plainDescription: c.plainDescription,
     isL1: true,
   });
 }
 
-// Add L2 additional controls (these are NOT L1)
+// Add L2 additional controls
 for (const familyGroup of l2AdditionalControls) {
-  const familyInfo = controlFamilies.find(f => f.code === familyGroup.family);
   familyGroup.questions.forEach((q, idx) => {
     const controlId = `${familyGroup.family}.L2-${idx + 1}`;
     allControls.push({
       id: controlId,
       family: familyGroup.family,
       name: q,
+      plainDescription: familyGroup.plainDescriptions[idx],
       isL1: false,
     });
   });

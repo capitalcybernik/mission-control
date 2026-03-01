@@ -11,6 +11,8 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const getPassword = () => sessionStorage.getItem('admin-pw') || password;
+
   const login = async () => {
     setLoading(true);
     setError('');
@@ -30,6 +32,24 @@ export default function AdminPage() {
       setError('Failed to connect');
     }
     setLoading(false);
+  };
+
+  const downloadCSV = async () => {
+    const pw = getPassword();
+    try {
+      const res = await fetch('/api/admin/submissions?format=csv', {
+        headers: { 'x-admin-password': pw },
+      });
+      if (res.ok) {
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `cmmc-submissions-${new Date().toISOString().slice(0, 10)}.csv`;
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+    } catch { /* ignore */ }
   };
 
   useEffect(() => {
@@ -84,7 +104,7 @@ export default function AdminPage() {
           </div>
         </header>
         <div className="max-w-5xl mx-auto px-6 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
             <div className="border rounded-lg p-4">
               <p className="text-xs text-gray-500 uppercase">Company</p>
               <p className="font-bold text-gray-900">{r.companyInfo.name}</p>
@@ -102,6 +122,10 @@ export default function AdminPage() {
               <p className="text-sm text-gray-600">Level: {r.companyInfo.level === 'L1' ? 'Level 1' : 'Level 2'}</p>
               <p className="text-sm text-gray-600">Gaps: {r.gaps.length}</p>
               <p className="text-sm text-gray-600">Submitted: {new Date(selected.submittedAt).toLocaleDateString()}</p>
+            </div>
+            <div className="border rounded-lg p-4 text-center">
+              <p className="text-xs text-gray-500 uppercase">Grant Code</p>
+              <p className="text-lg font-bold text-[#1e3a5f]">{selected.grantCode || 'N/A'}</p>
             </div>
           </div>
 
@@ -133,6 +157,7 @@ export default function AdminPage() {
                     <th className="text-left px-3 py-2 border">Control</th>
                     <th className="text-left px-3 py-2 border">Description</th>
                     <th className="text-left px-3 py-2 border">Status</th>
+                    <th className="text-left px-3 py-2 border">Notes</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -145,6 +170,7 @@ export default function AdminPage() {
                           {g.status}
                         </span>
                       </td>
+                      <td className="px-3 py-2 border text-sm text-gray-600">{selected.notes?.[g.controlId] || ''}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -159,32 +185,43 @@ export default function AdminPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-[#1e3a5f] text-white py-4 px-6">
-        <div className="max-w-5xl mx-auto flex justify-between items-center">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
           <h1 className="text-xl font-bold">Admin Dashboard</h1>
-          <button
-            onClick={() => { sessionStorage.removeItem('admin-pw'); setAuthenticated(false); }}
-            className="text-sm text-blue-200 hover:text-white"
-          >
-            Logout
-          </button>
+          <div className="flex gap-3">
+            <button
+              onClick={downloadCSV}
+              className="text-sm bg-white/20 px-4 py-2 rounded hover:bg-white/30"
+            >
+              Download CSV
+            </button>
+            <button
+              onClick={() => { sessionStorage.removeItem('admin-pw'); setAuthenticated(false); }}
+              className="text-sm text-blue-200 hover:text-white"
+            >
+              Logout
+            </button>
+          </div>
         </div>
       </header>
-      <div className="max-w-5xl mx-auto px-6 py-8">
+      <div className="max-w-6xl mx-auto px-6 py-8">
         <h2 className="text-lg font-bold text-gray-800 mb-4">
           Submissions ({submissions.length})
         </h2>
         {submissions.length === 0 ? (
           <p className="text-gray-500">No submissions yet.</p>
         ) : (
-          <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+          <div className="bg-white rounded-lg border border-gray-200 overflow-x-auto">
             <table className="w-full text-sm">
               <thead className="bg-gray-50">
                 <tr>
                   <th className="text-left px-4 py-3 font-medium text-gray-600">Date</th>
                   <th className="text-left px-4 py-3 font-medium text-gray-600">Company</th>
+                  <th className="text-left px-4 py-3 font-medium text-gray-600">Contact</th>
+                  <th className="text-left px-4 py-3 font-medium text-gray-600">Email</th>
                   <th className="text-left px-4 py-3 font-medium text-gray-600">Level</th>
-                  <th className="text-left px-4 py-3 font-medium text-gray-600">Score</th>
+                  <th className="text-left px-4 py-3 font-medium text-gray-600">Grant Code</th>
                   <th className="text-left px-4 py-3 font-medium text-gray-600">SPRS</th>
+                  <th className="text-left px-4 py-3 font-medium text-gray-600">Gaps</th>
                   <th className="px-4 py-3"></th>
                 </tr>
               </thead>
@@ -193,13 +230,16 @@ export default function AdminPage() {
                   const pct = Math.round((s.result.totalScore / Math.max(s.result.maxScore, 1)) * 100);
                   return (
                     <tr key={s.id} className="border-t border-gray-100 hover:bg-gray-50 cursor-pointer" onClick={() => setSelected(s)}>
-                      <td className="px-4 py-3 text-gray-600">{new Date(s.submittedAt).toLocaleDateString()}</td>
+                      <td className="px-4 py-3 text-gray-600 whitespace-nowrap">{new Date(s.submittedAt).toLocaleDateString()}</td>
                       <td className="px-4 py-3 font-medium text-gray-900">{s.companyInfo.name}</td>
-                      <td className="px-4 py-3">{s.companyInfo.level === 'L1' ? 'Level 1' : 'Level 2'}</td>
+                      <td className="px-4 py-3 text-gray-600">{s.companyInfo.contact}</td>
+                      <td className="px-4 py-3 text-gray-600">{s.companyInfo.email}</td>
+                      <td className="px-4 py-3">{s.companyInfo.level === 'L1' ? 'L1' : 'L2'}</td>
+                      <td className="px-4 py-3 text-gray-600">{s.grantCode || ''}</td>
                       <td className="px-4 py-3">
-                        <span className={`font-bold ${pct >= 80 ? 'text-green-600' : pct >= 50 ? 'text-yellow-600' : 'text-red-600'}`}>{pct}%</span>
+                        <span className={`font-bold ${s.result.sprsScore >= 0 ? 'text-green-600' : 'text-red-600'}`}>{s.result.sprsScore}</span>
                       </td>
-                      <td className="px-4 py-3">{s.result.sprsScore}</td>
+                      <td className="px-4 py-3 text-red-600 font-medium">{s.result.gaps.length}</td>
                       <td className="px-4 py-3 text-[#1e3a5f]">View →</td>
                     </tr>
                   );
