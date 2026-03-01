@@ -1,0 +1,110 @@
+// Types for CMMC Gap Assessment
+
+export interface AssessmentAnswer {
+  controlId: string;
+  status: 'met' | 'partial' | 'not-met' | 'na';
+  evidence?: string;
+  objectives?: Record<string, 'met' | 'partial' | 'not-met'>;
+}
+
+export interface AssessmentData {
+  // Company Info
+  companyName: string;
+  contactName: string;
+  contactEmail: string;
+  contactPhone?: string;
+  cageCode?: string;
+  
+  // CMMC Info
+  currentLevel: 'L1' | 'L2-Self' | 'L2-C3PAO' | 'Unknown';
+  targetLevel: 'L1' | 'L2-Self' | 'L2-C3PAO';
+  
+  // Assessment Answers
+  answers: Record<string, AssessmentAnswer>;
+  
+  // Metadata
+  startedAt: string;
+  completedAt?: string;
+}
+
+export interface ControlFamily {
+  id: string;
+  name: string;
+  description: string;
+  controls: Control[];
+}
+
+export interface Control {
+  id: string;
+  family: string;
+  title: string;
+  description: string;
+  level: 1 | 2;
+  objectives: AssessmentObjective[];
+  guidance?: string;
+}
+
+export interface AssessmentObjective {
+  id: string;
+  description: string;
+}
+
+export interface FamilyScore {
+  familyId: string;
+  familyName: string;
+  totalControls: number;
+  met: number;
+  partial: number;
+  notMet: number;
+  na: number;
+  score: number;
+  maxScore: number;
+}
+
+export interface AssessmentScores {
+  families: FamilyScore[];
+  totalScore: number;
+  maxPossible: number;
+  percentage: number;
+  recommendedLevel: 'L1' | 'L2-Self' | 'L2-C3PAO' | 'Not Ready';
+  l1Compliant: boolean;
+  l2Score: number;
+}
+
+export type AssessmentStatus = 'new' | 'in_review' | 'contacted' | 'converted' | 'declined';
+
+export interface AssessmentRecord {
+  id: string;
+  companyName: string;
+  contactName: string;
+  contactEmail: string;
+  contactPhone?: string;
+  cageCode?: string;
+  currentLevel: string;
+  targetLevel: string;
+  answers: Record<string, AssessmentAnswer>;
+  scores: AssessmentScores;
+  totalScore: number;
+  recommendedLevel: string;
+  status: AssessmentStatus;
+  createdAt: string;
+  updatedAt: string;
+}
+
+// Admin types
+export interface AdminSession {
+  user: {
+    email: string;
+    name: string;
+  };
+  expires: string;
+}
+
+export interface FilterOptions {
+  dateFrom?: string;
+  dateTo?: string;
+  level?: string;
+  status?: AssessmentStatus;
+  minScore?: number;
+  maxScore?: number;
+}
