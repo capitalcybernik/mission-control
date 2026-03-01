@@ -4,6 +4,7 @@ import path from 'path';
 import nodemailer from 'nodemailer';
 import { calculateResults } from '@/lib/scoring';
 import { createGHLContact } from '@/lib/ghl';
+import { saveSubmission } from '@/lib/supabase';
 
 function escapeHtml(s: string): string {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -48,7 +49,22 @@ export async function POST(request: NextRequest) {
       console.error('GHL submission failed:', ghlResult.error);
     }
 
-    // 2. Save to /tmp as fallback
+    // 2. Save to Supabase (primary storage)
+    const supaResult = await saveSubmission({
+      id,
+      companyInfo,
+      responses,
+      notes: notes || {},
+      grantCode: grantCode || '',
+      result,
+    });
+    if (!supaResult.success) {
+      console.error('Supabase save failed:', supaResult.error);
+    } else {
+      console.log('Saved to Supabase:', id);
+    }
+
+    // 2b. Save to /tmp as fallback
     try {
       const submissionsDir = path.join('/tmp', 'submissions');
       await mkdir(submissionsDir, { recursive: true });
@@ -79,6 +95,13 @@ export async function POST(request: NextRequest) {
     ).join('');
 
     // 4. Send email notification
+    console.log('SMTP config check:', { 
+      hasHost: !!process.env.SMTP_HOST, 
+      hasUser: !!process.env.SMTP_USER, 
+      hasPass: !!process.env.SMTP_PASS,
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+    });
     if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
       try {
         const transporter = nodemailer.createTransport({
@@ -147,6 +170,7 @@ export async function POST(request: NextRequest) {
     <p style="font-size:12px;color:#999;margin-top:24px;">
       CRM Status: ${ghlResult.success ? '✅ Contact created in GoHighLevel' : '⚠️ GHL submission failed: ' + escapeHtml(ghlResult.error || 'unknown')}
       ${ghlResult.contactId ? ` (ID: ${ghlResult.contactId})` : ''}
+      <br/>Database: ${supaResult.success ? '✅ Saved to Supabase' : '⚠️ Supabase save failed: ' + escapeHtml(supaResult.error || 'unknown')}
     </p>
 
     <!-- Admin Link -->
@@ -171,15 +195,18 @@ export async function POST(request: NextRequest) {
 </body>
 </html>`;
 
-        await transporter.sendMail({
+        const emailResult = await transporter.sendMail({
           from: process.env.SMTP_USER,
           to: 'nikhil@capital-cyber.com, rick@capital-cyber.com',
           subject: `New CMMC Assessment: ${companyInfo.name} | ${scorePercent}% Score | ${result.gaps.length} Gaps`,
           html: emailHtml,
         });
+        console.log('Email sent successfully:', emailResult.messageId);
       } catch (emailError) {
         console.error('Failed to send email:', emailError);
       }
+    } else {
+      console.warn('SMTP not configured, skipping email notification');
     }
 
     return NextResponse.json({ success: true, id });

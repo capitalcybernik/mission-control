@@ -145,11 +145,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 text-center">
           <p className="mb-2">CMMC Ready Now</p>
           <p className="text-sm">Powered by Capital Cyber</p>
-          <p className="text-sm mt-4">
-            <Link href="/admin/login" className="text-slate-500 hover:text-slate-300">
-              Admin Login
-            </Link>
-          </p>
+          {/* Admin access at /admin - not linked publicly */}
         </div>
       </footer>
     </main>
