@@ -20,7 +20,7 @@ export function Footer() {
               className="mb-4"
             />
             <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm">
-              Enterprise-grade CMMC compliance management platform designed to streamline your certification journey and maintain continuous compliance with confidence.
+              Professional CMMC compliance management platform designed to streamline your certification journey and maintain continuous compliance with confidence.
             </p>
             {/* Social Icons */}
             <div className="flex gap-4">
