@@ -95,7 +95,7 @@ export default function CMMCManufacturingNJ() {
             <p>They're wrong.</p>
             <p className="font-semibold text-navy-800">CMMC Level 2 requires full implementation of 110 NIST 800-171 controls.</p>
             <p>Not a plan. Not a promise. <span className="font-bold">Proof.</span></p>
-            <p>And the Department of Defense isn't waiting around.</p>
+            <p>And the Department of Defense isn&apos;t waiting around.</p>
             <p className="text-lg mt-6">
               Right now, <strong>New Jersey has over 2,800 defense contractors</strong> — many in manufacturing.
               The vast majority are nowhere near ready.
@@ -142,7 +142,7 @@ export default function CMMCManufacturingNJ() {
               We Get NJ Manufacturers CMMC-Ready.<br className="hidden sm:block" /> Without the Headaches.
             </h2>
             <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-              CMMC Ready Now, powered by Capital Cyber, is the compliance partner built for manufacturers who can't afford to guess.
+              CMMC Ready Now, powered by Capital Cyber, is the compliance partner built for manufacturers who can&apos;t afford to guess.
             </p>
           </div>
 
@@ -154,7 +154,7 @@ export default function CMMCManufacturingNJ() {
               },
               {
                 title: 'Remediation & Implementation',
-                desc: 'From policies to technical controls — we don't just tell you what's broken, we fix it. Hands-on engineering, not slide decks.',
+                desc: "From policies to technical controls — we don't just tell you what's broken, we fix it. Hands-on engineering, not slide decks.",
               },
               {
                 title: 'System Security Plan (SSP)',
@@ -166,7 +166,7 @@ export default function CMMCManufacturingNJ() {
               },
               {
                 title: 'Continuous Monitoring',
-                desc: '24/7 monitoring tools and dashboards so you stay compliant after certification. Compliance isn't a one-time event.',
+                desc: "24/7 monitoring tools and dashboards so you stay compliant after certification. Compliance isn't a one-time event.",
               },
               {
                 title: 'Assessment Prep & Mock Audits',
@@ -342,7 +342,7 @@ export default function CMMCManufacturingNJ() {
             <p>Maybe decades.</p>
             <p>You've survived supply chain chaos. COVID. Material shortages.</p>
             <p>You've earned every single contract.</p>
-            <p className="font-semibold text-navy-800 pt-2">But CMMC doesn't care about your track record.</p>
+            <p className="font-semibold text-navy-800 pt-2">But CMMC doesn&apos;t care about your track record.</p>
             <p>It cares about your cybersecurity posture. Today.</p>
             <p>Not next quarter. Not next year. <strong>Now.</strong></p>
             <p className="pt-2">
