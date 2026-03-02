@@ -3,7 +3,7 @@ export const siteContent = {
     name: 'CMMC Ready Now',
     tagline: 'by Capital Cyber Compliance',
     logo: '/logo.svg',
-    contactEmail: 'mgmt@capital-cyber.com',
+    contactEmail: 'info@cmmcreadynow.com',
   },
 
   nav: {
@@ -292,11 +292,11 @@ export const siteContent = {
       successMessage: 'Thank you for reaching out. Our team will respond within one business day.',
     },
     info: {
-      email: 'mgmt@capital-cyber.com',
+      email: 'info@cmmcreadynow.com',
       items: [
         {
           title: 'Email Us',
-          detail: 'mgmt@capital-cyber.com',
+          detail: 'info@cmmcreadynow.com',
           icon: 'Mail',
         },
         {

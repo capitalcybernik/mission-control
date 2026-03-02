@@ -133,10 +133,10 @@ export function Footer() {
             <div>
               <h5 className="font-semibold text-white mb-1 text-sm">Email</h5>
               <a 
-                href="mailto:info@capital-cyber.com" 
+                href="mailto:info@cmmcreadynow.com" 
                 className="text-gray-400 text-sm hover:text-white transition-colors"
               >
-                info@capital-cyber.com
+                info@cmmcreadynow.com
               </a>
             </div>
           </div>

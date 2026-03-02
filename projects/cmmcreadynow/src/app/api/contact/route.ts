@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
           company: company || 'N/A',
           phone: phone || 'N/A',
           message,
-          to: 'mgmt@capital-cyber.com',
+          to: 'info@cmmcreadynow.com',
         }),
       });
 
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
       });
       await transporter.sendMail({
         from: process.env.SMTP_FROM || 'noreply@cmmcreadynow.com',
-        to: 'mgmt@capital-cyber.com',
+        to: 'info@cmmcreadynow.com',
         subject: `CMMC Ready Now: New inquiry from ${name}`,
         text: `Name: ${name}\nEmail: ${email}\nCompany: ${company || 'N/A'}\nPhone: ${phone || 'N/A'}\n\nMessage:\n${message}`,
       });

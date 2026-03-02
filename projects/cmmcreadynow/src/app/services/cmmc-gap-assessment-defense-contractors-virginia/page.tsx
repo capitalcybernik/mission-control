@@ -414,8 +414,8 @@ export default function CMMCGapAssessmentVA() {
             <div>
               <h3 className="font-bold text-navy-800 mb-3">Contact Us</h3>
               <div className="space-y-2">
-                <a href="mailto:info@capital-cyber.com" className="flex items-center gap-2 text-gray-600 text-sm hover:text-navy-800 transition-colors">
-                  <Mail className="w-4 h-4" /> info@capital-cyber.com
+                <a href="mailto:info@cmmcreadynow.com" className="flex items-center gap-2 text-gray-600 text-sm hover:text-navy-800 transition-colors">
+                  <Mail className="w-4 h-4" /> info@cmmcreadynow.com
                 </a>
                 <a href="tel:+15714103066" className="flex items-center gap-2 text-gray-600 text-sm hover:text-navy-800 transition-colors">
                   <Phone className="w-4 h-4" /> (571) 410-3066
