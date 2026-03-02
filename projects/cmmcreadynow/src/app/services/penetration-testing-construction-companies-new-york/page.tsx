@@ -229,7 +229,7 @@ export default function PenTestConstructionNY() {
             {[
               { label: 'CMMC Registered Practitioner', icon: Shield },
               { label: 'OSCP Certified Testers', icon: Award },
-              { label: 'Veteran-Owned Partner', icon: Award },
+              { label: 'Trusted Security Partner', icon: Award },
               { label: '100+ Pen Tests Delivered', icon: CheckCircle2 },
             ].map((badge) => (
               <div

@@ -230,7 +230,7 @@ export default function NIST171ManufacturingPhilly() {
             {[
               { label: 'CMMC Registered Practitioner', icon: Shield },
               { label: 'NIST SP 800-171 Experts', icon: Award },
-              { label: 'Veteran-Owned Partner', icon: Award },
+              { label: 'Trusted Security Partner', icon: Award },
               { label: '100+ Assessments Completed', icon: CheckCircle2 },
             ].map((badge) => (
               <div

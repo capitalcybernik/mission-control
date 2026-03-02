@@ -228,7 +228,7 @@ export default function ManagedSecurityAerospaceFL() {
             {[
               { label: 'CMMC Registered Practitioner', icon: Shield },
               { label: '24/7 SOC Operations', icon: Award },
-              { label: 'Veteran-Owned Partner', icon: Award },
+              { label: 'Trusted Security Partner', icon: Award },
               { label: '99.9% Uptime SLA', icon: CheckCircle2 },
             ].map((badge) => (
               <div
