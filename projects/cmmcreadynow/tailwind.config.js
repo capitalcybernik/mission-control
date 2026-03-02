@@ -18,9 +18,14 @@ module.exports = {
           950: '#060e1a',
         },
         accent: {
-          DEFAULT: '#00d4aa',
-          light: '#33e0be',
-          dark: '#00a888',
+          DEFAULT: '#CC5500',  // burnt orange
+          light: '#E06600',
+          dark: '#A34400',
+        },
+        gold: {
+          DEFAULT: '#B8860B',
+          light: '#D4A017',
+          dark: '#8B6914',
         },
       },
       fontFamily: {

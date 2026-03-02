@@ -76,7 +76,7 @@ export default function FalseClaimsActCMMCBlogPost() {
                 <div>
                   <h3 className="text-xl font-bold text-red-800 mb-3">Legal Warning</h3>
                   <p className="text-red-700 leading-relaxed">
-                    The False Claims Act imposes penalties of <strong>$5,500 to $11,181 per false claim</strong> plus treble damages (three times actual damages). For a multi-year contract worth millions, this can result in tens of millions in penalties. This article provides general information only and is not legal advice.
+                    The False Claims Act imposes penalties of <strong>$5,500 to $11,181 per false claim</strong> plus treble damages (three times actual damages). For a multiyear contract worth millions, this can result in tens of millions in penalties. This article provides general information only and is not legal advice.
                   </p>
                 </div>
               </div>
@@ -147,7 +147,7 @@ export default function FalseClaimsActCMMCBlogPost() {
             <div className="bg-accent/5 border border-accent/20 rounded-xl p-8 my-8">
               <h4 className="text-lg font-bold text-navy-800 mb-3">Example Scenario</h4>
               <p className="text-gray-700">
-                A defense contractor certifies CMMC Level 2 compliance when bidding on a $5 million annual contract. Six months later, an incident reveals they never implemented multi-factor authentication on critical systems. The government could claim every monthly invoice ($416,000) was a false claim because it was submitted under a falsely certified contract.
+                A defense contractor certifies CMMC Level 2 compliance when bidding on a $5 million annual contract. Six months later, an incident reveals they never implemented multifactor authentication on critical systems. The government could claim every monthly invoice ($416,000) was a false claim because it was submitted under a falsely certified contract.
               </p>
               <p className="text-red-700 font-semibold mt-3">
                 Potential liability: 12 invoices × $11,181 per claim = $134,172 in penalties, plus treble damages of $15 million.

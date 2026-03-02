@@ -30,7 +30,7 @@ export default function CaseStudiesPage() {
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-navy-800">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/30 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent/20 rounded-full blur-3xl" />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 bg-accent/15 border border-accent/30 rounded-full px-5 py-2 mb-6">
@@ -129,7 +129,7 @@ export default function CaseStudiesPage() {
               <h3 className="text-2xl font-bold text-white mb-2">Iron Lift Manufacturing</h3>
               <p className="text-gray-400 text-sm mb-4">Manufacturing Company</p>
               <p className="text-gray-300 leading-relaxed">
-                A mid-sized manufacturer navigating CMMC Level 2 certification to maintain their DoD supply chain contracts. Full case study documenting their gap assessment, remediation journey, and certification outcome.
+                A midsized manufacturer navigating CMMC Level 2 certification to maintain their DoD supply chain contracts. Full case study documenting their gap assessment, remediation journey, and certification outcome.
               </p>
             </div>
 

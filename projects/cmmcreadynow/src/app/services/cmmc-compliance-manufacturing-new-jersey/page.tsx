@@ -37,7 +37,7 @@ export default function CMMCManufacturingNJ() {
         {/* Background glow */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/30 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent/20 rounded-full blur-3xl" />
         </div>
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -50,7 +50,7 @@ export default function CMMCManufacturingNJ() {
           {/* Urgency Flag */}
           <div className="inline-flex items-center gap-2 bg-red-500/15 border border-red-500/30 rounded-full px-4 py-1.5 mb-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
             <AlertTriangle className="w-4 h-4 text-red-400" />
-            <span className="text-red-300 text-sm font-semibold">CMMC Phase 2 Enforcement Is Coming — Act Now</span>
+            <span className="text-red-300 text-sm font-semibold">CMMC Phase 2 Enforcement Is Coming. Act Now</span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-6 animate-fade-in-up">
@@ -97,7 +97,7 @@ export default function CMMCManufacturingNJ() {
             <p>Not a plan. Not a promise. <span className="font-bold">Proof.</span></p>
             <p>And the Department of Defense isn&apos;t waiting around.</p>
             <p className="text-lg mt-6">
-              Right now, <strong>New Jersey has over 2,800 defense contractors</strong> — many in manufacturing.
+              Right now, <strong>New Jersey has over 2,800 defense contractors</strong>, many in manufacturing.
               The vast majority are nowhere near ready.
             </p>
             <p>
@@ -154,7 +154,7 @@ export default function CMMCManufacturingNJ() {
               },
               {
                 title: 'Remediation & Implementation',
-                desc: "From policies to technical controls — we don't just tell you what's broken, we fix it. Hands-on engineering, not slide decks.",
+                desc: "From policies to technical controls, we don't just tell you what's broken, we fix it. Hands-on engineering, not slide decks.",
               },
               {
                 title: 'System Security Plan (SSP)',
@@ -162,7 +162,7 @@ export default function CMMCManufacturingNJ() {
               },
               {
                 title: 'Plan of Action & Milestones',
-                desc: 'Strategic POA&M that shows assessors you have a real plan — not wishful thinking.',
+                desc: 'Strategic POA&M that shows assessors you have a real plan, not wishful thinking.',
               },
               {
                 title: 'Continuous Monitoring',
@@ -192,7 +192,7 @@ export default function CMMCManufacturingNJ() {
             Built for New Jersey Manufacturers
           </h2>
           <p className="text-gray-300 text-lg mb-12 max-w-3xl mx-auto">
-            We understand the unique challenges NJ manufacturers face — legacy OT systems, shop floor networks, multi-site operations, and tight margins. Our approach is tailored to your reality.
+            We understand the unique challenges NJ manufacturers face: legacy OT systems, shop floor networks, multisite operations, and tight margins. Our approach is tailored to your reality.
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -260,7 +260,7 @@ export default function CMMCManufacturingNJ() {
               },
               {
                 quote:
-                  'Rick and his team understand manufacturing. They didn\'t just hand us a checklist — they came to our facility, understood our operations, and built a plan that actually works.',
+                  'Rick and his team understand manufacturing. They didn\'t just hand us a checklist. They came to our facility, understood our operations, and built a plan that actually works.',
                 author: 'IT Manager',
                 company: 'Defense Electronics Manufacturer, North NJ',
               },
@@ -302,7 +302,7 @@ export default function CMMCManufacturingNJ() {
               {
                 step: '03',
                 title: 'Remediation & Implementation',
-                desc: 'We work alongside your team to close every gap — technical controls, policies, training, and documentation.',
+                desc: 'We work alongside your team to close every gap: technical controls, policies, training, and documentation.',
               },
               {
                 step: '04',
@@ -327,7 +327,7 @@ export default function CMMCManufacturingNJ() {
               href="https://capital-cyber.com/rick"
               className="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-navy-950 font-bold px-8 py-4 rounded-lg text-lg transition-colors"
             >
-              Start with Step 1 — Book a Call <ArrowRight className="w-5 h-5" />
+              Start with Step 1: Book a Call <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </div>
@@ -410,7 +410,7 @@ export default function CMMCManufacturingNJ() {
             <div>
               <h3 className="font-bold text-navy-800 mb-3">Serving All of New Jersey</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                North Jersey, Central Jersey, South Jersey — Newark, Edison, Camden, Trenton, Paterson, and everywhere in between. On-site and remote support available.
+                North Jersey, Central Jersey, South Jersey: Newark, Edison, Camden, Trenton, Paterson, and everywhere in between. On-site and remote support available.
               </p>
             </div>
             <div>

@@ -144,9 +144,19 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-[#1a3a5c] pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm">
-            © {currentYear} CMMC Ready Now. All rights reserved.
-          </p>
+          <div className="text-gray-500 text-sm text-center sm:text-left">
+            <p>© {currentYear} CMMC Ready Now. All rights reserved.</p>
+            <p className="mt-1">
+              <a 
+                href="https://capital-cyber.com/cmmc-compliance-services/?utm_source=online&utm_medium=website&utm_campaign=cmmcreadynow&utm_content=locationpage" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-gray-400 transition-colors"
+              >
+                Powered by Capital Cyber
+              </a>
+            </p>
+          </div>
           <div className="flex gap-6">
             <Link href="/privacy" className="text-gray-500 hover:text-gray-300 text-sm transition-colors">
               Privacy Policy

@@ -405,7 +405,7 @@ export default function Top10NISTGapsBlogPost() {
             <h3 className="text-xl font-semibold text-navy-800 mt-8 mb-4">3. Address High-Impact Controls Early</h3>
 
             <p>
-              Controls like multi-factor authentication, access controls, and incident response have broad impact across your environment. Prioritize these over narrow technical fixes.
+              Controls like multifactor authentication, access controls, and incident response have broad impact across your environment. Prioritize these over narrow technical fixes.
             </p>
 
             <h3 className="text-xl font-semibold text-navy-800 mt-8 mb-4">4. Use Qualified Consultants</h3>
