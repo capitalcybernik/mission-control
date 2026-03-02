@@ -282,11 +282,11 @@ export default function BlogPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {categories.filter(cat => cat !== 'All').map((category) => {
               const categoryPosts = blogPosts.filter(post => post.category === category);
-              const categoryIcon = categoryPosts[0]?.icon || FileText;
+              const CategoryIcon = categoryPosts[0]?.icon || FileText;
               
               return (
                 <div key={category} className="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center hover:border-accent transition-colors group">
-                  <categoryIcon className="w-8 h-8 text-accent mx-auto mb-3" />
+                  <CategoryIcon className="w-8 h-8 text-accent mx-auto mb-3" />
                   <h3 className="text-lg font-bold text-navy-800 mb-2 group-hover:text-accent transition-colors">
                     {category}
                   </h3>
