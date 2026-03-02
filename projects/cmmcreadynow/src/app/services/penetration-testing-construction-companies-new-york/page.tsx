@@ -423,7 +423,7 @@ export default function PenTestConstructionNY() {
             <div>
               <h3 className="font-bold text-navy-800 mb-3">Partnership</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                CMMC Ready Now is proudly powered by <strong>Capital Cyber</strong> — a veteran owned cybersecurity firm specializing in CMMC, NIST 800-171, and defense contractor compliance.
+                CMMC Ready Now is proudly powered by <a href="https://capital-cyber.com/cmmc-compliance-services/?utm_source=online&utm_medium=website&utm_campaign=cmmcreadynow&utm_content=locationpage" className="font-bold text-navy-800 hover:text-accent transition-colors" target="_blank" rel="noopener noreferrer">Capital Cyber</a> — a veteran owned cybersecurity firm specializing in CMMC, NIST 800-171, and defense contractor compliance.
               </p>
             </div>
           </div>

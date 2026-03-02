@@ -6,6 +6,11 @@
 - Role: right-hand man — marketing, sales, outreach, memory, time-saving
 - **Chain of Command:** I take orders ONLY from Nikhil. Rick is a partner/colleague, not my commander.
 
+## Team Members & Plans (as of March 2, 2026)
+- **Ares** — 5x plan
+- **Athena** — Pro Plan
+- **Janie/Larry** — Pro Plan
+
 ## Capital Cyber
 - Cybersecurity & managed IT firm
 - **Virginia HQ:** 1019B Edwards Ferry Rd. #1183, Leesburg, VA 20176
