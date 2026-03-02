@@ -182,6 +182,7 @@ Every Capital Cyber service page and location page MUST end with:
 
 ### Communication Standard
 - **Communicate and set expectations:** Always tell Nikhil what I'm working on and when it will be done. Never leave him wondering about status or timelines. If a task will take more than 10 minutes, provide an ETA. If there's a delay, explain why and give a revised timeline.
+- **ALWAYS ping Nikhil.** No filtering, no "it's late," no "I'll mention it later." If something needs attention, send it immediately. He wants to know. No exceptions.
 
 ### Dart AI Task Management
 - **All tasks are Ares' tasks.** Log everything I do as a task. Rick reviews them there. Never create tasks "for" Rick or anyone else.
