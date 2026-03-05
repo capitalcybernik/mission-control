@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Calendar, Clock, ArrowRight, FileText, Shield, DollarSign, AlertTriangle, TrendingUp, Phone } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, FileText, Shield, DollarSign, AlertTriangle, TrendingUp, Phone, Award } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'CMMC Blog | Defense Contractor Cybersecurity Insights | CMMC Ready Now',
@@ -28,6 +28,16 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
+    title: '$500K CMMC Gap Assessment Grant Now Available | CGA Grant Launch',
+    slug: 'cmmc-gap-assessment-grant-launch',
+    excerpt: 'Cyber Grants Alliance launches $500,000 in CMMC Gap Assessment Grants for defense contractors. Sponsored by CMMC Ready Now. Apply today for free compliance assistance.',
+    date: '2026-03-05',
+    readTime: '6 min read',
+    category: 'Grant',
+    icon: Award,
+    featured: true
+  },
+  {
     title: 'What Is a CMMC Gap Assessment and Why You Need One',
     slug: 'what-is-cmmc-gap-assessment',
     excerpt: 'A CMMC gap assessment is your roadmap to certification. Learn what it involves, why it is essential, and how it can save you time and money in your compliance journey.',
@@ -35,7 +45,7 @@ const blogPosts = [
     readTime: '8 min read',
     category: 'Assessment',
     icon: Shield,
-    featured: true
+    featured: false
   },
   {
     title: 'CMMC Phase 2 Timeline: What Defense Contractors Need to Know in 2026',
@@ -79,7 +89,7 @@ const blogPosts = [
   }
 ];
 
-const categories = ['All', 'Assessment', 'Timeline', 'Compliance', 'Legal', 'Costs'];
+const categories = ['All', 'Grant', 'Assessment', 'Timeline', 'Compliance', 'Legal', 'Costs'];
 
 export default function BlogPage() {
   const featuredPost = blogPosts.find(post => post.featured);
