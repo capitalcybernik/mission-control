@@ -1,13 +1,31 @@
+# Sensitive config files
 .env
+.env.local
+.env.*
 *.key
 secrets/
-node_modules/
-gmail-api/credentials.json
-gmail-api/token.json
+
+# API tokens and credentials
+.dart-config
 token.json
 credentials.json
-TOOLS.md
-TOOLS.md
-.dart-config
+*_token*
+*secret*
+
+# Gmail API
+gmail-api/credentials.json
+gmail-api/token.json
 gmail-api/exchange-token.js
+
+# Node
+node_modules/
+
+# Tools - now redacted, safe to commit
+# (Actual credentials moved to /root/.openclaw/.local/credentials.md)
+
+# Contains sensitive content
+drafts/linkedin-queue/*password*
+marketing-emails/*password*
+
 .gitmodules
+/root/.openclaw/.local/
