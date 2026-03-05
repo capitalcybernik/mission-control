@@ -29,3 +29,6 @@ marketing-emails/*password*
 
 .gitmodules
 /root/.openclaw/.local/
+
+# Git backup directories (contain secrets)
+.git-backup-*
