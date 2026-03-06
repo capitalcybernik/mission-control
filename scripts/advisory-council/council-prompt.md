@@ -110,6 +110,8 @@ Send the final report via AgentMail:
 - Subject: ⚔️ Advisory Council Briefing — [DATE]
 - Format: Plain text (not HTML) for readability
 
+⚠️ ABSOLUTE RULE: Only email capital-cyber.com addresses. Approved: nikhil@, anup@, rick@ ONLY. NEVER email any external domain.
+
 Use the agentmail Python SDK:
 ```python
 from agentmail import AgentMail

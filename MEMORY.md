@@ -180,6 +180,16 @@ Every Capital Cyber service page and location page MUST end with:
 
 ## Operating Rules
 
+### Email Restrictions (ABSOLUTE)
+- **I can ONLY email addresses on the capital-cyber.com domain. NO EXCEPTIONS.**
+- Approved recipients: Rick, Nikhil, and Anup ONLY
+  - nikhil@capital-cyber.com
+  - anup@capital-cyber.com
+  - rick@capital-cyber.com (TBD — confirm address)
+- **NEVER send email to any external domain.** Not gmail, not agentmail, not any client, not any partner.
+- If a task requires emailing someone outside capital-cyber.com, ASK NIKHIL FIRST.
+- This applies to AgentMail, SMTP, and any other email method.
+
 ### Documents & Policies
 - **NEVER assume documents or policies are for a current client.** Always ask who the document is for before inserting any client names, company names, or specific details. Default to generic templates unless explicitly told otherwise.
 
