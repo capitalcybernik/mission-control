@@ -96,6 +96,10 @@
     "docker-essentials": {
       "version": "1.0.0",
       "installedAt": 1772223285193
+    },
+    "agentmail-integration": {
+      "version": "1.1.0",
+      "installedAt": 1772775304654
     }
   }
 }
